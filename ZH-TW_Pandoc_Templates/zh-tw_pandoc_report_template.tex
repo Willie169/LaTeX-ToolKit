@@ -5,7 +5,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{xeCJK,titlesec,titling,setspace,needspace}
 \usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs}
-\usepackage{diagbox,cellspace,array,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
+\usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
 \usepackage{zhnumber,tikz,xparse,physics}
 \usepackage{url,hyperref}\hypersetup{colorlinks=false}
 \usepackage{titletoc}
@@ -122,37 +122,49 @@
   \fi
 }
 \ProvideDocumentCommand{\al}{}{&}
+\ProvideDocumentCommand{\and}{}{\&}
 \ProvideDocumentCommand{\ba}{}{\begin{aligned}}
-\ProvideDocumentCommand{\bc}{}{\begin{center}}
+\ProvideDocumentCommand{\bct}{}{\begin{center}}
 \ProvideDocumentCommand{\bcs}{}{\begin{cases}}
 \ProvideDocumentCommand{\be}{}{\begin{equation}}
 \ProvideDocumentCommand{\bf}{}{\begin{figure}}
 \ProvideDocumentCommand{\bfH}{}{\begin{figure}[H]}
 \ProvideDocumentCommand{\bg}{m}{\begin{#1}}
+\ProvideDocumentCommand{\bi}{m}{\begin{itemize}}
 \ProvideDocumentCommand{\bm}{}{\[}
 \ProvideDocumentCommand{\bma}{}{\[\begin{aligned}}
 \ProvideDocumentCommand{\bmac}{}{\[\begin{aligned}\begin{cases}}
+\ProvideDocumentCommand{\bmc}{}{\[\begin{cases}}
+\ProvideDocumentCommand{\btb}{}{\begin{table}}
+\ProvideDocumentCommand{\btbr}{o}{\begin{tabular}{#2}}
 \ProvideDocumentCommand{\btk}{}{\begin{tikzpicture}}
 \ProvideDocumentCommand{\cd}{}{\cdot}
+\ProvideDocumentCommand{\chf}{m}{\chemfig{#1}}
 \let\clp\clearpage
+\ProvideDocumentCommand{\ctr}{}{\centering}
 \ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
 \ProvideDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
 \ProvideDocumentCommand{\dv}{}{\div}
 \ProvideDocumentCommand{\ed}{m}{\end{#1}}
 \ProvideDocumentCommand{\ea}{}{\end{aligned}}
 \ProvideDocumentCommand{\eam}{}{\end{aligned}\]}
-\ProvideDocumentCommand{\ec}{}{\end{center}}
+\ProvideDocumentCommand{\ect}{}{\end{center}}
 \ProvideDocumentCommand{\ecs}{}{\end{cases}}
 \ProvideDocumentCommand{\ecam}{}{\end{cases}\end{aligned}\]}
+\ProvideDocumentCommand{\ecm}{}{\end{cases}\]}
 \ProvideDocumentCommand{\ee}{}{\end{equation}}
 \ProvideDocumentCommand{\ef}{}{\end{figure}}
+\ProvideDocumentCommand{\ei}{}{\end{itemize}}
 \ProvideDocumentCommand{\em}{}{\]}
 \ProvideDocumentCommand{\eq}{}{=}
+\ProvideDocumentCommand{\etb}{}{\end{table}}
+\ProvideDocumentCommand{\etbr}{}{\begin{tabular}}
 \ProvideDocumentCommand{\etk}{}{\end{tikzpicture}}
 \ProvideDocumentCommand{\f}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\FB}{}{\FloatBarrier}
 \ProvideDocumentCommand{\ht}{m}{\hat{#1}}
 \let\hf=\hfill
+\ProvideDocumentCommand{\it}{}{\item}
 \ProvideDocumentCommand{\itg}{m m o o}{%
   \IfNoValueTF{#4}{%
     \IfNoValueTF{#3}{%
@@ -169,10 +181,14 @@
 \let\ld=\ldots
 \let\Lra=\Leftrightarrow
 \let\lra=\leftrightarrow
-\ProvideDocumentCommand{\mt}{m}{\[#1\]}
+\ProvideDocumentCommand{\mb}{m}{\mathbf{#1}}
+\ProvideDocumentCommand{\mc}{m}{\mathcal{#1}}
 \ProvideDocumentCommand{\md}{m}{\mathds{#1}}
-\ProvideDocumentCommand{\me}{m}{\(#1\)}
+\ProvideDocumentCommand{\mdp}{m}{\[#1\]}
+\ProvideDocumentCommand{\mil}{m}{\(#1\)}
+\ProvideDocumentCommand{\mi}{m}{\mathit{#1}}
 \ProvideDocumentCommand{\mn}{}{-}
+\ProvideDocumentCommand{\ms}{m}{\mathscr{#1}}
 \ProvideDocumentCommand{\n}{}{\\}
 \ProvideDocumentCommand{\npgb}{o}{\IfNoValueTF{#1}{\nopagebreak}{\nopagebreak{#1}}}
 \ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
@@ -182,12 +198,14 @@
 \ProvideDocumentCommand{\olra}{m}{\overleftrightsmallarrow{#1}}
 \ProvideDocumentCommand{\ora}{m}{\overrightsmallarrow{#1}}
 \ProvideDocumentCommand{\parallelsum}{}{\mathbin{\!/\mkern-5mu/\!}}
+\ProvideDocumentCommand{\pc}{}{\%}
 \ProvideDocumentCommand{\pf}{m m o}{\IfNoValueTF{#3}{\frac{\partial #1}{\partial #2}}{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
 \ProvideDocumentCommand{\pgb}{o}{\IfNoValueTF{#1}{\pagebreak}{\pagebreak{#1}}}
 \ProvideDocumentCommand{\pht}{m}{\phantom{#1}}
 \ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
 \let\Ra=\Rightarrow
 \let\ra=\rightarrow
+\ProvideDocumentCommand{\rl}{}{\relax}
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 \ProvideDocumentCommand{\st}{}{*}
 \ProvideDocumentCommand{\tb}{m}{\textbf{#1}}
