@@ -4,10 +4,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fontspec,titlesec,titling,setspace,needspace}
-\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs}
-\usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,enumerate,graphicx,caption,subcaption,float,placeins,xcolor}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs,textcomp}
+\usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
 \usepackage{tikz,xparse,physics}
-\usepackage[fencedCode,tightLists,hybrid,definitionLists]{markdown}
 \usepackage{url,hyperref}\hypersetup{colorlinks=false}
 \righthyphenmin=4
 \lefthyphenmin=4
@@ -271,10 +270,7 @@
     \IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
   }%
 }
-%\usepackage{titletoc}
-%\titlecontents{section}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
-%\titlecontents{subsection}[2em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
-%\titlecontents{subsubsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
+%\usepackage{titletoc}\titlecontents{section}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[2em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
 %\usepackage{hanging}
 %\usepackage{etoolbox}
 %\definecolor{myYellow}{HTML}{FFDD33}
