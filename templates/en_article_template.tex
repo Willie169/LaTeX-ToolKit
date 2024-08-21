@@ -270,7 +270,7 @@
     \IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
   }%
 }
-%\usepackage{titletoc}\titlecontents{section}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[2em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
+\usepackage{titletoc}\titlecontents{section}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[2em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
 %\usepackage{hanging}
 %\usepackage{etoolbox}
 %\definecolor{myYellow}{HTML}{FFDD33}
@@ -291,14 +291,14 @@
 \date{\today}
 \begin{document}
 \setcounter{secnumdepth}{6}
-%\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{3}
 \thispagestyle{empty}
 \onehalfspacing
 \nth
 \maketitle
-%\nth
-%\setcounter{page}{1}
-%\tableofcontents
+\nth
+\setcounter{page}{1}
+\tableofcontents
 \nthm
 \setcounter{page}{1}
 

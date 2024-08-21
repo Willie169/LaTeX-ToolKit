@@ -8,7 +8,6 @@
 \usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
 \usepackage{tikz,xparse,physics}
 \usepackage{url,hyperref}\hypersetup{colorlinks=false}
-\usepackage{titletoc}
 \righthyphenmin=4
 \lefthyphenmin=4
 \pretolerance=5000
@@ -229,11 +228,6 @@
 \titleformat{\paragraph}{\normalsize\bfseries}{\theparagraph}{1em}{}
 \titleformat{\subparagraph}{\normalsize\bfseries}{\thesubparagraph}{1em}{}
 \titleformat{\subsubparagraph}{\normalsize\bfseries}{\thesubsubparagraph}{1em}{}
-\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
-\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
-\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
-\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
-\renewcommand{\contentsname}{\hfill 目錄\hfill}
 \ProvideDocumentCommand{\ch}{s o}{%
   \IfBooleanTF{#1}{%
     \IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}%
@@ -283,6 +277,7 @@
     \IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
   }%
 }
+\usepackage{titletoc}\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
 %\usepackage{hanging}
 %\usepackage{etoolbox}
 %\definecolor{myYellow}{HTML}{FFDD33}
