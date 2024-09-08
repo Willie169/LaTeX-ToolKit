@@ -179,8 +179,10 @@
 \let\Lra=\Leftrightarrow
 \let\lra=\leftrightarrow
 \ProvideDocumentCommand{\mb}{m}{\mathbf{#1}}
-\ProvideDocumentCommand{\mc}{m}{\mathcal{#1}}
-\ProvideDocumentCommand{\md}{m}{\mathds{#1}}
+\ProvideDocumentCommand{\mbb}{m}{\mathbb{#1}}
+\ProvideDocumentCommand{\mbf}{m}{\mathbf{#1}}
+\ProvideDocumentCommand{\mcl}{m}{\mathcal{#1}}
+\ProvideDocumentCommand{\mds}{m}{\mathds{#1}}
 \ProvideDocumentCommand{\mdp}{m}{\[#1\]}
 \ProvideDocumentCommand{\mil}{m}{\(#1\)}
 \ProvideDocumentCommand{\mi}{m}{\mathit{#1}}
@@ -202,6 +204,7 @@
 \ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
 \let\Ra=\Rightarrow
 \let\ra=\rightarrow
+\let\rlh=\rightleftharpoons
 \ProvideDocumentCommand{\rl}{}{\relax}
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 \ProvideDocumentCommand{\st}{}{*}
