@@ -4,7 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fontspec,titlesec,titling,setspace,needspace}
-\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs,textcomp}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs,textcomp,esint}
 \usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
 \usepackage{tikz,xparse,physics}
 \usepackage{url,hyperref}\hypersetup{colorlinks=false}
@@ -280,7 +280,7 @@
     \IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
   }%
 }
-\usepackage{titletoc}\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
+%\usepackage{titletoc}\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
 %\usepackage{hanging}
 %\usepackage{etoolbox}
 %\definecolor{myYellow}{HTML}{FFDD33}
@@ -296,22 +296,20 @@
 %\usepackage{pdfpages}
 %\renewcommand{\arraystretch}{1.5}
 %\setmathfont{XITSMath-Regular.otf}
-\title{\$title\$}
-\author{\$author\$}
-\date{\$date\$}
+%\title{Title}
+%\author{Author}
+%\date{\today}
 \begin{document}
 \setcounter{secnumdepth}{6}
-\setcounter{tocdepth}{3}
-\thispagestyle{empty}
+%\setcounter{tocdepth}{3}
+%\thispagestyle{empty}
 \onehalfspacing
-\nth
-\maketitle
-\nth
-\setcounter{page}{1}
-\tableofcontents
+%\nth
+%\maketitle
+%\nth
+%\setcounter{page}{1}
+%\tableofcontents
 \nthm
 \setcounter{page}{1}
-
-\$body\$
 
 \end{document}
