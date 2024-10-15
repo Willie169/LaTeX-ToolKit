@@ -2,7 +2,7 @@
 
 ## Introduction
 
-LaTeX-ToolKit is a collection of LaTeX odds and ends, including installation tips for Termux, templates for articles, reports, and more. It also features Pandoc-compatible versions of these templates.
+LaTeX-ToolKit is a collection of LaTeX odds and ends, including installation tips for Termux, templates for articles, reports, and more.
 
 ## License
 
