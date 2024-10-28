@@ -140,6 +140,7 @@
 \ProvideDocumentCommand{\cd}{}{\cdot}
 \ProvideDocumentCommand{\chf}{m}{\chemfig{#1}}
 \let\clp\clearpage
+\ProvideDocumentCommand{\ctg}{o o m}{\IfNoValueTF{#3}{\IfNoValueTF{#2}{\begin{center}\begin{figure}[H]\centering\includegraphics{#1}\end{figure}\FloatBarrier\end{center}}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\end{figure}\FloatBarrier\end{center}}}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\caption{#3}\end{figure}\FloatBarrier\end{center}}}
 \ProvideDocumentCommand{\ctr}{}{\centering}
 \ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
 \ProvideDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
@@ -158,27 +159,17 @@
 \ProvideDocumentCommand{\etb}{}{\end{table}}
 \ProvideDocumentCommand{\etbr}{}{\begin{tabular}}
 \ProvideDocumentCommand{\etk}{}{\end{tikzpicture}}
-\ProvideDocumentCommand{\f}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\FB}{}{\FloatBarrier}
+\ProvideDocumentCommand{\fr}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\ht}{m}{\hat{#1}}
-\let\hf=\hfill
+\let\hf\hfill
 \let\icg\includegraphics
-\ProvideDocumentCommand{\itg}{m m o o}{%
-  \IfNoValueTF{#4}{%
-    \IfNoValueTF{#3}{%
-      \int #1\,\mathrm{d}{#2}%
-    }{%
-      \int_0^{#1} #2\,\mathrm{d}{#3}%
-    }%
-  }{%
-    \int_{#1}^{#2} #3\,\mathrm{d}{#4}%
-  }%
-}
-\let\La=\Leftarrow
-\let\la=\leftarrow
-\let\ld=\ldots
-\let\Lra=\Leftrightarrow
-\let\lra=\leftrightarrow
+\ProvideDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
+\let\La\Leftarrow
+\let\la\leftarrow
+\let\ld\ldots
+\let\Lra\Leftrightarrow
+\let\lra\leftrightarrow
 \ProvideDocumentCommand{\mb}{m}{\mathbf{#1}}
 \ProvideDocumentCommand{\mbb}{m}{\mathbb{#1}}
 \ProvideDocumentCommand{\mbf}{m}{\mathbf{#1}}
@@ -189,8 +180,10 @@
 \ProvideDocumentCommand{\mi}{m}{\mathit{#1}}
 \ProvideDocumentCommand{\mn}{}{-}
 \ProvideDocumentCommand{\ms}{m}{\mathscr{#1}}
+\ProvideDocumentCommand{\mu}{}{\times}
 \ProvideDocumentCommand{\n}{}{\\}
 \ProvideDocumentCommand{\npgb}{o}{\IfNoValueTF{#1}{\nopagebreak}{\nopagebreak{#1}}}
+\ProvideDocumentCommand{\Ns}{m}{\Needspace{#1}}
 \ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \ProvideDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
 \ProvideDocumentCommand{\ol}{m}{\overline{#1}}
@@ -203,22 +196,23 @@
 \ProvideDocumentCommand{\pgb}{o}{\IfNoValueTF{#1}{\pagebreak}{\pagebreak{#1}}}
 \ProvideDocumentCommand{\pht}{m}{\phantom{#1}}
 \ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
-\let\Ra=\Rightarrow
-\let\ra=\rightarrow
-\let\rlh=\rightleftharpoons
+\let\Ra\Rightarrow
+\let\ra\rightarrow
+\let\rlh\rightleftharpoons
 \ProvideDocumentCommand{\rl}{}{\relax}
 \newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
 \ProvideDocumentCommand{\st}{}{*}
 \ProvideDocumentCommand{\tb}{m}{\textbf{#1}}
 \ProvideDocumentCommand{\tc}{m}{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
 \ProvideDocumentCommand{\ti}{m}{\textit{#1}}
+\let\th\textheight
 \ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
+\let\tw\textwidth
 \ProvideDocumentCommand{\tx}{m}{\text{#1}}
 \ProvideDocumentCommand{\vc}{m}{\vec{#1}}
-\let\vf=\vfill
+\let\vf\vfill
 \ProvideDocumentCommand{\vsp}{s m}{\IfBooleanTF{#1}{\vspace*{#2}}{\vspace{#2}}}
 \ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
-\ProvideDocumentCommand{\xx}{m}{\times}
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
 \titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}

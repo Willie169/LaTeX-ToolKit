@@ -1,12 +1,12 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,12pt]{report}
 \usepackage[margin=1.27cm,foot=0.77cm]{geometry}
 \usepackage[defaultlines=8]{nowidow}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{xeCJK,fontspec,titlesec,titling,setspace,needspace}
+\usepackage{fontspec,titlesec,titling,setspace,needspace}
 \usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs,textcomp,esint}
 \usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
-\usepackage{zhnumber,tikz,xparse,physics}
+\usepackage{tikz,xparse,physics}
 \usepackage{url,hyperref}\hypersetup{colorlinks=false}
 \righthyphenmin=4
 \lefthyphenmin=4
@@ -213,22 +213,26 @@
 \let\vf\vfill
 \ProvideDocumentCommand{\vsp}{s m}{\IfBooleanTF{#1}{\vspace*{#2}}{\vspace{#2}}}
 \ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
-\ProvideDocumentCommand{\xx}{m}{\times}
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
 \titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}
-\renewcommand\thesection{第\zhnumber[style={Traditional,Normal}]{\arabic{section}}章}
-\renewcommand\thesubsection{\zhnumber[style={Traditional,Normal}]{\arabic{subsection}}、}
-\renewcommand\thesubsubsection{(\zhnumber[style={Traditional,Normal}]{\arabic{subsubsection}})}
 \renewcommand\theparagraph{\arabic{paragraph}.}
 \renewcommand\thesubparagraph{(\arabic{subparagraph})}
 \renewcommand\thesubsubparagraph{\boxed{\arabic{subsubparagraph}}}
+\titleformat{\chapter}[block]{\LARGE\bfseries}{\thechapter}{1em}{}
 \titleformat{\section}[block]{\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
 \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
 \titleformat{\paragraph}{\normalsize\bfseries}{\theparagraph}{1em}{}
 \titleformat{\subparagraph}{\normalsize\bfseries}{\thesubparagraph}{1em}{}
 \titleformat{\subsubparagraph}{\normalsize\bfseries}{\thesubsubparagraph}{1em}{}
+\ProvideDocumentCommand{\ch}{s o}{%
+  \IfBooleanTF{#1}{%
+    \IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}%
+  }{%
+    \IfNoValueTF{#2}{\chapter}{\chapter{#2}}%
+  }%
+}
 \ProvideDocumentCommand{\sct}{s o}{%
   \IfBooleanTF{#1}{%
     \IfNoValueTF{#2}{\section*}{\section*{#2}}%
@@ -271,7 +275,7 @@
     \IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
   }%
 }
-\usepackage{titletoc}\titlecontents{section}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[2em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}\renewcommand{\contentsname}{\hfill 目錄\hfill}
+%\usepackage{titletoc}\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
 %\usepackage{hanging}
 %\usepackage{etoolbox}
 %\definecolor{myYellow}{HTML}{FFDD33}
@@ -286,23 +290,17 @@
 %\makeatletter\csvset{autotabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,table head=\hline\csvlinetotablerow\\\hline,late after line=\\,lable foot=\\\hline,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow},autobooktabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{*{\csv@columncount}{c}}\csv@tablehead,table head=\toprule\csvlinetotablerow\\\midrule,late after line=\\,table foot=\\\bottomrule,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow}}\makeatother\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}\newcommand{\csvautobooktabularcenter}[2][]{\csvloop{autobooktabularcenter={#2},#1}}
 %\usepackage{pdfpages}
 %\renewcommand{\arraystretch}{1.5}
-%\renewcommand{\refname}{參考文獻}
-\setCJKmainfont{Iansui-Regular.ttf}
-%\setCJKfamilyfont{kaiu}{kaiu.ttf}
-%\newcommand{\kaiu}[1]{{\CJKfamily{kaiu}#1}}
-%\setCJKfamilyfont{notor}{NotoSansTC-Regular.otf}
-%\newcommand{\notor}[1]{{\CJKfamily{notor}#1}}
 %\setmathfont{XITSMath-Regular.otf}
-%\title{標題}
-%\author{作者}
-%\date{\today}
+\title{Title}
+\author{Author}
+\date{\today}
 \begin{document}
 \setcounter{secnumdepth}{6}
 %\setcounter{tocdepth}{3}
-%\thispagestyle{empty}
+\thispagestyle{empty}
 \onehalfspacing
-%\nth
-%\maketitle
+\nth
+\maketitle
 %\nth
 %\setcounter{page}{1}
 %\tableofcontents
