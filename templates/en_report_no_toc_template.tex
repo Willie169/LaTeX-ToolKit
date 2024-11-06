@@ -218,6 +218,10 @@
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
 \titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+\renewcommand\thechapter{Chapter \arabic{chapter}}
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\Roman{subsection}}
+\renewcommand\thesubsubsection{\roman{subsubsection}}
 \renewcommand\theparagraph{\arabic{paragraph}.}
 \renewcommand\thesubparagraph{(\arabic{subparagraph})}
 \renewcommand\thesubsubparagraph{\boxed{\arabic{subsubparagraph}}}
