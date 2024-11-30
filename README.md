@@ -2,7 +2,7 @@
 
 ## Introduction
 
-LaTeX-ToolKit is a collection of LaTeX odds and ends, including installation tips for Termux, templates for articles, reports, and more.
+LaTeX-ToolKit is a collection of LaTeX templates I made for articles, reports, Zh-Hant, En, and more.
 
 ## License
 
