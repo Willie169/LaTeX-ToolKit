@@ -19,85 +19,85 @@
 \captionsetup{labelformat=empty}
 \captionsetup[subfigure]{labelformat=empty}
 \renewcommand{\maketitle}{%
-  \begin{titlepage}%
-    \begin{center}%
-      \vspace*{\fill}%
-      {\huge \bfseries \thetitle\par}%
-      \vskip 1.5em%
-      {\Large \theauthor\par}%
-      \vskip 1em%
-      {\large \thedate\par}%
-      \vspace*{\fill}%
-    \end{center}%
-  \end{titlepage}%
+\begin{titlepage}%
+\begin{center}%
+\vspace*{\fill}%
+{\huge \bfseries \thetitle\par}%
+\vskip 1.5em%
+{\Large \theauthor\par}%
+\vskip 1em%
+{\large \thedate\par}%
+\vspace*{\fill}%
+\end{center}%
+\end{titlepage}%
 }
 \usepackage{listings}
 \lstdefinestyle{tex}{
-    language=[LaTeX]TeX,
-    breaklines=true,
-    breakatwhitespace=true,
-    basicstyle=\ttfamily\scriptsize,
-    keywordstyle=\color{blue},
-    identifierstyle=\color{magenta},
-    commentstyle=\color{green!60!black},
-    stringstyle=\color{red},
-    numbers=left,
-    numberstyle=\tiny\color{gray},
-    stepnumber=1,
-    numbersep=5pt,
-    tabsize=2,
-    frame=single,
-    columns=fullflexible,
-    showspaces=false,
-    showstringspaces=false,
-    keepspaces=true,
-    literate={<}{{\textcolor{blue}{\{}}}1 
-             {>}{{\textcolor{blue}{\}}}}1,
+language=[LaTeX]TeX,
+breaklines=true,
+breakatwhitespace=false,
+basicstyle=\ttfamily\scriptsize,
+keywordstyle=\color{blue},
+identifierstyle=\color{magenta},
+commentstyle=\color{green!60!black},
+stringstyle=\color{red},
+numbers=left,
+numberstyle=\tiny\color{gray},
+stepnumber=1,
+numbersep=5pt,
+tabsize=2,
+frame=single,
+columns=fullflexible,
+showspaces=false,
+showstringspaces=false,
+keepspaces=true,
+literate={<}{{\textcolor{blue}{\{}}}1 
+{>}{{\textcolor{blue}{\}}}}1,
 }
 \lstdefinestyle{cpp}{
-  language=C++,
-  basicstyle=\ttfamily\scriptsize,
-  keywordstyle=\color{blue},
-  stringstyle=\color{red},
-  commentstyle=\color{green},
-  numberstyle=\tiny\color{gray},
-  numbers=left,
-  stepnumber=1,
-  numbersep=5pt,
-  backgroundcolor=\color{white},
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  frame=single,
-  rulecolor=\color{black},
-  tabsize=2,
-  captionpos=b,
-  breaklines=true,
-  breakatwhitespace=true,
-  escapeinside={\%*}{*)}
+language=C++,
+basicstyle=\ttfamily\scriptsize,
+keywordstyle=\color{blue},
+stringstyle=\color{red},
+commentstyle=\color{green},
+numberstyle=\tiny\color{gray},
+numbers=left,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+rulecolor=\color{black},
+tabsize=2,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+escapeinside={\%*}{*)}
 }
 \lstdefinestyle{python}{
-  language=Python,
-  basicstyle=\ttfamily\scriptsize,
-  keywordstyle=\color{blue},
-  stringstyle=\color{red},
-  commentstyle=\color{green!50!black},
-  numberstyle=\tiny\color{gray},
-  numbers=left,
-  stepnumber=1,
-  numbersep=5pt,
-  backgroundcolor=\color{white},
-  showspaces=false,
-  showstringspaces=false,
-  showtabs=false,
-  frame=single,
-  rulecolor=\color{black},
-  tabsize=4,
-  captionpos=b,
-  breaklines=true,
-  breakatwhitespace=true,
-  escapeinside={(*@}{@*)},
-  morekeywords={True, False, None},
+language=Python,
+basicstyle=\ttfamily\scriptsize,
+keywordstyle=\color{blue},
+stringstyle=\color{red},
+commentstyle=\color{green!50!black},
+numberstyle=\tiny\color{gray},
+numbers=left,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+rulecolor=\color{black},
+tabsize=4,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false,
+escapeinside={(*@}{@*)},
+morekeywords={True, False, None},
 }
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
@@ -106,21 +106,21 @@
 \newcommand{\overrightsmallarrow}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
 \newcommand{\overleftsmallarrow}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
 \newcommand{\overarrowsmall@}[3]{%
-  \vbox{%
-    \ialign{%
-      ##\crcr
-      #1{\smaller@style{#2}}\crcr
-      \noalign{\nointerlineskip}%
-      $\m@th\hfil#2#3\hfil$\crcr
-    }%
-  }%
+\vbox{%
+\ialign{%
+##\crcr
+#1{\smaller@style{#2}}\crcr
+\noalign{\nointerlineskip}%
+$\m@th\hfil#2#3\hfil$\crcr
+}%
+}%
 }
 \def\smaller@style#1{%
-  \ifx#1\displaystyle\scriptstyle\else
-    \ifx#1\textstyle\scriptstyle\else
-      \scriptscriptstyle
-    \fi
-  \fi
+\ifx#1\displaystyle\scriptstyle\else
+\ifx#1\textstyle\scriptstyle\else
+\scriptscriptstyle
+\fi
+\fi
 }
 \makeatother
 \ProvideDocumentCommand{\al}{}{&}
@@ -233,53 +233,53 @@
 \titleformat{\subparagraph}{\normalsize\bfseries}{\thesubparagraph}{1em}{}
 \titleformat{\subsubparagraph}{\normalsize\bfseries}{\thesubsubparagraph}{1em}{}
 \ProvideDocumentCommand{\ch}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\chapter}{\chapter{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}%
+}{%
+\IfNoValueTF{#2}{\chapter}{\chapter{#2}}%
+}%
 }
 \ProvideDocumentCommand{\sct}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\section*}{\section*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\section}{\section{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\section*}{\section*{#2}}%
+}{%
+\IfNoValueTF{#2}{\section}{\section{#2}}%
+}%
 }
 \ProvideDocumentCommand{\ssc}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\subsection*}{\subsection*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\subsection}{\subsection{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\subsection*}{\subsection*{#2}}%
+}{%
+\IfNoValueTF{#2}{\subsection}{\subsection{#2}}%
+}%
 }
 \ProvideDocumentCommand{\sssc}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\subsubsection*}{\subsubsection*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\subsubsection}{\subsubsection{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\subsubsection*}{\subsubsection*{#2}}%
+}{%
+\IfNoValueTF{#2}{\subsubsection}{\subsubsection{#2}}%
+}%
 }
 \ProvideDocumentCommand{\pr}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\paragraph*}{\paragraph*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\paragraph}{\paragraph{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\paragraph*}{\paragraph*{#2}}%
+}{%
+\IfNoValueTF{#2}{\paragraph}{\paragraph{#2}}%
+}%
 }
 \ProvideDocumentCommand{\spr}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\subparagraph*}{\subparagraph*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\subparagraph}{\subparagraph{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\subparagraph*}{\subparagraph*{#2}}%
+}{%
+\IfNoValueTF{#2}{\subparagraph}{\subparagraph{#2}}%
+}%
 }
 \ProvideDocumentCommand{\sspr}{s o}{%
-  \IfBooleanTF{#1}{%
-    \IfNoValueTF{#2}{\subsubparagraph*}{\subsubparagraph*{#2}}%
-  }{%
-    \IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
-  }%
+\IfBooleanTF{#1}{%
+\IfNoValueTF{#2}{\subsubparagraph*}{\subsubparagraph*{#2}}%
+}{%
+\IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}%
+}%
 }
 \usepackage{titletoc}\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
 %\usepackage{hanging}
