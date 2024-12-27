@@ -2,7 +2,9 @@
 
 ## Introduction
 
-LaTeX-ToolKit is a collection of LaTeX templates I made for articles, reports, Zh-Hant, En, and more.
+This repository now boast a comprehensive LaTeX template [`template.tex`](template.tex) designed for article and report documentclass and Zh-Hant, Zh-Hans, or En language.
+
+Instructions and settings of it is in the beginning comments of it.
 
 ## License
 
