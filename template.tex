@@ -437,7 +437,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \renewcommand\thesubsection{\zhnumber[style={Traditional,Normal}]{\arabic{subsection}}、}
 \renewcommand\thesubsubsection{(\zhnumber[style={Traditional,Normal}]{\arabic{subsubsection}})}
 \else\ifnum\value{SectionLanguage}=2
-\renewcommand\thesection{第\zhnumber[style={Simplified,Normal}]{\arabic{section}}節}
+\renewcommand\thesection{第\zhnumber[style={Simplified,Normal}]{\arabic{section}}节}
 \renewcommand\thesubsection{\zhnumber[style={Simplified,Normal}]{\arabic{subsection}}、}
 \renewcommand\thesubsubsection{(\zhnumber[style={Simplified,Normal}]{\arabic{subsubsection}})}
 \else
@@ -462,6 +462,9 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ifnum\value{ZhRenew}=1
 \renewcommand{\contentsname}{\hfill 目錄\hfill}
 \renewcommand{\bibname}{參考文獻}
+\else\ifnum\value{ZhRenew}=2
+\renewcommand{\contentsname}{\hfill 目录\hfill}
+\renewcommand{\bibname}{参考文献}
 \fi
 \begin{document}
 % --- Above is the implementation of this template --- %
