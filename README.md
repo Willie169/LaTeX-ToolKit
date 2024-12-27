@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This repository now boast a comprehensive LaTeX template [`template.tex`](template.tex) designed for article and report documentclass and Zh-Hant, Zh-Hans, or En language.
+This repository boasts a comprehensive LaTeX template [`template.tex`](template.tex), which is designed for article and report documentclass, and for TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages.
 
 Instructions and settings of it is in the beginning comments of it.
 
