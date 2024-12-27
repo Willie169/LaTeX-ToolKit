@@ -1,0 +1,487 @@
+% template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
+\documentclass[a4paper,12pt]{report}
+% Change it to the documentclass you want, this template is now mainly designed for report and article documentclass.
+\newcounter{xeCJK}
+\setcounter{xeCJK}{1}
+% Set xeCJK counter to 1 to use xeCJK packageb; 0 to not use it.
+\usepackage[margin=1.27cm,foot=0.77cm]{geometry}
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{3}
+% Change above to what you want.
+\newcounter{Fonts}
+\setcounter{Fonts}{1}
+% Set Fonts counter to set fonts' style: 0 for not set; 1 for TeX Gyre Heros as main font, TeX Gyre Termes as sans font, Courier as mono font; 2 for TeX Gyre Termes as main font, TeX Gyre Heros as sans font, Courier as mono font; 3 for TeX Gyre Heros as main font, sans font not set, Courier as mono font; 4 for TeX Gyre Termes as main font, sans font not set, Courier as mono font; 5 to 8 for 1 to 4 but without Courier as mono font.
+\newcounter{STIXMath}
+\setcounter{STIXMath}{1}
+% Set STIXMath counter to set math font: 0 for not set; 1 for STIX 2 Math.
+\newcounter{CJKFonts}
+\setcounter{CJKFonts}{1}
+% Set CJKFonts counter to set CJK fonts' style: 0 for not set; 1 for Noto Sans CJK as CJK main font, Noto Serif CJK as CJK sans font, Noto Sans Mono CJK as CJK mono font; 2 for Noto Serif CJK as CJK main font, Noto Sans CJK as CJK sans font, Noto Sans Mono CJK as CJK mono font; 3 for Noto Sans CJK as CJK main font, CJK sans font not set, Noto Sans Mono CJK as CJK mono font; 4 for Noto Serif CJK as CJK main font, CJK sans font not set, Noto Sans Mono CJK as CJK mono font; 5 to 8 for 1 to 4 but without Noto Sans Mono CJK as CJK mono font. If xeCJK package is not loaded, this counter will be omitted.
+\newcounter{CJKLanguage}
+\setcounter{CJKLanguage}{0}
+% Set CJKLanguage counter to set CJK fonts' language: 0 for TC (Traditional Chinese Taiwan), 1 for SC (Simplified Chinese), 2 for HK (Traditional Chinese Hong Kong), 3 for JP (Japanese), 4 for KR (Korean). If either xeCJK package is not loaded or CJKFonts counter is set to zero, this counter will be omitted.
+\newcounter{NotoCJKFamily}
+\setcounter{NotoCJKFamily}{1}
+% Set NotoCJKFamily counter to set Noto CJK font families, where Lang stands for TC, SC, HK, JP, and KR, one language one family: 0 for not set; 1 for Noto Sans CJK Lang as Lang and SansLang, Noto Serif CJK as SerifLang, Noto Sans Mono CJK Lang as MonoLang; 2 for Noto Serif CJK Lang as Lang and SerifLang, Noto Sans CJK Lang as SansLang, Noto Sans Mono CJK Lang as MonoLang; 3 for Noto Sans CJK Lang as SansLang, Noto Serif CJK Lang as SerifLang, Noto Sans Mono CJK Lang as MonoLang. If xeCJK package is not loaded, this counter will be omitted.
+\newcounter{SectionLanguage}
+\setcounter{SectionLanguage}{0}
+% Set SectionLanguage counter to choose the language of the numbering of chapter (if documentclass is not article), section, subsection, and subsubsection: 0 for Arabic, 1 for Traditional Chinese, 2 for Simplified Chinese. If xeCJK package is not loaded, this counter will be omitted and Arabic will be used.
+\newcounter{ZhRenew}
+\setcounter{ZhRenew}{1}
+% Set ZhRenew counter to 1 to renew TOC's title to 目錄 renew bibliography's title to 參考文獻; 0 to not renew them. If xeCJK package is not loaded, this counter will be omitted.
+% --- Below is the implementation of this template --- %
+\usepackage[defaultlines=8]{nowidow}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{etoolbox}
+\ifnum\value{xeCJK}=1
+\usepackage[CJKspace]{xeCJK}
+\fi
+\usepackage{fontspec,titlesec,titling,setspace,needspace,titletoc}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs,textcomp,esint,textgreek}
+\usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
+\usepackage{tikz,xparse,physics,braket,longtable,hanging,tcolorbox,chemfig}
+\usepackage[version=4]{mhchem}
+\makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
+\ifnum\value{Fonts}=1
+\setmainfont{TeX Gyre Heros}[Ligatures=TeX]
+\setsansfont{TeX Gyre Termes}[Ligatures=TeX]
+\setmonofont{Courier}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=2
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX]
+\setmonofont{Courier}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=3
+\setmainfont{TeX Gyre Heros}[Ligatures=TeX]
+\setmonofont{Courier}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=4
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX]
+\setmonofont{Courier}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=5
+\setmainfont{TeX Gyre Heros}[Ligatures=TeX]
+\setsansfont{TeX Gyre Termes}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=6
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX]
+\setsansfont{TeX Gyre Heros}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=7
+\setmainfont{TeX Gyre Heros}[Ligatures=TeX]
+\else\ifnum\value{Fonts}=8
+\setmainfont{TeX Gyre Termes}[Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
+\ifnum\value{STIXMath}=1\setmathfont{STIX Two Math}[Ligatures=TeX]\fi
+\ifnum\value{xeCJK}=1
+\usepackage{zhnumber}
+\ifnum\value{CJKFonts}=0\else
+\ifnum\value{CJKLanguage}=0
+\ifnum\value{CJKFonts}=1
+\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=2
+\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=3
+\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=4
+\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=5
+\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=6
+\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=7
+\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=8
+\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
+\else\ifnum\value{CJKLanguage}=1
+\ifnum\value{CJKFonts}=1
+\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=2
+\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=3
+\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=4
+\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=5
+\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=6
+\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=7
+\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=8
+\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
+\else\ifnum\value{CJKLanguage}=2
+\ifnum\value{CJKFonts}=1
+\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=2
+\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=3
+\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=4
+\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=5
+\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=6
+\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=7
+\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=8
+\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
+\else\ifnum\value{CJKLanguage}=3
+\ifnum\value{CJKFonts}=1
+\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=2
+\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=3
+\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=4
+\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=5
+\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=6
+\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=7
+\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=8
+\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
+\else\ifnum\value{CJKLanguage}=4
+\ifnum\value{CJKFonts}=1
+\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=2
+\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=3
+\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=4
+\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=5
+\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=6
+\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKsansfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=7
+\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{CJKFonts}=8
+\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
+\fi\fi\fi\fi\fi\fi
+\ifnum\value{NotoCJKFamily}=3
+\setfontfamily{\SansTC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifTC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansSC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifSC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansHK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifHK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansJP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifJP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansKR}{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifKR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{NotoCJKFamily}=2
+\setfontfamily{\SansTC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifTC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\TC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansSC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifSC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansHK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifHK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\HK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansJP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifJP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\JP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansKR}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifKR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\KR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\else\ifnum\value{NotoCJKFamily}=1
+\setfontfamily{\SansTC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifTC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\TC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansSC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifSC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansHK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifHK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\HK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansJP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifJP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\JP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SansKR}{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\SerifKR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setfontfamily{\KR}{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\fi\fi\fi\fi
+\usepackage{url,hyperref}
+\hypersetup{colorlinks=false}
+\righthyphenmin=4
+\lefthyphenmin=4
+\pretolerance=5000
+\tolerance=9000
+\emergencystretch=1em
+\setlength{\parindent}{0pt}
+\everymath{\displaystyle}
+\everydisplay{\displaystyle}
+\captionsetup{labelformat=empty}
+\captionsetup[subfigure]{labelformat=empty}
+\renewcommand{\maketitle}{
+\begin{titlepage}
+\begin{center}
+\vspace*{\fill}
+{\huge \bfseries \thetitle\par}
+\vskip 1.5em
+{\Large \theauthor\par}
+\vskip 1em
+{\large \thedate\par}
+\vspace*{\fill}
+\end{center}
+\end{titlepage}
+}
+\usepackage{listings}
+\lstset{
+basicstyle=\ttfamily\scriptsize,
+keywordstyle=\color{blue},
+stringstyle=\color{red},
+commentstyle=\color{green!50!black},
+numberstyle=\small\color{gray},
+numbers=left,
+stepnumber=1,
+numbersep=5pt,
+backgroundcolor=\color{white},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+frame=single,
+rulecolor=\color{black},
+tabsize=4,
+captionpos=b,
+breaklines=true,
+breakatwhitespace=false
+}
+\usepackage{csvsimple}\makeatletter\csvset{autotabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,table head=\hline\csvlinetotablerow\\\hline,late after line=\\,lable foot=\\\hline,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow},autobooktabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{*{\csv@columncount}{c}}\csv@tablehead,table head=\toprule\csvlinetotablerow\\\midrule,late after line=\\,table foot=\\\bottomrule,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow}}\makeatother\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}\newcommand{\csvautobooktabularcenter}[2][]{\csvloop{autobooktabularcenter={#2},#1}}
+\usepackage{pdfpages}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\makeatletter
+\newcommand{\overleftrightsmallarrow}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
+\newcommand{\overrightsmallarrow}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
+\newcommand{\overleftsmallarrow}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
+\newcommand{\overarrowsmall@}[3]{
+\vbox{
+\ialign{
+##\crcr
+#1{\smaller@style{#2}}\crcr
+\noalign{\nointerlineskip}
+$\m@th\hfil#2#3\hfil$\crcr
+}
+}
+}
+\def\smaller@style#1{
+\ifx#1\displaystyle\scriptstyle\else
+\ifx#1\textstyle\scriptstyle\else
+\scriptscriptstyle
+\fi
+\fi
+}
+\makeatother
+\ProvideDocumentCommand{\al}{}{&}
+\ProvideDocumentCommand{\and}{}{\&}
+\ProvideDocumentCommand{\ba}{}{\begin{aligned}}
+\ProvideDocumentCommand{\bct}{}{\begin{center}}
+\ProvideDocumentCommand{\bcs}{}{\begin{cases}}
+\ProvideDocumentCommand{\be}{}{\begin{equation}}
+\ProvideDocumentCommand{\bf}{}{\begin{figure}}
+\ProvideDocumentCommand{\bfH}{}{\begin{figure}[H]}
+\ProvideDocumentCommand{\bg}{m}{\begin{#1}}
+\ProvideDocumentCommand{\bm}{}{\[}
+\ProvideDocumentCommand{\bma}{}{\[\begin{aligned}}
+\ProvideDocumentCommand{\bmac}{}{\[\begin{aligned}\begin{cases}}
+\ProvideDocumentCommand{\bmc}{}{\[\begin{cases}}
+\ProvideDocumentCommand{\btb}{}{\begin{table}}
+\ProvideDocumentCommand{\btbr}{o}{\begin{tabular}{#1}}
+\ProvideDocumentCommand{\btk}{}{\begin{tikzpicture}}
+\ProvideDocumentCommand{\cd}{}{\cdot}
+\ProvideDocumentCommand{\chf}{m}{\chemfig{#1}}
+\ProvideDocumentCommand{\clp}{}{\clearpage}
+\ProvideDocumentCommand{\ctg}{o o m}{\IfNoValueTF{#3}{\IfNoValueTF{#2}{\begin{center}\begin{figure}[H]\centering\includegraphics{#1}\end{figure}\FloatBarrier\end{center}}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\end{figure}\FloatBarrier\end{center}}}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\caption{#3}\end{figure}\FloatBarrier\end{center}}}
+\ProvideDocumentCommand{\ctr}{}{\centering}
+\ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
+\ProvideDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
+\ProvideDocumentCommand{\dv}{}{\div}
+\ProvideDocumentCommand{\ed}{m}{\end{#1}}
+\ProvideDocumentCommand{\ea}{}{\end{aligned}}
+\ProvideDocumentCommand{\eam}{}{\end{aligned}\]}
+\ProvideDocumentCommand{\ect}{}{\end{center}}
+\ProvideDocumentCommand{\ecs}{}{\end{cases}}
+\ProvideDocumentCommand{\ecam}{}{\end{cases}\end{aligned}\]}
+\ProvideDocumentCommand{\ecm}{}{\end{cases}\]}
+\ProvideDocumentCommand{\ee}{}{\end{equation}}
+\ProvideDocumentCommand{\ef}{}{\end{figure}}
+\ProvideDocumentCommand{\em}{}{\]}
+\ProvideDocumentCommand{\eq}{}{=}
+\ProvideDocumentCommand{\etb}{}{\end{table}}
+\ProvideDocumentCommand{\etbr}{}{\begin{tabular}}
+\ProvideDocumentCommand{\etk}{}{\end{tikzpicture}}
+\ProvideDocumentCommand{\FB}{}{\FloatBarrier}
+\ProvideDocumentCommand{\fr}{m m}{\frac{#1}{#2}}
+\ProvideDocumentCommand{\ht}{m}{\hat{#1}}
+\ProvideDocumentCommand{\hf}{}{\hfill}
+\ProvideDocumentCommand{\icg}{}{\includegraphics}
+\ProvideDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
+\ProvideDocumentCommand{\La}{}{\Leftarrow}
+\ProvideDocumentCommand{\la}{}{\leftarrow}
+\ProvideDocumentCommand{\ld}{}{\ldots}
+\ProvideDocumentCommand{\Lra}{}{\Leftrightarrow}
+\ProvideDocumentCommand{\lra}{}{\leftrightarrow}
+\ProvideDocumentCommand{\mb}{m}{\mathbf{#1}}
+\ProvideDocumentCommand{\mbb}{m}{\mathbb{#1}}
+\ProvideDocumentCommand{\mbf}{m}{\mathbf{#1}}
+\ProvideDocumentCommand{\mcl}{m}{\mathcal{#1}}
+\ProvideDocumentCommand{\mds}{m}{\mathds{#1}}
+\ProvideDocumentCommand{\mdp}{m}{\[#1\]}
+\ProvideDocumentCommand{\mil}{m}{\(#1\)}
+\ProvideDocumentCommand{\mi}{m}{\mathit{#1}}
+\ProvideDocumentCommand{\mn}{}{-}
+\ProvideDocumentCommand{\ms}{m}{\mathscr{#1}}
+\ProvideDocumentCommand{\mu}{}{\times}
+\ProvideDocumentCommand{\n}{}{\\}
+\ProvideDocumentCommand{\npgb}{o}{\IfNoValueTF{#1}{\nopagebreak}{\nopagebreak{#1}}}
+\ProvideDocumentCommand{\Ns}{m}{\Needspace{#1}}
+\ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
+\ProvideDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
+\ProvideDocumentCommand{\ol}{m}{\overline{#1}}
+\ProvideDocumentCommand{\ola}{m}{\overleftsmallarrow{#1}}
+\ProvideDocumentCommand{\olra}{m}{\overleftrightsmallarrow{#1}}
+\ProvideDocumentCommand{\ora}{m}{\overrightsmallarrow{#1}}
+\ProvideDocumentCommand{\parallelsum}{}{\mathbin{\!/\mkern-5mu/\!}}
+\ProvideDocumentCommand{\pc}{}{\%}
+\ProvideDocumentCommand{\pf}{m m o}{\IfNoValueTF{#3}{\frac{\partial #1}{\partial #2}}{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
+\ProvideDocumentCommand{\pgb}{o}{\IfNoValueTF{#1}{\pagebreak}{\pagebreak{#1}}}
+\ProvideDocumentCommand{\pht}{m}{\phantom{#1}}
+\ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
+\ProvideDocumentCommand{\Ra}{}{\Rightarrow}
+\ProvideDocumentCommand{\ra}{}{\rightarrow}
+\ProvideDocumentCommand{\rlh}{}{\rightleftharpoons}
+\ProvideDocumentCommand{\rl}{}{\relax}
+\ProvideDocumentCommand{\RNum}{m}{\uppercase\expandafter{\romannumeral #1\relax}}
+\ProvideDocumentCommand{\st}{}{*}
+\ProvideDocumentCommand{\tb}{m}{\textbf{#1}}
+\ProvideDocumentCommand{\tc}{m}{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
+\ProvideDocumentCommand{\ti}{m}{\textit{#1}}
+\ProvideDocumentCommand{\th}{}{\textheight}
+\ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
+\ProvideDocumentCommand{\tw}{}{\textwidth}
+\ProvideDocumentCommand{\tx}{m}{\text{#1}}
+\ProvideDocumentCommand{\vc}{m}{\vec{#1}}
+\ProvideDocumentCommand{\vf}{}{\vfill}
+\ProvideDocumentCommand{\vsp}{s m}{\IfBooleanTF{#1}{\vspace*{#2}}{\vspace{#2}}}
+\ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
+\titleclass{\subsubparagraph}{straight}[\subparagraph]
+\newcounter{subsubparagraph}[subparagraph]
+\titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}
+\titleformat{\section}[block]{\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\paragraph}{\normalsize\bfseries}{\theparagraph}{1em}{}
+\titleformat{\subparagraph}{\normalsize\bfseries}{\thesubparagraph}{1em}{}
+\titleformat{\subsubparagraph}{\normalsize\bfseries}{\thesubsubparagraph}{1em}{}
+\ProvideDocumentCommand{\sct}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\section*}{\section*{#2}}}{\IfNoValueTF{#2}{\section}{\section{#2}}}}
+\ProvideDocumentCommand{\ssc}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsection*}{\subsection*{#2}}}{\IfNoValueTF{#2}{\subsection}{\subsection{#2}}}}
+\ProvideDocumentCommand{\sssc}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsubsection*}{\subsubsection*{#2}}}{\IfNoValueTF{#2}{\subsubsection}{\subsubsection{#2}}}}
+\ProvideDocumentCommand{\pr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\paragraph*}{\paragraph*{#2}}}{\IfNoValueTF{#2}{\paragraph}{\paragraph{#2}}}}
+\ProvideDocumentCommand{\spr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subparagraph*}{\subparagraph*{#2}}}{\IfNoValueTF{#2}{\subparagraph}{\subparagraph{#2}}}}
+\ProvideDocumentCommand{\sspr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsubparagraph*}{\subsubparagraph*{#2}}}{\IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}}}
+\renewcommand\theparagraph{\arabic{paragraph}.}
+\renewcommand\thesubparagraph{(\arabic{subparagraph})}
+\renewcommand\thesubsubparagraph{\boxed{\arabic{subsubparagraph}}}
+\titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
+\titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
+\titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
+\ifnum\value{SectionLanguage}=1
+\renewcommand\thesection{第\zhnumber[style={Traditional,Normal}]{\arabic{section}}節}
+\renewcommand\thesubsection{\zhnumber[style={Traditional,Normal}]{\arabic{subsection}}、}
+\renewcommand\thesubsubsection{(\zhnumber[style={Traditional,Normal}]{\arabic{subsubsection}})}
+\else\ifnum\value{SectionLanguage}=2
+\renewcommand\thesection{第\zhnumber[style={Simplified,Normal}]{\arabic{section}}節}
+\renewcommand\thesubsection{\zhnumber[style={Simplified,Normal}]{\arabic{subsection}}、}
+\renewcommand\thesubsubsection{(\zhnumber[style={Simplified,Normal}]{\arabic{subsubsection}})}
+\else
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\Roman{subsection}}
+\renewcommand\thesubsubsection{\roman{subsubsection}}
+\fi\fi
+\makeatletter
+\@ifclassloaded{article}{}{
+\titleformat{\chapter}[block]{\LARGE\bfseries}{\thechapter}{1em}{}
+\ProvideDocumentCommand{\ch}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}}{\IfNoValueTF{#2}{\chapter}{\chapter{#2}}}}
+\titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
+\ifnum\value{SectionLanguage}=1
+\renewcommand\thechapter{第\zhnumber[style={Traditional,Normal}]{\arabic{chapter}}章}
+\else\ifnum\value{SectionLanguage}=2
+\renewcommand\thechapter{第\zhnumber[style={Simplified,Normal}]{\arabic{chapter}}章}
+\else
+\renewcommand\thechapter{Chapter \arabic{chapter}}
+\fi\fi
+}
+\makeatother
+\ifnum\value{ZhRenew}=1
+\renewcommand{\contentsname}{\hfill 目錄\hfill}
+\renewcommand{\bibname}{參考文獻}
+\fi
+\begin{document}
+% --- Above is the implementation of this template --- %
+\title{Title}
+\author{Author}
+\date{
+\ifnum\value{xeCJK}=1
+\ifnum\value{ZhRenew}=1
+\zhtoday
+\else\today
+\fi
+\else
+\today
+\fi
+}
+\onehalfspacing
+\thispagestyle{empty}\nth\maketitle\setcounter{page}{1}
+\nth\tableofcontents
+\nthm\setcounter{page}{1}
+% Change above to what you want.
+% --- Your document goes here -- %
+
+\end{document}
