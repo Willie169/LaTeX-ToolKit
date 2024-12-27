@@ -2,9 +2,9 @@
 
 ## Introduction
 
-This repository boasts a comprehensive LaTeX template [`template.tex`](template.tex), which is designed for article and report documentclass, and for TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages.
+This repository boasts a comprehensive and customizable LaTeX template, [`template.tex`](template.tex), which is designed for article and report documentclass, and for TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages.
 
-Instructions and settings of it is in the beginning comments of it.
+Instructions and customizable configurations of it is at the beginning of [`template.tex`](template.tex).
 
 ## License
 
