@@ -9,7 +9,7 @@ Latex() {}
 const string cmain = "\\setCJKmainfont";
 const string csans = "\\setCJKsansfont";
 const string cmono = "\\setCJKmonofont";
-const string nff = "\\newfontfamily\\customfont";
+const string nff = "\\newfontfamily\\";
 const string path = "Path=/usr/share/fonts/noto-cjk/,";
 const string sansf = "NotoSans";
 const string seriff = "NotoSerif";
@@ -48,114 +48,113 @@ string mono(string lang){
   return ret;
 }
 string ssans(string lang){
-  string ret="{Sans"+lang+cp+path;
+  string ret="Sans"+lang+"{"+sansf+lang+cp+path;
   for (int i=0; i<5; i++) ret+=fw[i]+"="+sansf+lang+"-"+sansw[i]+otf+",";
   ret+=end;
   return ret;
 }
 string sserif(string lang){
-  string ret="{Serif"+lang+cp+path;
+  string ret="Serif"+lang+"{"+seriff+lang+cp+path;
   for (int i=0; i<5; i++) ret+=fw[i]+"="+seriff+lang+"-"+serifw[i]+otf+",";
   ret+=end;
   return ret;
 }
 string lsans(string lang){
-  string ret="{"+lang+cp+path;
+  string ret=lang+"{"+sansf+lang+cp+path;
   for (int i=0; i<5; i++) ret+=fw[i]+"="+sansf+lang+"-"+sansw[i]+otf+",";
   ret+=end;
   return ret;
 }
 string lserif(string lang){
-  string ret="{"+lang+cp+path;
+  string ret=lang+"{"+seriff+lang+cp+path;
   for (int i=0; i<5; i++) ret+=fw[i]+"="+seriff+lang+"-"+serifw[i]+otf+",";
   ret+=end;
   return ret;
 }
-string smono(string llang){
-  string ret="{Mono"+llang+cp+path;
-  string lang = llang;
+string smono(string ulang){
+  string lang = ulang;
   transform(lang.begin(), lang.end(), lang.begin(), [](unsigned char c) { return tolower(c); });
+  string ret="Mono"+ulang+"{"+monof+lang+cp+path;
   for (int i=0; i<2; i++) ret+=monofwn[i]+"="+monof+lang+"-"+monow[i]+otf+",";
   ret+=end;
   return ret;
 }
 void yes() {
-  Latex latex=Latex();
   cout << pre;
   for (int i=0; i<5; i++) {
-    cout << cl+to_string(i+1)+"\n";
+    cout << cl+to_string(i)+"\n";
     cout << cf+"1"+"\n";
-    cout << cmain << latex.sans(ulang[i]);
-    cout << csans << latex.serif(ulang[i]);
-    cout << cmono << latex.mono(llang[i]);
+    cout << cmain << sans(ulang[i]);
+    cout << csans << serif(ulang[i]);
+    cout << cmono << mono(llang[i]);
     cout << "\n\\else";
     cout << cf+"2"+"\n";
-    cout << cmain << latex.serif(ulang[i]);
-    cout << csans << latex.sans(ulang[i]);
-    cout << cmono << latex.mono(llang[i]);
+    cout << cmain << serif(ulang[i]);
+    cout << csans << sans(ulang[i]);
+    cout << cmono << mono(llang[i]);
     cout << "\n\\else";
     cout << cf+"3"+"\n";
-    cout << cmain << latex.sans(ulang[i]);
-    cout << cmono << latex.mono(llang[i]);
+    cout << cmain << sans(ulang[i]);
+    cout << cmono << mono(llang[i]);
     cout << "\n\\else";
     cout << cf+"4"+"\n";
-    cout << cmain << latex.serif(ulang[i]);
-    cout << cmono << latex.mono(llang[i]);
+    cout << cmain << serif(ulang[i]);
+    cout << cmono << mono(llang[i]);
     cout << "\n\\else";
     cout << cf+"5"+"\n";
-    cout << cmain << latex.sans(ulang[i]);
-    cout << csans << latex.serif(ulang[i]);
+    cout << cmain << sans(ulang[i]);
+    cout << csans << serif(ulang[i]);
     cout << "\n\\else";
     cout << cf+"6"+"\n";
-    cout << cmain << latex.serif(ulang[i]);
-    cout << csans << latex.sans(ulang[i]);
+    cout << cmain << serif(ulang[i]);
+    cout << csans << sans(ulang[i]);
     cout << "\n\\else";
     cout << cf+"7"+"\n";
-    cout << cmain << latex.sans(ulang[i]);
+    cout << cmain << sans(ulang[i]);
     cout << "\n\\else";
     cout << cf+"8"+"\n";
-    cout << cmain << latex.serif(ulang[i]);
+    cout << cmain << serif(ulang[i]);
     cout << "\n\\fi\\fi\\fi\\fi\\fi\\fi\\fi\\fi";
     if (i!=4) cout << "\\else\n";
   }
   cout << "\n\\fi\\fi\\fi\\fi\\fi\\fi\n";
   cout << cn << "0\n";
-  cout << "\\else" << cn << "1\n";
+  cout << "\\else" << cn << "1";
   for (int i=0; i<5; i++) {
-    cout << "\n" << nff << latex.ssans(ulang[i]);
-    cout << "\n" << nff << latex.lsans(ulang[i]);
-    cout << "\n" << nff << latex.sserif(ulang[i]);
-    cout << "\n" << nff << latex.smono(ulang[i]);
+    cout << "\n" << nff << ssans(ulang[i]);
+    cout << "\n" << nff << lsans(ulang[i]);
+    cout << "\n" << nff << sserif(ulang[i]);
+    cout << "\n" << nff << smono(ulang[i]);
   }
-  cout << "\\else" << cn << "2\n";
+  cout << "\\else" << cn << "2";
   for (int i=0; i<5; i++) {
-    cout << "\n" << nff << latex.ssans(ulang[i]);
-    cout << "\n" << nff << latex.sserif(ulang[i]);
-    cout << "\n" << nff << latex.lserif(ulang[i]);
-    cout << "\n" << nff << latex.smono(ulang[i]);
+    cout << "\n" << nff << ssans(ulang[i]);
+    cout << "\n" << nff << sserif(ulang[i]);
+    cout << "\n" << nff << lserif(ulang[i]);
+    cout << "\n" << nff << smono(ulang[i]);
   }
-  cout << "\\else" << cn << "3\n";
+  cout << "\\else" << cn << "3";
   for (int i=0; i<5; i++) {
-    cout << "\n" << nff << latex.ssans(ulang[i]);
-    cout << "\n" << nff << latex.sserif(ulang[i]);
-    cout << "\n" << nff << latex.smono(ulang[i]);
+    cout << "\n" << nff << ssans(ulang[i]);
+    cout << "\n" << nff << sserif(ulang[i]);
+    cout << "\n" << nff << smono(ulang[i]);
   }
-  cout << "\\else" << cn << "4\n";
+  cout << "\\else" << cn << "4";
   for (int i=0; i<5; i++) {
-    cout << "\n" << nff << latex.ssans(ulang[i]);
-    cout << "\n" << nff << latex.lsans(ulang[i]);
-    cout << "\n" << nff << latex.sserif(ulang[i]);
+    cout << "\n" << nff << ssans(ulang[i]);
+    cout << "\n" << nff << lsans(ulang[i]);
+    cout << "\n" << nff << sserif(ulang[i]);
   }
-  cout << "\\else" << cn << "5\n";
+  cout << "\\else" << cn << "5";
   for (int i=0; i<5; i++) {
-    cout << "\n" << nff << latex.ssans(ulang[i]);
-    cout << "\n" << nff << latex.sserif(ulang[i]);
-    cout << "\n" << nff << latex.lserif(ulang[i]);
+    cout << "\n" << nff << ssans(ulang[i]);
+    cout << "\n" << nff << sserif(ulang[i]);
+    cout << "\n" << nff << lserif(ulang[i]);
   }
-  cout << "\\else" << cn << "6\n";
+  cout << "\\else" << cn << "6";
   for (int i=0; i<5; i++) {
-    cout << "\n" << nff << latex.ssans(ulang[i]);
-    cout << "\n" << nff << latex.sserif(ulang[i]);
+    cout << "\n" << nff << ssans(ulang[i]);
+    cout << "\n" << nff << sserif(ulang[i]);
   }
   cout << "\n\\fi\\fi\\fi\\fi\\fi\\fi\\fi\\fi";
 }
