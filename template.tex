@@ -1,47 +1,15 @@
 % template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
-\documentclass[a4paper,12pt]{report}
-% Change it to the documentclass you want, this template is now mainly designed for report and article documentclass.
-\newcounter{xeCJK}
-\setcounter{xeCJK}{1}
-% Set xeCJK counter to 1 to use xeCJK packageb; 0 to not use it.
-\usepackage[margin=1.27cm,foot=0.77cm]{geometry}
-\setcounter{secnumdepth}{6}
-\setcounter{tocdepth}{3}
-% Change above to what you want.
-\newcounter{Fonts}
-\setcounter{Fonts}{1}
-% Set Fonts counter to set fonts' style: 0 for not set; 1 for TeX Gyre Heros as main font, TeX Gyre Termes as sans font, Courier as mono font; 2 for TeX Gyre Termes as main font, TeX Gyre Heros as sans font, Courier as mono font; 3 for TeX Gyre Heros as main font, sans font not set, Courier as mono font; 4 for TeX Gyre Termes as main font, sans font not set, Courier as mono font; 5 to 8 for 1 to 4 but without Courier as mono font.
-\newcounter{STIXMath}
-\setcounter{STIXMath}{1}
-% Set STIXMath counter to set math font: 0 for not set; 1 for STIX 2 Math.
-\newcounter{CJKFonts}
-\setcounter{CJKFonts}{1}
-% Set CJKFonts counter to set CJK fonts' style: 0 for not set; 1 for Noto Sans CJK as CJK main font, Noto Serif CJK as CJK sans font, Noto Sans Mono CJK as CJK mono font; 2 for Noto Serif CJK as CJK main font, Noto Sans CJK as CJK sans font, Noto Sans Mono CJK as CJK mono font; 3 for Noto Sans CJK as CJK main font, CJK sans font not set, Noto Sans Mono CJK as CJK mono font; 4 for Noto Serif CJK as CJK main font, CJK sans font not set, Noto Sans Mono CJK as CJK mono font; 5 to 8 for 1 to 4 but without Noto Sans Mono CJK as CJK mono font. If xeCJK package is not loaded, this counter will be omitted.
-\newcounter{CJKLanguage}
-\setcounter{CJKLanguage}{0}
-% Set CJKLanguage counter to set CJK fonts' language: 0 for TC (Traditional Chinese Taiwan), 1 for SC (Simplified Chinese), 2 for HK (Traditional Chinese Hong Kong), 3 for JP (Japanese), 4 for KR (Korean). If either xeCJK package is not loaded or CJKFonts counter is set to zero, this counter will be omitted.
-\newcounter{NotoCJKFamily}
-\setcounter{NotoCJKFamily}{1}
-% Set NotoCJKFamily counter to set Noto CJK font families, where Lang stands for TC, SC, HK, JP, and KR, one language one family: 0 for not set; 1 for Noto Sans CJK Lang as Lang and SansLang, Noto Serif CJK as SerifLang, Noto Sans Mono CJK Lang as MonoLang; 2 for Noto Serif CJK Lang as Lang and SerifLang, Noto Sans CJK Lang as SansLang, Noto Sans Mono CJK Lang as MonoLang; 3 for Noto Sans CJK Lang as SansLang, Noto Serif CJK Lang as SerifLang, Noto Sans Mono CJK Lang as MonoLang. If xeCJK package is not loaded, this counter will be omitted.
-\newcounter{SectionLanguage}
-\setcounter{SectionLanguage}{0}
-% Set SectionLanguage counter to choose the language of the numbering for chapters (if documentclass is not article), sections, subsections, and subsubsections: 0 for Arabic, 1 for Traditional Chinese, 2 for Simplified Chinese. If xeCJK package is not loaded, this counter will be omitted and Arabic will be used.
-\newcounter{ZhRenew}
-\setcounter{ZhRenew}{0}
-% Set ZhRenew counter to 1 to renew TOC's title to 目錄; 2 to renew TOC's title to 目录; 0 to not renew them. If xeCJK package is not loaded, this counter will be omitted.
-% --- Below is the implementation of this template --- %
 \usepackage[defaultlines=8]{nowidow}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{etoolbox}
-\ifnum\value{xeCJK}=1
-\usepackage[CJKspace]{xeCJK}
-\fi
-\usepackage{fontspec,titlesec,titling,setspace,needspace,titletoc,bibliography}
-\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,unicode-math,mathtools,mathrsfs,textcomp,esint,textgreek}
-\usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins,xcolor}
-\usepackage{tikz,xparse,physics,braket,longtable,hanging,tcolorbox,chemfig}
+\usepackage{fontspec,titlesec,titling,setspace,needspace,titletoc}
+\usepackage{amsthm,amsmath,amsfonts,amssymb,dsfont,stmaryrd,mathtools,mathrsfs,textcomp,esint,textgreek,unicode-math}
+\usepackage{diagbox,cellspace,array,booktabs,longtable,enumitem,graphicx,caption,subcaption,float,placeins}
+\usepackage{tikz,xparse,physics,braket,longtable,hanging,chemfig}
 \usepackage[version=4]{mhchem}
+\usepackage{tcolorbox,xcolor}
+\tcbuselibrary{listings,skins,breakable}
 \makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
 \ifnum\value{Fonts}=1
 \setmainfont{TeX Gyre Heros}[Ligatures=TeX]
@@ -70,183 +38,209 @@
 \fi\fi\fi\fi\fi\fi\fi\fi
 \ifnum\value{STIXMath}=1\setmathfont{STIX Two Math}[Ligatures=TeX]\fi
 \ifnum\value{xeCJK}=1
+\usepackage[CJKspace]{xeCJK}
 \usepackage{zhnumber}
+\ifnum\value{ZhRenew}=1
+\renewcommand{\contentsname}{\hfill\text{目錄}\hfill}
+\else\ifnum\value{ZhRenew}=2
+\renewcommand{\contentsname}{\hfill\text{目录}\hfill}
+\fi\fi
 \ifnum\value{CJKFonts}=0\else
-\ifnum\value{CJKLanguage}=0
+\ifnum\value{CJKLanguage}=1
 \ifnum\value{CJKFonts}=1
-\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\setCJKmainfont{NotoSansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKtc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=2
-\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKtc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=3
-\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\setCJKmainfont{NotoSansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKtc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=4
-\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK TC}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKtc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=5
-\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=6
-\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=7
-\setCJKmainfont{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=8
-\setCJKmainfont{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\fi\fi\fi\fi\fi\fi\fi\fi
-\else\ifnum\value{CJKLanguage}=1
+\setCJKmainfont{NotoSerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi\else
+\ifnum\value{CJKLanguage}=2
 \ifnum\value{CJKFonts}=1
-\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\setCJKmainfont{NotoSansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKsc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=2
-\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKsc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=3
-\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\setCJKmainfont{NotoSansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKsc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=4
-\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK SC}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKsc}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=5
-\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=6
-\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=7
-\setCJKmainfont{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=8
-\setCJKmainfont{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\fi\fi\fi\fi\fi\fi\fi\fi
-\else\ifnum\value{CJKLanguage}=2
+\setCJKmainfont{NotoSerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi\else
+\ifnum\value{CJKLanguage}=3
 \ifnum\value{CJKFonts}=1
-\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\setCJKmainfont{NotoSansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKhk}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=2
-\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKhk}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=3
-\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\setCJKmainfont{NotoSansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKhk}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=4
-\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK HK}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKhk}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=5
-\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=6
-\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=7
-\setCJKmainfont{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=8
-\setCJKmainfont{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\fi\fi\fi\fi\fi\fi\fi\fi
-\else\ifnum\value{CJKLanguage}=3
+\setCJKmainfont{NotoSerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi\else
+\ifnum\value{CJKLanguage}=4
 \ifnum\value{CJKFonts}=1
-\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\setCJKmainfont{NotoSansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKjp}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=2
-\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKjp}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=3
-\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\setCJKmainfont{NotoSansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKjp}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=4
-\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK JP}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKjp}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=5
-\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=6
-\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=7
-\setCJKmainfont{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=8
-\setCJKmainfont{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\fi\fi\fi\fi\fi\fi\fi\fi
-\else\ifnum\value{CJKLanguage}=4
+\setCJKmainfont{NotoSerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi\else
+\ifnum\value{CJKLanguage}=5
 \ifnum\value{CJKFonts}=1
-\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\setCJKmainfont{NotoSansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKkr}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=2
-\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKkr}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=3
-\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\setCJKmainfont{NotoSansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKkr}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=4
-\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKmonofont{Noto Sans Mono CJK KR}[Ligatures=TeX]
+\setCJKmainfont{NotoSerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]\setCJKmonofont{NotoSansMonoCJKkr}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=5
-\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]\setCJKsansfont{NotoSerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=6
-\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setCJKsansfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]\setCJKsansfont{NotoSansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=7
-\setCJKmainfont{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
 \else\ifnum\value{CJKFonts}=8
-\setCJKmainfont{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\setCJKmainfont{NotoSerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
 \fi\fi\fi\fi\fi\fi\fi\fi
 \fi\fi\fi\fi\fi\fi
-\ifnum\value{NotoCJKFamily}=3
-\setfontfamily{\SansTC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifTC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansSC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifSC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansHK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifHK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansJP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifJP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansKR}{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifKR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\else\ifnum\value{NotoCJKFamily}=2
-\setfontfamily{\SansTC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifTC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\TC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansSC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifSC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansHK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifHK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\HK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansJP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifJP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\JP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansKR}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifKR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\KR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
+\ifnum\value{NotoCJKFamily}=0
 \else\ifnum\value{NotoCJKFamily}=1
-\setfontfamily{\SansTC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifTC}{Noto Serif CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\TC}{Noto Sans CJK TC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansSC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifSC}{Noto Serif CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SC}{Noto Sans CJK SC}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansHK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifHK}{Noto Serif CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\HK}{Noto Sans CJK HK}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansJP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifJP}{Noto Serif CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\JP}{Noto Sans CJK JP}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SansKR}{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\SerifKR}{Noto Serif CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* Light,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\setfontfamily{\KR}{Noto Sans CJK KR}[UprightFont=*,ItalicFont=* Medium,SmallCapsFont=* DemiLight,BoldFont=*,BoldItalicFont=* Black,Ligatures=TeX]
-\fi\fi\fi\fi
+
+\newfontfamily\customfont{SansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{TC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{HK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{JP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{KR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]\else\ifnum\value{NotoCJKFamily}=2
+
+\newfontfamily\customfont{SansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{TC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{HK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{JP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{KR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]\else\ifnum\value{NotoCJKFamily}=3
+
+\newfontfamily\customfont{SansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKtc-Regular.otf,BoldFont=NotoSansMonoCJKtc-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKsc-Regular.otf,BoldFont=NotoSansMonoCJKsc-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKhk-Regular.otf,BoldFont=NotoSansMonoCJKhk-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKjp-Regular.otf,BoldFont=NotoSansMonoCJKjp-Bold.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{MonoKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansMonoCJKkr-Regular.otf,BoldFont=NotoSansMonoCJKkr-Bold.otf,Ligatures=TeX]\else\ifnum\value{NotoCJKFamily}=4
+
+\newfontfamily\customfont{SansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{TC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{HK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{JP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{KR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]\else\ifnum\value{NotoCJKFamily}=5
+
+\newfontfamily\customfont{SansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{TC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{HK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{JP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{KR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]\else\ifnum\value{NotoCJKFamily}=6
+
+\newfontfamily\customfont{SansTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansTC-Regular.otf,ItalicFont=NotoSansTC-Medium.otf,BoldFont=NotoSansTC-Bold.otf,BoldItalicFont=NotoSansTC-Black.otf,SmallCapsFont=NotoSansTC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifTC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifTC-Regular.otf,ItalicFont=NotoSerifTC-Medium.otf,BoldFont=NotoSerifTC-Bold.otf,BoldItalicFont=NotoSerifTC-Black.otf,SmallCapsFont=NotoSerifTC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansSC-Regular.otf,ItalicFont=NotoSansSC-Medium.otf,BoldFont=NotoSansSC-Bold.otf,BoldItalicFont=NotoSansSC-Black.otf,SmallCapsFont=NotoSansSC-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifSC}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifSC-Regular.otf,ItalicFont=NotoSerifSC-Medium.otf,BoldFont=NotoSerifSC-Bold.otf,BoldItalicFont=NotoSerifSC-Black.otf,SmallCapsFont=NotoSerifSC-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansHK-Regular.otf,ItalicFont=NotoSansHK-Medium.otf,BoldFont=NotoSansHK-Bold.otf,BoldItalicFont=NotoSansHK-Black.otf,SmallCapsFont=NotoSansHK-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifHK}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifHK-Regular.otf,ItalicFont=NotoSerifHK-Medium.otf,BoldFont=NotoSerifHK-Bold.otf,BoldItalicFont=NotoSerifHK-Black.otf,SmallCapsFont=NotoSerifHK-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansJP-Regular.otf,ItalicFont=NotoSansJP-Medium.otf,BoldFont=NotoSansJP-Bold.otf,BoldItalicFont=NotoSansJP-Black.otf,SmallCapsFont=NotoSansJP-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifJP}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifJP-Regular.otf,ItalicFont=NotoSerifJP-Medium.otf,BoldFont=NotoSerifJP-Bold.otf,BoldItalicFont=NotoSerifJP-Black.otf,SmallCapsFont=NotoSerifJP-Light.otf,Ligatures=TeX]
+\newfontfamily\customfont{SansKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSansKR-Regular.otf,ItalicFont=NotoSansKR-Medium.otf,BoldFont=NotoSansKR-Bold.otf,BoldItalicFont=NotoSansKR-Black.otf,SmallCapsFont=NotoSansKR-DemiLight.otf,Ligatures=TeX]
+\newfontfamily\customfont{SerifKR}[Path=/usr/share/fonts/noto-cjk/,UprightFont=NotoSerifKR-Regular.otf,ItalicFont=NotoSerifKR-Medium.otf,BoldFont=NotoSerifKR-Bold.otf,BoldItalicFont=NotoSerifKR-Black.otf,SmallCapsFont=NotoSerifKR-Light.otf,Ligatures=TeX]
+\fi\fi\fi\fi\fi\fi\fi\fi
 \usepackage{url,hyperref}
 \hypersetup{colorlinks=false}
 \righthyphenmin=4
@@ -432,6 +426,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \titlecontents{section}[2em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
 \titlecontents{subsection}[4em]{\addvspace{0.5em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
 \titlecontents{subsubsection}[6em]{\addvspace{0.5em}}{\thecontentslabel\ }{}{\titlerule*[1pc]{.}\contentspage}
+\ifnum\value{xeCJK}=1
 \ifnum\value{SectionLanguage}=1
 \renewcommand\thesection{第\zhnumber[style={Traditional,Normal}]{\arabic{section}}節}
 \renewcommand\thesubsection{\zhnumber[style={Traditional,Normal}]{\arabic{subsection}}、}
@@ -445,11 +440,17 @@ $\m@th\hfil#2#3\hfil$\crcr
 \renewcommand\thesubsection{\Roman{subsection}}
 \renewcommand\thesubsubsection{\roman{subsubsection}}
 \fi\fi
+\else
+\renewcommand\thesection{\arabic{section}}
+\renewcommand\thesubsection{\Roman{subsection}}
+\renewcommand\thesubsubsection{\roman{subsubsection}}
+\fi
 \makeatletter
 \@ifclassloaded{article}{}{
 \titleformat{\chapter}[block]{\LARGE\bfseries}{\thechapter}{1em}{}
 \ProvideDocumentCommand{\ch}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}}{\IfNoValueTF{#2}{\chapter}{\chapter{#2}}}}
 \titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
+\ifnum\value{xeCJK}=1
 \ifnum\value{SectionLanguage}=1
 \renewcommand\thechapter{第\zhnumber[style={Traditional,Normal}]{\arabic{chapter}}章}
 \else\ifnum\value{SectionLanguage}=2
@@ -457,32 +458,16 @@ $\m@th\hfil#2#3\hfil$\crcr
 \else
 \renewcommand\thechapter{Chapter \arabic{chapter}}
 \fi\fi
+\else
+\renewcommand\thechapter{Chapter \arabic{chapter}}
+\fi
 }
 \makeatother
-\ifnum\value{ZhRenew}=1
-\renewcommand{\contentsname}{\hfill 目錄\hfill}
-\else\ifnum\value{ZhRenew}=2
-\renewcommand{\contentsname}{\hfill 目录\hfill}
-\fi\fi
-\begin{document}
-% --- Above is the implementation of this template --- %
-\title{Title}
-\author{Author}
-\date{
-\ifnum\value{xeCJK}=1
-\ifnum\value{ZhRenew}=1
-\zhtoday
-\else\today
-\fi
-\else
-\today
-\fi
-}
-\onehalfspacing
-\thispagestyle{empty}\nth\maketitle\setcounter{page}{1}
-\nth\tableofcontents
-\nthm\setcounter{page}{1}
-% Change above to what you want.
-% --- Your document goes here -- %
-
-\end{document}
+\ProvideDocumentCommand{\temtoday}{}
+{\ifnum\value{xeCJK}=1\ifnum\value{ZhRenew}=1\zhtoday\else\today\fi\else\today\fi}
+\ProvideDocumentCommand{\temtitle}{}{\thispagestyle{empty}\nth\maketitle\setcounter{page}{1}}
+\ProvideDocumentCommand{\temtoc}{}{\nth\tableofcontents}
+\ProvideDocumentCommand{\temdoc}{}{\nthm\setcounter{page}{1}}
+\ProvideDocumentCommand{\titletocdoc}{}{\onehalfspacing\temtitle\temtoc\temdoc}
+\ProvideDocumentCommand{\titledoc}{}{\onehalfspacing\temtitle\temdoc}
+\ProvideDocumentCommand{\tocdoc}{}{\onehalfspacing\temtoc\temdoc}
