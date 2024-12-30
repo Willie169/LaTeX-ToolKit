@@ -99,9 +99,10 @@ fc-cache -fv
 
 Replace `\input{template.tex}` line in [document.tex](document.tex) with the actual path you downloaded the [template.tex](template.tex).
 
-## CJKFontSettingsGen.cpp
+## Cpp programs
 
-[`CJKFontSettingsGen.cpp`](CJKFontSettingsGen.cpp) is a cpp program to generate the CJK font settings etc. LaTeX code, which is the 40 to 213 line of [`template.tex`](template.tex).
+- [`CJKFontSettingsGen.cpp`](CJKFontSettingsGen.cpp): generates the LaTeX code for CJK fonts settings and related things. The output of it is the lines 41 to 208 of [`template.tex`](template.tex).
+- [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
 
 ## License
 
