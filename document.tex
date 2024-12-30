@@ -1,13 +1,13 @@
 % document.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
 \documentclass[a4paper,12pt]{report}
 % Change it to the documentclass you want, this template is now mainly designed for report and article documentclass.
-\newcounter{xeCJK}
-\setcounter{xeCJK}{1}
-% Set xeCJK counter to 1 to use xeCJK packageb; 0 to not use it.
 \usepackage[margin=1.27cm,foot=0.77cm]{geometry}
 \setcounter{secnumdepth}{6}
 \setcounter{tocdepth}{3}
 % Change above to what you want.
+\newcounter{xeCJK}
+\setcounter{xeCJK}{1}
+% Set xeCJK counter to 1 to use xeCJK packageb; 0 to not use it.
 \newcounter{Fonts}
 \setcounter{Fonts}{1}
 % Set Fonts counter to set fonts' style: 0 for not set; 1 for TeX Gyre Heros as main font, TeX Gyre Termes as sans font, Courier as mono font; 2 for TeX Gyre Termes as main font, TeX Gyre Heros as sans font, Courier as mono font; 3 for TeX Gyre Heros as main font, sans font not set, Courier as mono font; 4 for TeX Gyre Termes as main font, sans font not set, Courier as mono font; 5 to 8 for 1 to 4 but without Courier as mono font.
@@ -21,7 +21,7 @@
 \setcounter{CJKLanguage}{0}
 % Set CJKLanguage counter to set CJK fonts' language: 0 for TC (Traditional Chinese Taiwan), 1 for SC (Simplified Chinese), 2 for HK (Traditional Chinese Hong Kong), 3 for JP (Japanese), 4 for KR (Korean). If either xeCJK counter is not 1 or CJKFonts counter is 0, this counter will be omitted.
 \newcounter{NotoCJKFamily}
-\setcounter{NotoCJKFamily}{1}
+\setcounter{NotoCJKFamily}{0}
 % Set NotoCJKFamily counter to set Noto CJK font families, where Lang stands for TC, SC, HK, JP, and KR, one language one family: 0 for not set; 1 for Noto Sans CJK Lang as Lang and SansLang, Noto Serif CJK as SerifLang, Noto Sans Mono CJK Lang as MonoLang; 2 for Noto Serif CJK Lang as Lang and SerifLang, Noto Sans CJK Lang as SansLang, Noto Sans Mono CJK Lang as MonoLang; 3 for Noto Sans CJK Lang as SansLang, Noto Serif CJK Lang as SerifLang, Noto Sans Mono CJK Lang as MonoLang; 4 to 6 for 1 to 3 but without Noto Sans Mono CJK Lang as MonoLang. If xeCJK counter is not 1, this counter will be omitted.
 \newcounter{SectionLanguage}
 \setcounter{SectionLanguage}{0}
