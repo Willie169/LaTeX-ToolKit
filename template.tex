@@ -300,6 +300,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\bBNM}{}{\begin{BNiceMatrix}}
 \ProvideDocumentCommand{\bBmt}{}{\begin{Bmatrix}}
 \ProvideDocumentCommand{\bNM}{}{\begin{NiceMatrix}}
+\ProvideDocumentCommand{\bsh}{}{\textbackslash}
 \ProvideDocumentCommand{\bVNM}{}{\begin{VNiceMatrix}}
 \ProvideDocumentCommand{\bVmt}{}{\begin{Vmatrix}}
 \ProvideDocumentCommand{\ba}{}{\begin{aligned}}
@@ -330,7 +331,6 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\cd}{}{\cdot}
 \ProvideDocumentCommand{\chf}{m}{\chemfig{#1}}
 \ProvideDocumentCommand{\closure}{}{\operatorname{closure}}
-\ProvideDocumentCommand{\clp}{}{\clearpage}
 \ProvideDocumentCommand{\col}{}{\operatorname{col}}
 \ProvideDocumentCommand{\ctg}{O{} m o}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\IfNoValueF{#3}{\caption{#3}}\end{figure}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\ctr}{}{\centering}
@@ -349,13 +349,12 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\ecam}{}{\end{cases}\end{aligned}\]}
 \ProvideDocumentCommand{\ecm}{}{\end{cases}\]}
 \ProvideDocumentCommand{\ecs}{}{\end{cases}}
-\ProvideDocumentCommand{\ectf}{}{\end{figure}\FloatBarrier\end{center}}
-\ProvideDocumentCommand{\ectt}{}{\end{table}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\ect}{}{\end{center}}
 \ProvideDocumentCommand{\ed}{m}{\end{#1}}
 \ProvideDocumentCommand{\ee}{}{\end{equation}}
-\ProvideDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
 \ProvideDocumentCommand{\ef}{}{\end{figure}}
+\ProvideDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
+\ProvideDocumentCommand{\efct}{}{\end{figure}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\emt}{}{\end{matirx}}
 \ProvideDocumentCommand{\em}{}{\]}
 \ProvideDocumentCommand{\epNM}{}{\end{pNiceMatrix}}
@@ -363,19 +362,23 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\eq}{}{=}
 \ProvideDocumentCommand{\etB}{}{\end{table}\FloatBarrier}
 \ProvideDocumentCommand{\etbr}{}{\end{tabular}}
+\ProvideDocumentCommand{\etct}{}{\end{table}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\etk}{}{\end{tikzpicture}}
 \ProvideDocumentCommand{\et}{}{\end{table}}
 \ProvideDocumentCommand{\evNM}{}{\end{vNiceMatrix}}
 \ProvideDocumentCommand{\evmt}{}{\end{vmatrix}}
+\ProvideDocumentCommand{\f}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\fr}{m m}{\frac{#1}{#2}}
+\ProvideDocumentCommand{\gt}{}{>}
 \ProvideDocumentCommand{\hf}{}{\hfill}
 \ProvideDocumentCommand{\hs}{m}{\hspace{#1}}
 \ProvideDocumentCommand{\ht}{m}{\hat{#1}}
 \ProvideDocumentCommand{\inf}{}{\infty}
 \ProvideDocumentCommand{\ip}{m}{\input{#1}}
 \ProvideDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
-\ProvideDocumentCommand{\mdp}{m}{\[#1\]}
-\ProvideDocumentCommand{\mil}{m}{\(#1\)}
+\ProvideDocumentCommand{\lt}{}{<}
+\ProvideDocumentCommand{\md}{O{}}{\[#1\]}
+\ProvideDocumentCommand{\mi}{O{}}{\(#1\)}
 \ProvideDocumentCommand{\mn}{}{-}
 \ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \ProvideDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
@@ -390,9 +393,11 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\pc}{}{\%}
 \ProvideDocumentCommand{\pf}{m m o}{\IfNoValueTF{#3}{\frac{\partial #1}{\partial #2}}{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
 \ProvideDocumentCommand{\pht}{m}{\phantom{#1}}
+\ProvideDocumentCommand{\pl}{}{+}
 \ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
 \ProvideDocumentCommand{\rank}{}{\operatorname{rank}}
 \ProvideDocumentCommand{\rl}{}{\relax}
+\ProvideDocumentCommand{\sh}{}{/}
 \ProvideDocumentCommand{\tc}{m}{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
 \ProvideDocumentCommand{\tf}{m}{\textsf{#1}}
 \ProvideDocumentCommand{\th}{}{\textheight}
@@ -407,6 +412,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\vf}{}{\vfill}
 \ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
 \ProvideDocumentCommand{\vs}{m}{\vspace{#1}}
+\let\clp\clearpage
 \let\FB\FloatBarrier
 \let\La\Leftarrow
 \let\Lra\Leftrightarrow
