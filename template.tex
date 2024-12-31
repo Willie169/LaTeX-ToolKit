@@ -332,7 +332,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\closure}{}{\operatorname{closure}}
 \ProvideDocumentCommand{\clp}{}{\clearpage}
 \ProvideDocumentCommand{\col}{}{\operatorname{col}}
-\ProvideDocumentCommand{\ctg}{o O{} m}{\IfNoValueTF{#3}{\IfNoValueTF{#2}{\begin{center}\begin{figure}[H]\centering\includegraphics{#1}\end{figure}\FloatBarrier\end{center}}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\end{figure}\FloatBarrier\end{center}}}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\caption{#3}\end{figure}\FloatBarrier\end{center}}}
+\ProvideDocumentCommand{\ctg}{O{} m o}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\IfNoValueF{#3}{\caption{#3}}\end{figure}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\ctr}{}{\centering}
 \ProvideDocumentCommand{\dds}{}{\ddots}
 \ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
@@ -377,8 +377,8 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\mdp}{m}{\[#1\]}
 \ProvideDocumentCommand{\mil}{m}{\(#1\)}
 \ProvideDocumentCommand{\mn}{}{-}
+\ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \ProvideDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
-\ProvideDocumentCommand{\nth}{O{}}{\ifNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \ProvideDocumentCommand{\null}{}{\operatorname{null}}
 \ProvideDocumentCommand{\n}{}{\\}
 \ProvideDocumentCommand{\ola}{m}{\overleftsmallarrow{#1}}
@@ -398,7 +398,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\th}{}{\textheight}
 \ProvideDocumentCommand{\ti}{m}{\textit{#1}}
 \ProvideDocumentCommand{\tm}{}{\times}
-\ProvideDocumentCommand{\ts}{O{}}{\ifNoBalueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
+\ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
 \ProvideDocumentCommand{\tt}{m}{\texttt{#1}}
 \ProvideDocumentCommand{\tw}{m}{\textwidth{#1}}
 \ProvideDocumentCommand{\tx}{m}{\text{#1}}
