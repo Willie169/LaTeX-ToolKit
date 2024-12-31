@@ -300,7 +300,7 @@ $\m@th\hfil#2#3\hfil$\crcr
 \ProvideDocumentCommand{\bBNM}{}{\begin{BNiceMatrix}}
 \ProvideDocumentCommand{\bBmt}{}{\begin{Bmatrix}}
 \ProvideDocumentCommand{\bNM}{}{\begin{NiceMatrix}}
-\ProvideDocumentCommand{\bsh}{}{\textbackslash}
+\ProvideDocumentCommand{\bsh}{}{\ifmmode\backslash\else\textbackslash\fi}
 \ProvideDocumentCommand{\bVNM}{}{\begin{VNiceMatrix}}
 \ProvideDocumentCommand{\bVmt}{}{\begin{Vmatrix}}
 \ProvideDocumentCommand{\ba}{}{\begin{aligned}}
