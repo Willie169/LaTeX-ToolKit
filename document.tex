@@ -28,7 +28,7 @@
 % Set SectionLanguage counter to choose the language of the numbering for chapters (if documentclass is not article), sections, subsections, and subsubsections: 0 for Arabic, 1 for Traditional Chinese, 2 for Simplified Chinese. If xeCJK counter is not 1, this counter will be omitted and Arabic will be used.
 \newcounter{ZhRenew}
 \setcounter{ZhRenew}{0}
-% Set ZhRenew counter to 1 to renew TOC's title to 目錄; 2 to renew TOC's title to 目录; 0 to not renew them. If xeCJK counter is not 1, this counter will be omitted.
+% Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define\temtoday to be \today. If xeCJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
 \input{template.tex}
 \begin{document}
 % --- Example --- %
