@@ -485,7 +485,9 @@ breakatwhitespace=false
 \fi\fi
 \else
 \newcommand{\temtoday}{\today}
-\fi\fi
+\fi\else
+\newcommand{\temtoday}{\today}
+\fi
 \newcommand{\temtitle}{\thispagestyle{empty}\nth\maketitle\setcounter{page}{1}}
 \newcommand{\temtoc}{\nth\tableofcontents}
 \newcommand{\temdoc}{\nthm\setcounter{page}{1}}
