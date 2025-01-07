@@ -466,25 +466,26 @@ breakatwhitespace=false
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\Roman{subsection}}
 \renewcommand\thesubsubsection{\roman{subsubsection}}
-\else
+\fi\else
 \renewcommand\thesection{\arabic{section}}
 \renewcommand\thesubsection{\Roman{subsection}}
 \renewcommand\thesubsubsection{\roman{subsubsection}}
-\fi\fi
+\fi
 \makeatletter
 \@ifclassloaded{article}{}{
 \titleformat{\chapter}[block]{\LARGE\bfseries}{\thechapter}{1em}{}
 \ProvideDocumentCommand{\ch}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}}{\IfNoValueTF{#2}{\chapter}{\chapter{#2}}}}
 \titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
-\ifnum\value{xeCJK}=1
-\ifnum\value{SectionLanguage}=1
+\ifnum\value{xeCJK}=1\ifnum\value{SectionLanguage}=1\ifnum\value{CJKLanguage}=0
 \renewcommand\thechapter{第\zhnumber[style={Traditional,Normal}]{\arabic{chapter}}章}
-\else\ifnum\value{SectionLanguage}=2
+\else\ifnum\value{CJKLanguage}=1
 \renewcommand\thechapter{第\zhnumber[style={Simplified,Normal}]{\arabic{chapter}}章}
 \else
 \renewcommand\thechapter{Chapter \arabic{chapter}}
 \fi\fi
 \else
+\renewcommand\thechapter{Chapter \arabic{chapter}}
+\fi\else
 \renewcommand\thechapter{Chapter \arabic{chapter}}
 \fi
 }
