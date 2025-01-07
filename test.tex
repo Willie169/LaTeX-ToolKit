@@ -1,0 +1,30 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[margin=1.27cm,foot=0.77cm]{geometry}
+\setcounter{secnumdepth}{6}
+\setcounter{tocdepth}{3}
+\newcounter{xeCJK}
+\setcounter{xeCJK}{1}
+\newcounter{Fonts}
+\setcounter{Fonts}{1}
+\newcounter{CJKFonts}
+\setcounter{CJKFonts}{1}
+\newcounter{CJKLanguage}
+\setcounter{CJKLanguage}{0}
+\newcounter{NotoCJKFamily}
+\setcounter{NotoCJKFamily}{1}
+\newcounter{SectionLanguage}
+\setcounter{SectionLanguage}{1}
+\newcounter{ZhRenew}
+\setcounter{ZhRenew}{1}
+\input{/usr/share/latex-toolkit/template.tex}
+\begin{document}
+\title{Test}
+\author{Willie169}
+\date{\zhdate{2025/1/7}}
+\titletocdoc
+\section{Section Title}
+\text{默認 default }\textbf{粗體 bf }\textit{斜體 it }\texttt{等寬 tt }\textsf{襯線 sf}
+\[\Rightarrow\sum\iiint\epsilon\varepsilon\alpha\upalpha\Re\]
+Math default, up, bf, it, rm, tt, bb, cal, scr, frak, bfit, bbit, bfcal, scr, bffrak:
+\[Aa\mathup{Aa}\mathbf{Aa}\mathit{Aa}\mathrm{Aa}\mathtt{Aa}\mathbb{Aa}\mathcal{Aa}\mathscr{Aa}\mathfrak{Aa}\mathbfit{Aa}\mathbbit{Aa}\mathbfcal{Aa}\mathbfscr{Aa}\mathbffrak{Aa}\]
+\end{document}

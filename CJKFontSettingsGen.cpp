@@ -21,7 +21,7 @@ const string cn = "\\ifnum\\value{NotoCJKFamily}=";
 const string el = "\\else";
 const string cp = "}[";
 const string end = "Ligatures=TeX]";
-const string pre = "\\ifnum\\value{xeCJK}=1\n\\usepackage[CJKspace]{xeCJK}\n\\usepackage{zhnumber}\n\\ifnum\\value{ZhRenew}=1\n\\renewcommand{\\contentsname}{\\hfill\\text{目錄}\\hfill}\n\\else\\ifnum\\value{ZhRenew}=2\n\\renewcommand{\\contentsname}{\\hfill\\text{目录}\\hfill}\n\\fi\\fi\n\\ifnum\\value{CJKFonts}=0\\else\n";
+const string pre = "\\ifnum\\value{xeCJK}=1\n\\ifnum\\value{CJKFonts}=0\\else\n";
 string ulang[5]={"TC","SC","HK","JP","KR"};
 string llang[5]={"tc","sc","hk","jp","kr"};
 string fw[5]={"UprightFont","ItalicFont","BoldFont","BoldItalicFont","SmallCapsFont"};
