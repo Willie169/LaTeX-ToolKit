@@ -1,3 +1,4 @@
+// This is CJKFontSettingsGen.cpp of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
 #include<iostream>
 #include<string>
 #include <algorithm>

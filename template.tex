@@ -1,4 +1,4 @@
-% template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
+% This is template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
 \usepackage{etoolbox,xparse,xpatch,fontspec,titlesec,titling,setspace,needspace,titletoc}
 \ifnum\value{xeCJK}=1
 \usepackage[CJKspace]{xeCJK}
@@ -6,12 +6,12 @@
 \fi
 \usepackage[defaultlines=8]{nowidow}
 \usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
-\usepackage{enumitem,ragged2e,diagbox,hanging,cellspace,array,booktabs,graphicx,caption,subcaption,float,placeins,longtable,nicematrix}
-\usepackage{physics,braket,nicematrix,chemfig,listings,listingsutf8,csvsimple,pdfpages,tikz,xcolor}
+\usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,nicematrix,placeins,ragged2e,subcaption}
+\usepackage{braket,chemfig,csvsimple,listings,listingsutf8,pdfpages,physics,tikz,xcolor}
 \usepackage[version=4]{mhchem}
 \usepackage[hidelinks,bookmarksnumbered=true,pdfstartview=FitH]{hyperref}
 \usepackage{tcolorbox}
-\tcbuselibrary{listings,listingsutf8,fitting,breakable,skins,raster,theorems,documentation,hooks,xparse,poster}
+\tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems,xparse}
 \usepackage{unicode-math}
 \setmathfont{XITS Math}
 \setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}
@@ -244,30 +244,16 @@ captionpos=b,
 breaklines=true,
 breakatwhitespace=false
 }
-\makeatletter\csvset{autotabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,table head=\hline\csvlinetotablerow\\\hline,late after line=\\,lable foot=\\\hline,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow},autobooktabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{*{\csv@columncount}{c}}\csv@tablehead,table head=\toprule\csvlinetotablerow\\\midrule,late after line=\\,table foot=\\\bottomrule,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow}}\makeatother\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}\newcommand{\csvautobooktabularcenter}[2][]{\csvloop{autobooktabularcenter={#2},#1}}
+\makeatletter\csvset{autotabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,table head=\hline\csvlinetotablerow\\\hline,late after line=\\,lable foot=\\\hline,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow},autobooktabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{*{\csv@columncount}{c}}\csv@tablehead,table head=\toprule\csvlinetotablerow\\\midrule,late after line=\\,table foot=\\\bottomrule,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow}}\makeatother
+\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}
+\newcommand{\csvautobooktabularcenter}[2][]{\csvloop{autobooktabularcenter={#2},#1}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \makeatletter
 \newcommand{\overleftrightsmallarrow}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
 \newcommand{\overrightsmallarrow}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
 \newcommand{\overleftsmallarrow}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
-\newcommand{\overarrowsmall@}[3]{
-\vbox{
-\ialign{
-##\crcr
-#1{\smaller@style{#2}}\crcr
-\noalign{\nointerlineskip}
-$\m@th\hfil#2#3\hfil$\crcr
-}
-}
-}
-\def\smaller@style#1{
-\ifx#1\displaystyle\scriptstyle\else
-\ifx#1\textstyle\scriptstyle\else
-\scriptscriptstyle
-\fi
-\fi
-}
+\newcommand{\overarrowsmall@}[3]{\vbox{\ialign{##\crcr#1{\smaller@style{#2}}\crcr\noalign{\nointerlineskip}$\m@th\hfil#2#3\hfil$\crcr}}}\def\smaller@style#1{\ifx#1\displaystyle\scriptstyle\else\ifx#1\textstyle\scriptstyle\else\scriptscriptstyle\fi\fi}
 \makeatother
 \ProvideDocumentCommand{\Arg}{}{\operatorname{Arg}}
 \ProvideDocumentCommand{\Ns}{m}{\Needspace{#1}}
