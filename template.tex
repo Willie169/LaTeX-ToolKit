@@ -280,7 +280,6 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bBNM}{}{\begin{BNiceMatrix}}
 \ProvideDocumentCommand{\bBmt}{}{\begin{Bmatrix}}
 \ProvideDocumentCommand{\bNM}{}{\begin{NiceMatrix}}
-\ProvideDocumentCommand{\bsh}{}{\ifmmode\backslash\else\textbackslash\fi}
 \ProvideDocumentCommand{\bVNM}{}{\begin{VNiceMatrix}}
 \ProvideDocumentCommand{\bVmt}{}{\begin{Vmatrix}}
 \ProvideDocumentCommand{\ba}{}{\begin{aligned}}
@@ -301,6 +300,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bm}{}{\[}
 \ProvideDocumentCommand{\bpNM}{}{\begin{pNiceMatrix}}
 \ProvideDocumentCommand{\bpmt}{}{\begin{pmatrix}}
+\ProvideDocumentCommand{\bsh}{}{\ifmmode\backslash\else\textbackslash\fi}
 \ProvideDocumentCommand{\btH}{}{\begin{table}[H]}
 \ProvideDocumentCommand{\btbr}{}{\begin{tabular}}
 \ProvideDocumentCommand{\btk}{}{\begin{tikzpicture}}
@@ -316,6 +316,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\ctr}{}{\centering}
 \ProvideDocumentCommand{\dds}{}{\ddots}
 \ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
+\ProvideDocumentCommand{\dp}{O{}}{\[#1\]}
 \ProvideDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
 \ProvideDocumentCommand{\eBNM}{}{\end{BNiceMatrix}}
 \ProvideDocumentCommand{\eBmt}{}{\end{Bmatrix}}
@@ -332,9 +333,9 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\ect}{}{\end{center}}
 \ProvideDocumentCommand{\ed}{m}{\end{#1}}
 \ProvideDocumentCommand{\ee}{}{\end{equation}}
-\ProvideDocumentCommand{\ef}{}{\end{figure}}
 \ProvideDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
 \ProvideDocumentCommand{\efct}{}{\end{figure}\FloatBarrier\end{center}}
+\ProvideDocumentCommand{\ef}{}{\end{figure}}
 \ProvideDocumentCommand{\emt}{}{\end{matirx}}
 \ProvideDocumentCommand{\em}{}{\]}
 \ProvideDocumentCommand{\epNM}{}{\end{pNiceMatrix}}
@@ -347,21 +348,20 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\et}{}{\end{table}}
 \ProvideDocumentCommand{\evNM}{}{\end{vNiceMatrix}}
 \ProvideDocumentCommand{\evmt}{}{\end{vmatrix}}
-\ProvideDocumentCommand{\f}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\fr}{m m}{\frac{#1}{#2}}
+\ProvideDocumentCommand{\f}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\gt}{}{>}
 \ProvideDocumentCommand{\hf}{}{\hfill}
 \ProvideDocumentCommand{\hs}{m}{\hspace{#1}}
 \ProvideDocumentCommand{\ht}{m}{\hat{#1}}
+\ProvideDocumentCommand{\il}{O{}}{\(#1\)}
 \ProvideDocumentCommand{\inft}{}{\infty}
 \ProvideDocumentCommand{\ip}{m}{\input{#1}}
 \ProvideDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
 \ProvideDocumentCommand{\lt}{}{<}
-\ProvideDocumentCommand{\md}{O{}}{\[#1\]}
-\ProvideDocumentCommand{\mi}{O{}}{\(#1\)}
-\ProvideDocumentCommand{\mn}{}{-}
-\ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
+\ProvideDocumentCommand{\ms}{}{-}
 \ProvideDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
+\ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \ProvideDocumentCommand{\null}{}{\operatorname{null}}
 \ProvideDocumentCommand{\n}{}{\\}
 \ProvideDocumentCommand{\ola}{m}{\overleftsmallarrow{#1}}
@@ -379,40 +379,55 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\rl}{}{\relax}
 \ProvideDocumentCommand{\sh}{}{/}
 \ProvideDocumentCommand{\tc}{m}{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
-\ProvideDocumentCommand{\tf}{m}{\textsf{#1}}
 \ProvideDocumentCommand{\th}{}{\textheight}
-\ProvideDocumentCommand{\ti}{m}{\textit{#1}}
 \ProvideDocumentCommand{\tm}{}{\times}
 \ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
-\ProvideDocumentCommand{\tt}{m}{\texttt{#1}}
 \ProvideDocumentCommand{\tw}{m}{\textwidth{#1}}
-\ProvideDocumentCommand{\tx}{m}{\text{#1}}
 \ProvideDocumentCommand{\vc}{m}{\vec{#1}}
 \ProvideDocumentCommand{\vds}{}{\vdots}
 \ProvideDocumentCommand{\vf}{}{\vfill}
 \ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
 \ProvideDocumentCommand{\vs}{m}{\vspace{#1}}
-\let\clp\clearpage
 \let\FB\FloatBarrier
 \let\La\Leftarrow
 \let\Lra\Leftrightarrow
 \let\Ra\Rightarrow
+\let\clp\clearpage
 \let\icg\includegraphics
 \let\la\leftarrow
 \let\lds\ldots
 \let\lra\leftrightarrow
+\let\lrh\leftrightharpoons
 \let\mb\mathbf
 \let\mbb\mathbb
-\let\mbf\mathbf
-\let\mcl\mathcal
+\let\mbbi\mathbbit
+\let\mbc\mathbfcal
+\let\mbfk\mathbffrak
+\let\mbi\mathbfit
+\let\mbs\mathbfscr
+\let\mc\mathcal
 \let\mds\mathds
+\let\mfk\mathfrak
 \let\mi\mathit
+\let\mnm\mathnormal
+\let\mr\mathrm
 \let\ms\mathscr
+\let\msf\mathsf
+\let\mtt\mathtt
+\let\mup\mathup
 \let\npgb\nopagebreak
 \let\pgb\pagebreak
 \let\ra\rightarrow
-\let\rlh\rightleftharpoon
+\let\rlh\rightleftharpoons
 \let\tb\textbf
+\let\ti\textit
+\let\tnm\textnormal
+\let\tr\textrm
+\let\tsc\textsc
+\let\tsf\textsf
+\let\ttt\texttt
+\let\tup\textup
+\let\tx\text
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
 \titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}
