@@ -15,7 +15,6 @@
 \usepackage{unicode-math}
 \setmathfont{XITS Math}
 \setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}
-\makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
 \ifnum\value{Fonts}=1
 \setmainfont{TeX Gyre Heros}[Ligatures=TeX]
 \setsansfont{TeX Gyre Termes}[Ligatures=TeX]
@@ -250,19 +249,27 @@ breakatwhitespace=false
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \makeatletter
-\newcommand{\overleftrightsmallarrow}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
-\newcommand{\overrightsmallarrow}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
-\newcommand{\overleftsmallarrow}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
+\newcommand{\overleftrightarrowsmall}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
+\newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
+\newcommand{\overleftarrowsmall}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
 \newcommand{\overarrowsmall@}[3]{\vbox{\ialign{##\crcr#1{\smaller@style{#2}}\crcr\noalign{\nointerlineskip}$\m@th\hfil#2#3\hfil$\crcr}}}\def\smaller@style#1{\ifx#1\displaystyle\scriptstyle\else\ifx#1\textstyle\scriptstyle\else\scriptscriptstyle\fi\fi}
 \makeatother
+\newcommand{\overlinesmall}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\newcommand{\underlinesmall}[1]{\mskip.5\thinmuskip\underline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\let\olra\overleftrightarrowsmall
+\let\ora\overrightarrowsmall
+\let\ola\overleftarrowsmall
+\let\ol\overlinesmall
+\let\ul\underlinesmall
+\newcommand{\parallelsum}{\mathbin{\!/\mkern-5mu/\!}}
+\newcommand{\TextCircled}[1]{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
+\makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
 \ProvideDocumentCommand{\Arg}{}{\operatorname{Arg}}
-\ProvideDocumentCommand{\Ns}{m}{\Needspace{#1}}
 \ProvideDocumentCommand{\RNum}{m}{\uppercase\expandafter{\romannumeral #1\relax}}
 \ProvideDocumentCommand{\acosh}{}{\operatorname{acosh}}
 \ProvideDocumentCommand{\acos}{}{\operatorname{acos}}
 \ProvideDocumentCommand{\acsch}{}{\operatorname{acsch}}
 \ProvideDocumentCommand{\acsc}{}{\operatorname{acsc}}
-\ProvideDocumentCommand{\and}{}{\&}
 \ProvideDocumentCommand{\arccosh}{}{\operatorname{arccosh}}
 \ProvideDocumentCommand{\arccsch}{}{\operatorname{arccsch}}
 \ProvideDocumentCommand{\arccsc}{}{\operatorname{arccsc}}
@@ -270,6 +277,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\arcsec}{}{\operatorname{arcsec}}
 \ProvideDocumentCommand{\arcsinh}{}{\operatorname{arcsinh}}
 \ProvideDocumentCommand{\arctanh}{}{\operatorname{arctanh}}
+\ProvideDocumentCommand{\arctantwo}{}{\operatorname{arctan2}}
 \ProvideDocumentCommand{\asech}{}{\operatorname{asech}}
 \ProvideDocumentCommand{\asec}{}{\operatorname{asec}}
 \ProvideDocumentCommand{\asinh}{}{\operatorname{asinh}}
@@ -286,8 +294,12 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bbNM}{}{\begin{bNiceMatrix}}
 \ProvideDocumentCommand{\bbmt}{}{\begin{bmatrix}}
 \ProvideDocumentCommand{\bcs}{}{\begin{cases}}
-\ProvideDocumentCommand{\bctf}{}{\begin{center}\centering\begin{figure}[H]}
-\ProvideDocumentCommand{\bctt}{}{\begin{center}\centering\begin{table}[H]}
+\ProvideDocumentCommand{\bcttbrn}{}{\begin{center}\begin{figure}[h]\centering\begin{tabular}}
+\ProvideDocumentCommand{\bcttbr}{}{\begin{center}\begin{figure}[H]\centering\begin{tabular}}
+\ProvideDocumentCommand{\bctfn}{}{\begin{center}\begin{figure}[h]\centering}
+\ProvideDocumentCommand{\bctf}{}{\begin{center}\begin{figure}[H]\centering}
+\ProvideDocumentCommand{\bcttn}{}{\begin{center}\begin{table}[h]\centering}
+\ProvideDocumentCommand{\bctt}{}{\begin{center}\begin{table}[H]\centering}
 \ProvideDocumentCommand{\bct}{}{\begin{center}}
 \ProvideDocumentCommand{\be}{}{\begin{equation}}
 \ProvideDocumentCommand{\bfH}{}{\begin{figure}[H]}
@@ -307,16 +319,11 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bt}{}{\begin{table}}
 \ProvideDocumentCommand{\bvNM}{}{\begin{vNiceMatrix}}
 \ProvideDocumentCommand{\bvmt}{}{\begin{vmatrix}}
-\ProvideDocumentCommand{\cds}{}{\cdots}
-\ProvideDocumentCommand{\cd}{}{\cdot}
-\ProvideDocumentCommand{\chf}{m}{\chemfig{#1}}
 \ProvideDocumentCommand{\closure}{}{\operatorname{closure}}
 \ProvideDocumentCommand{\col}{}{\operatorname{col}}
-\ProvideDocumentCommand{\ctg}{O{} m o}{\begin{center}\begin{figure}[H]\centering\includegraphics[#1]{#2}\IfNoValueF{#3}{\caption{#3}}\end{figure}\FloatBarrier\end{center}}
-\ProvideDocumentCommand{\ctr}{}{\centering}
-\ProvideDocumentCommand{\dds}{}{\ddots}
+\ProvideDocumentCommand{\ctgn}{o m o}{\begin{center}\begin{figure}[h]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\end{center}}
+\ProvideDocumentCommand{\ctg}{o m o}{\begin{center}\begin{figure}[H]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
-\ProvideDocumentCommand{\dp}{O{}}{\[#1\]}
 \ProvideDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
 \ProvideDocumentCommand{\eBNM}{}{\end{BNiceMatrix}}
 \ProvideDocumentCommand{\eBmt}{}{\end{Bmatrix}}
@@ -334,6 +341,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\ed}{m}{\end{#1}}
 \ProvideDocumentCommand{\ee}{}{\end{equation}}
 \ProvideDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
+\ProvideDocumentCommand{\efctn}{}{\end{figure}\end{center}}
 \ProvideDocumentCommand{\efct}{}{\end{figure}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\ef}{}{\end{figure}}
 \ProvideDocumentCommand{\emt}{}{\end{matirx}}
@@ -343,20 +351,15 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\eq}{}{=}
 \ProvideDocumentCommand{\etB}{}{\end{table}\FloatBarrier}
 \ProvideDocumentCommand{\etbr}{}{\end{tabular}}
+\ProvideDocumentCommand{\etbrctn}{}{\end{tabular}\end{figure}\end{center}}
+\ProvideDocumentCommand{\etbrct}{}{\end{tabular}\end{figure}\FloatBarrier\end{center}}
+\ProvideDocumentCommand{\etctn}{}{\end{table}\end{center}}
 \ProvideDocumentCommand{\etct}{}{\end{table}\FloatBarrier\end{center}}
 \ProvideDocumentCommand{\etk}{}{\end{tikzpicture}}
 \ProvideDocumentCommand{\et}{}{\end{table}}
 \ProvideDocumentCommand{\evNM}{}{\end{vNiceMatrix}}
 \ProvideDocumentCommand{\evmt}{}{\end{vmatrix}}
-\ProvideDocumentCommand{\fr}{m m}{\frac{#1}{#2}}
-\ProvideDocumentCommand{\f}{m m}{\frac{#1}{#2}}
 \ProvideDocumentCommand{\gt}{}{>}
-\ProvideDocumentCommand{\hf}{}{\hfill}
-\ProvideDocumentCommand{\hs}{m}{\hspace{#1}}
-\ProvideDocumentCommand{\ht}{m}{\hat{#1}}
-\ProvideDocumentCommand{\il}{O{}}{\(#1\)}
-\ProvideDocumentCommand{\inft}{}{\infty}
-\ProvideDocumentCommand{\ip}{m}{\input{#1}}
 \ProvideDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
 \ProvideDocumentCommand{\lt}{}{<}
 \ProvideDocumentCommand{\mn}{}{-}
@@ -364,40 +367,42 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \ProvideDocumentCommand{\null}{}{\operatorname{null}}
 \ProvideDocumentCommand{\n}{}{\\}
-\ProvideDocumentCommand{\ola}{m}{\overleftsmallarrow{#1}}
-\ProvideDocumentCommand{\olra}{m}{\overleftrightsmallarrow{#1}}
-\ProvideDocumentCommand{\ol}{m}{\overline{#1}}
-\ProvideDocumentCommand{\opn}{m}{\operatorname{#1}}
-\ProvideDocumentCommand{\ora}{m}{\overrightsmallarrow{#1}}
-\ProvideDocumentCommand{\parallelsum}{}{\mathbin{\!/\mkern-5mu/\!}}
-\ProvideDocumentCommand{\pc}{}{\%}
 \ProvideDocumentCommand{\pf}{m m o}{\IfNoValueTF{#3}{\frac{\partial #1}{\partial #2}}{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
 \ProvideDocumentCommand{\pht}{m}{\phantom{#1}}
 \ProvideDocumentCommand{\pl}{}{+}
 \ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
 \ProvideDocumentCommand{\rank}{}{\operatorname{rank}}
-\ProvideDocumentCommand{\rl}{}{\relax}
 \ProvideDocumentCommand{\sh}{}{/}
-\ProvideDocumentCommand{\tc}{m}{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
-\ProvideDocumentCommand{\th}{}{\textheight}
-\ProvideDocumentCommand{\tm}{}{\times}
 \ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
-\ProvideDocumentCommand{\tw}{m}{\textwidth{#1}}
-\ProvideDocumentCommand{\vc}{m}{\vec{#1}}
-\ProvideDocumentCommand{\vds}{}{\vdots}
-\ProvideDocumentCommand{\vf}{}{\vfill}
 \ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
-\ProvideDocumentCommand{\vs}{m}{\vspace{#1}}
 \let\FB\FloatBarrier
 \let\La\Leftarrow
 \let\Lra\Leftrightarrow
+\let\Ns\Needspace
 \let\Ra\Rightarrow
+\let\X\times
+\let\amp\&
+\let\apx\approx
+\let\cd\cdot
+\let\cds\cdots
+\let\chm\chemfig
 \let\clp\clearpage
+\let\ctr\centering
+\let\dds\ddots
+\let\f\frac
+\let\fr\frac
+\let\hf\hfill
+\let\hs\hspace
 \let\icg\includegraphics
+\let\icp\includepdf
+\let\ift\infty
+\let\ip\input
 \let\la\leftarrow
 \let\lds\ldots
+\let\lh\lineheight
 \let\lra\leftrightarrow
 \let\lrh\leftrightharpoons
+\let\lw\linewidth
 \let\mb\mathbf
 \let\mbb\mathbb
 \let\mbbi\mathbbit
@@ -416,10 +421,22 @@ breakatwhitespace=false
 \let\mtt\mathtt
 \let\mup\mathup
 \let\npgb\nopagebreak
+\let\opn\operatorname
+\let\pc\%
 \let\pgb\pagebreak
+\let\pk\textperthousand
+\let\prp\propto
 \let\ra\rightarrow
 \let\rlh\rightleftharpoons
+\let\rl\relax
+\let\rsb\raisebox
+\let\rtb\rotatebox
+\let\sq\sqrt
 \let\tb\textbf
+\let\tc\TextCircled
+\let\tcb\tcolorbox
+\let\tfr\tfrac
+\let\th\textheight
 \let\ti\textit
 \let\tnm\textnormal
 \let\tr\textrm
@@ -427,7 +444,12 @@ breakatwhitespace=false
 \let\tsf\textsf
 \let\ttt\texttt
 \let\tup\textup
+\let\tw\textwidth
 \let\tx\text
+\let\vc\vec
+\let\vds\vdots
+\let\vf\vfill
+\let\vs\vspace
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
 \titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}
@@ -504,9 +526,9 @@ breakatwhitespace=false
 \fi\else
 \newcommand{\temtoday}{\today}
 \fi
-\newcommand{\temtitle}{\thispagestyle{empty}\nth\maketitle\setcounter{page}{1}}
-\newcommand{\temtoc}{\nth\tableofcontents}
-\newcommand{\temdoc}{\nthm\setcounter{page}{1}}
+\newcommand{\temtitle}{\thispagestyle{empty}\Needspace{1\textheight}\maketitle\setcounter{page}{1}}
+\newcommand{\temtoc}{\Needspace{1\textheight}\tableofcontents}
+\newcommand{\temdoc}{\Needspace{1\textheight}\setcounter{page}{1}}
 \newcommand{\titletocdoc}{\onehalfspacing\temtitle\temtoc\temdoc}
 \newcommand{\titledoc}{\onehalfspacing\temtitle\temdoc}
 \newcommand{\tocdoc}{\onehalfspacing\temtoc\temdoc}

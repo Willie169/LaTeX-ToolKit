@@ -2,7 +2,10 @@
 
 ## Introduction
 
-This repository boasts a comprehensive and customizable LaTeX template, [`template.tex`](template.tex), which is designed for article or report documentclass in TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), or Latin-script languages, with TeX Gyre, Noto CJK, and XITS Math fonts available, and lots of useful commands defined.
+This repository contains
+- [`template.tex`](template.tex): a comprehensive and customizable LaTeX template designed for article or report documentclass in TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), or Latin-script languages, with TeX Gyre, Noto CJK, and XITS Math fonts available, and lots of useful commands defined.
+- [LaTeX Best Practices.md](LaTeX%20Best%20Practices.md): some best practices of LaTeX.
+- Other [utilities](#utilities).
 
 ## Fonts
 
