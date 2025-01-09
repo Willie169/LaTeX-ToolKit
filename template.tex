@@ -301,10 +301,12 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bcttn}{}{\begin{center}\begin{table}[h]\centering}
 \ProvideDocumentCommand{\bctt}{}{\begin{center}\begin{table}[H]\centering}
 \ProvideDocumentCommand{\bct}{}{\begin{center}}
-\ProvideDocumentCommand{\be}{}{\begin{equation}}
+\ProvideDocumentCommand{\ben}{}{\begin{enumerate}}
+\ProvideDocumentCommand{\beq}{}{\begin{equation}}
 \ProvideDocumentCommand{\bfH}{}{\begin{figure}[H]}
 \ProvideDocumentCommand{\bf}{}{\begin{figure}}
 \ProvideDocumentCommand{\bg}{m}{\begin{#1}}
+\ProvideDocumentCommand{\bit}{}{\begin{itemize}}
 \ProvideDocumentCommand{\bmac}{}{\[\begin{aligned}\begin{cases}}
 \ProvideDocumentCommand{\bma}{}{\[\begin{aligned}}
 \ProvideDocumentCommand{\bmc}{}{\[\begin{cases}}
@@ -339,7 +341,9 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\ecs}{}{\end{cases}}
 \ProvideDocumentCommand{\ect}{}{\end{center}}
 \ProvideDocumentCommand{\ed}{m}{\end{#1}}
-\ProvideDocumentCommand{\ee}{}{\end{equation}}
+\ProvideDocumentCommand{\eit}{}{\end{itemize}}
+\ProvideDocumentCommand{\een}{}{\end{enumerate}}
+\ProvideDocumentCommand{\eeq}{}{\end{equation}}
 \ProvideDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
 \ProvideDocumentCommand{\efctn}{}{\end{figure}\end{center}}
 \ProvideDocumentCommand{\efct}{}{\end{figure}\FloatBarrier\end{center}}
@@ -527,11 +531,11 @@ breakatwhitespace=false
 \let\X\times
 \let\amp\&
 \let\apx\approx
-\let\cap\caption
 \let\cd\cdot
 \let\cds\cdots
 \let\chm\chemfig
 \let\clp\clearpage
+\let\cpt\caption
 \let\ctr\centering
 \let\da\downarrow
 \let\dds\ddots
