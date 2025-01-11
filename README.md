@@ -3,7 +3,7 @@
 ## Introduction
 
 This repository contains
-- [`template.tex`](template.tex): a comprehensive and customizable LaTeX template designed for article or report documentclass in TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), or Latin-script languages, with TeX Gyre, Noto CJK, and XITS Math fonts available, and lots of useful commands defined.
+- [`template.tex`](template.tex) and [`document.tex`](document.tex): a comprehensive and customizable LaTeX template designed for LuaTeX and XeTeX with support of TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages, TeX Gyre, Noto CJK, and XITS Math fonts, a broad range of packages, and a lot of useful commands and shorthands.
 - [LaTeX Best Practices.md](LaTeX%20Best%20Practices.md): some best practices of LaTeX.
 - Other [utilities](#utilities).
 
@@ -105,28 +105,74 @@ wget https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Mono/NotoSan
 fc-cache -fv
 ```
 
-## Usage
+## Template
 
 - Configure counters in [`document.tex`](document.tex).
-- Replace `\input{/usr/share/latex-toolkit/template.tex}` line in [`document.tex`](document.tex) with the actual path you downloaded the [`template.tex`](template.tex).
+- Replace the `/usr/share/latex-toolkit/template.tex` in `\input{/usr/share/latex-toolkit/template.tex}` line in [`document.tex`](document.tex) with the actual path you downloaded the [`template.tex`](template.tex).
 - Customize [`template.tex`](template.tex), advanced users only.
 
 ## Utilities
 
-- [`CJKFontSettingsGen.cpp`](CJKFontSettingsGen.cpp): generates the LaTeX code for CJK fonts settings and related things in [`template.tex`](template.tex).
+- [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
 - [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
 - [`test.tex`](test.tex): test.
-- [`test.pdf`](test.pdf): PDF compiled from [`test.tex`](test.tex).
+- [`lua_test.pdf`](test.pdf): PDF compiled with `lualatex test.tex`.
+- [`xe_test.pdf`](test.pdf): PDF compiled with `xelatex test.tex`.
 
 ## License
 
-LaTeX-ToolKit is licensed under either:
+This project is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 
-- The GNU General Public License v3.0 or later (GPL-3.0-or-later)
-- The Creative Commons Attribution-ShareAlike 4.0 International License or later (CC BY-SA 4.0-or-later)
+This project is licensed under the terms of either:
 
-You may choose which license to apply to your use of this project. For more information, see the "LICENSE" folder.
+- The GNU General Public License v3.0 or later (GPL-3.0-or-later): [gpl.md](LICENSE/gpl.md).
+- The Creative Commons Attribution-ShareAlike 4.0 International License or later (CC-BY-SA-4.0-or-later): [CC-BY-SA-4.0.html](LICENSE/CC-BY-SA-4.0.html).
+- The LaTeX Project Public License Version 1.3c or later (LPPL-1.3c-or-later): [lppl.txt](LICENSE/lppl.txt).
 
-## Development
+By contributing to this project, you agree that your contributions will be licensed under GPL-3.0-or-later, CC-BY-SA-4.0-or-later, and LPPL-1.3c-or-later.
 
-LaTeX-ToolKit is still under development. Contributions are welcome!
+## Sources and Credits
+
+This project incorporates materials from the following sources:
+
+1. **egreg**
+   - **URL:** [https://tex.stackexchange.com/questions/426366/change-arrow-tip-of-overleftarrow-command](https://tex.stackexchange.com/questions/426366/change-arrow-tip-of-overleftarrow-command)
+   - **License:** CC BY-SA 3.0
+
+2. **egreg**
+   - **URL:** [https://tex.stackexchange.com/questions/248285/arrows-in-superscripts/248297#248297](https://tex.stackexchange.com/questions/248285/arrows-in-superscripts/248297#248297)
+   - **License:** CC BY-SA 3.0
+
+3. **citsahcots** & **Generic Account**
+   - **URL:** [https://tex.stackexchange.com/questions/606363/how-to-offset-one-end-of-a-bond-in-chemfig](https://tex.stackexchange.com/questions/606363/how-to-offset-one-end-of-a-bond-in-chemfig)
+   - **License:** CC BY-SA 4.0
+
+4. **Calculus Knight** & **egreg**
+   - **URL:** [https://tex.stackexchange.com/questions/292512/csvsimple-csvautotabular-and-csvautobooktabular-with-centered-columns-content](https://tex.stackexchange.com/questions/292512/csvsimple-csvautotabular-and-csvautobooktabular-with-centered-columns-content)
+   - **License:** CC BY-SA 3.0
+
+5. **yo'**
+   - **URL:** [https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters](https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters)
+   - **License:** CC BY-SA 3.0
+
+6. **Martin Tapankov**, **David Carlisle**, **Jimi Oke**, **Community (Bot)** & **Stefan Kottwitz**
+   - **URL:** [https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers)
+   - **License:** CC BY-SA 2.5
+
+7. **Martin Tapankov**, **David Carlisle**, **Community (Bot)** & **doncherry**
+   - **URL:** [https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers)
+   - **License:** CC BY-SA 3.0
+
+8. **ButTaiwan**
+   - **URL:** [https://github.com/ButTaiwan/iansui](https://github.com/ButTaiwan/iansui)
+   - **License:** SIL Open Font License 1.1
+
+9. **Alif Type**
+   - **URL:** [https://github.com/aliftype/xits](https://github.com/aliftype/xits)
+   - **License:** SIL Open Font License 1.1
+
+10. **ChatGPT**
+    - **URL:** [https://openai.com/chatgpt/](https://openai.com/chatgpt/)
+    - **License:** All content generated by ChatGPT is used in accordance with [OpenAI's Terms of Use](https://openai.com/policies/terms-of-use) and released under the same terms as the rest of the project.
+
+All external materials are used in accordance with their respective licenses.
