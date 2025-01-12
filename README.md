@@ -113,8 +113,9 @@ fc-cache -fv
 
 ## Utilities
 
-- [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
 - [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
+- [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
+- [`alphabet.c`](alphabet.c): generates the LaTeX code for `\text` and `\mathrm` alphabet letters shorthands.
 - [`test.tex`](test.tex): test.
 - [`lua_test.pdf`](test.pdf): PDF compiled with `lualatex test.tex`.
 - [`xe_test.pdf`](test.pdf): PDF compiled with `xelatex test.tex`.
@@ -123,56 +124,74 @@ fc-cache -fv
 
 This project is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. 
 
-This project is licensed under the terms of either:
+This project, except for parts incorporated from other sources that are licenced under different copyright terms, which are listed in [Sources and Credits](#sources-and-credits) section, is licensed under the terms of either:
 
-- The GNU General Public License v3.0 or later (GPL-3.0-or-later): [gpl.md](LICENSE/gpl.md).
-- The Creative Commons Attribution-ShareAlike 4.0 International License or later (CC-BY-SA-4.0-or-later): [CC-BY-SA-4.0.html](LICENSE/CC-BY-SA-4.0.html).
-- The LaTeX Project Public License Version 1.3c or later (LPPL-1.3c-or-later): [lppl.txt](LICENSE/lppl.txt).
+- The GNU General Public License v3.0 or later (GPL-3.0-or-later): [gpl.md](LICENSE/gpl.md)
+- The Creative Commons Attribution-ShareAlike 4.0 International License or later (CC-BY-SA-4.0-or-later): [CC-BY-SA-4.0.html](LICENSE/CC-BY-SA-4.0.html)
+- The LaTeX Project Public License Version 1.3c or later (LPPL-1.3c-or-later): [lppl.txt](LICENSE/lppl.txt)
 
 By contributing to this project, you agree that your contributions will be licensed under GPL-3.0-or-later, CC-BY-SA-4.0-or-later, and LPPL-1.3c-or-later.
 
 ## Sources and Credits
 
-This project incorporates materials from the following sources:
-
 1. **egreg**
-   - **URL:** [https://tex.stackexchange.com/questions/426366/change-arrow-tip-of-overleftarrow-command](https://tex.stackexchange.com/questions/426366/change-arrow-tip-of-overleftarrow-command)
-   - **License:** CC BY-SA 3.0
+  - **URL:** [https://tex.stackexchange.com/questions/426366/change-arrow-tip-of-overleftarrow-command](https://tex.stackexchange.com/questions/426366/change-arrow-tip-of-overleftarrow-command)
+  - **Copyright Terms:** CC BY-SA 3.0
 
 2. **egreg**
-   - **URL:** [https://tex.stackexchange.com/questions/248285/arrows-in-superscripts/248297#248297](https://tex.stackexchange.com/questions/248285/arrows-in-superscripts/248297#248297)
-   - **License:** CC BY-SA 3.0
+  - **URL:** [https://tex.stackexchange.com/questions/248285/arrows-in-superscripts/248297#248297](https://tex.stackexchange.com/questions/248285/arrows-in-superscripts/248297#248297)
+  - **Copyright Terms:** CC BY-SA 3.0
 
-3. **citsahcots** & **Generic Account**
-   - **URL:** [https://tex.stackexchange.com/questions/606363/how-to-offset-one-end-of-a-bond-in-chemfig](https://tex.stackexchange.com/questions/606363/how-to-offset-one-end-of-a-bond-in-chemfig)
-   - **License:** CC BY-SA 4.0
+2. **citsahcots** & **Generic Account**
+  - **URL:** [https://tex.stackexchange.com/questions/606363/how-to-offset-one-end-of-a-bond-in-chemfig](https://tex.stackexchange.com/questions/606363/how-to-offset-one-end-of-a-bond-in-chemfig)
+  - **Copyright Terms:** CC BY-SA 4.0
 
-4. **Calculus Knight** & **egreg**
-   - **URL:** [https://tex.stackexchange.com/questions/292512/csvsimple-csvautotabular-and-csvautobooktabular-with-centered-columns-content](https://tex.stackexchange.com/questions/292512/csvsimple-csvautotabular-and-csvautobooktabular-with-centered-columns-content)
-   - **License:** CC BY-SA 3.0
+2. **Calculus Knight** & **egreg**
+  - **URL:** [https://tex.stackexchange.com/questions/292512/csvsimple-csvautotabular-and-csvautobooktabular-with-centered-columns-content](https://tex.stackexchange.com/questions/292512/csvsimple-csvautotabular-and-csvautobooktabular-with-centered-columns-content)
+  - **Copyright Terms:** CC BY-SA 3.0
 
-5. **yo'**
-   - **URL:** [https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters](https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters)
-   - **License:** CC BY-SA 3.0
+2. **yo'**
+  - **URL:** [https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters](https://tex.stackexchange.com/questions/48753/obtaining-the-default-section-spacing-into-the-titlespacing-parameters)
+  - **Copyright Terms:** CC BY-SA 3.0
 
-6. **Martin Tapankov**, **David Carlisle**, **Jimi Oke**, **Community (Bot)** & **Stefan Kottwitz**
-   - **URL:** [https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers)
-   - **License:** CC BY-SA 2.5
+2. **Martin Tapankov**, **David Carlisle**, **Jimi Oke**, **Community (Bot)**, & **Stefan Kottwitz**
+  - **URL:** [https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers)
+  - **Copyright Terms:** CC BY-SA 2.5
 
-7. **Martin Tapankov**, **David Carlisle**, **Community (Bot)** & **doncherry**
-   - **URL:** [https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers)
-   - **License:** CC BY-SA 3.0
+2. **Martin Tapankov**, **David Carlisle**, **Community (Bot)**, & **doncherry**
+  - **URL:** [https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers](https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers)
+  - **Copyright Terms:** CC BY-SA 3.0
 
-8. **ButTaiwan**
-   - **URL:** [https://github.com/ButTaiwan/iansui](https://github.com/ButTaiwan/iansui)
-   - **License:** SIL Open Font License 1.1
+2. **David Carlisle**, **gablin**, **Joseph Wright**, & **egreg**
+  - **URL:** [https://tex.stackexchange.com/questions/27592/ifmmode-doesnt-seem-to-work-correctly-inside-an-array-environment](https://tex.stackexchange.com/questions/27592/ifmmode-doesnt-seem-to-work-correctly-inside-an-array-environment)
+  - **Copyright Terms:** CC BY-SA 3.0
 
-9. **Alif Type**
-   - **URL:** [https://github.com/aliftype/xits](https://github.com/aliftype/xits)
-   - **License:** SIL Open Font License 1.1
+2. **Michael Ummels**
+  - **URL:** [https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands](https://tex.stackexchange.com/questions/22100/the-bar-and-overline-commands)
+  - **Copyright Terms:** CC BY-SA 3.0
+  
+2. **Noto Fonts**/**notofonts**
+  - **URL:** [https://github.com/notofonts/noto-cjk](https://github.com/notofonts/noto-cjk)
+  - **Copyright Terms:** OFL-1.1
 
-10. **ChatGPT**
-    - **URL:** [https://openai.com/chatgpt/](https://openai.com/chatgpt/)
-    - **License:** All content generated by ChatGPT is used in accordance with [OpenAI's Terms of Use](https://openai.com/policies/terms-of-use) and released under the same terms as the rest of the project.
+2. **Alif Type (<div dir="rtl">حروف ألف</div>)**/**aliftype**
+  - **URL:** [https://github.com/aliftype/xits](https://github.com/aliftype/xits)
+  - **Copyright Terms:** OFL-1.1
 
-All external materials are used in accordance with their respective licenses.
+2. **TeX Live**
+  - **URL:** [https://tug.org/texlive](https://tug.org/texlive)
+  - **Copyright Terms:** Please see [https://www.tug.org/texlive/copying.html](https://www.tug.org/texlive/copying.html)
+
+2. **Comprehensive TeX Archive Network (CTAN)**
+  - **URL:** [https://ctan.org](https://ctan.org)
+  - **Copyright Terms:** Please see [https://ctan.org/license](https://ctan.org/license)
+
+2. **Vít Starý Novotný**/**Witiko**
+  - **URL:** [https://github.com/Witiko/markdown](https://github.com/Witiko/markdown)
+  - **Copyright Terms:** LPPL-1.3c
+
+2. **ChatGPT**
+  - **URL:** [https://openai.com/chatgpt/](https://openai.com/chatgpt/)
+  - **Copyright Terms:** All content generated by ChatGPT is used in accordance with [OpenAI's Terms of Use](https://openai.com/policies/terms-of-use) and released under the same terms as the rest of the project.
+
+All external materials are used in accordance with their respective copyright terms.
