@@ -23,7 +23,7 @@ const string el = "\\else";
 const string cp = "}[";
 const string end = "Ligatures=TeX]\n";
 const string endd = "Ligatures=TeX]";
-const string pre = "\\ifnum\\value{CJKFonts}=0\\else\n";
+const string pre = "\\ifnum\\value{CJK}=1\n\\ifx\\luatexversion\\undefined\n\\ifnum\\value{CJKFonts}=0\\else\n";
 string ulang[5]={"TC","SC","HK","JP","KR"};
 string llang[5]={"tc","sc","hk","jp","kr"};
 string fw[5]={"UprightFont","ItalicFont","BoldFont","BoldItalicFont","SmallCapsFont"};

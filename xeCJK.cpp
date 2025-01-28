@@ -23,7 +23,7 @@ const string el = "\\else";
 const string cp = "}[";
 const string end = "Ligatures=TeX]\n";
 const string endd = "Ligatures=TeX]";
-const string pre = "\\ifnum\\value{CJKFonts}=0\\else\n";
+const string pre = "\\else\n\\ifnum\\value{CJKFonts}=0\\else\n";
 string ulang[5]={"TC","SC","HK","JP","KR"};
 string llang[5]={"tc","sc","hk","jp","kr"};
 string fw[5]={"UprightFont","ItalicFont","BoldFont","BoldItalicFont","SmallCapsFont"};
@@ -158,7 +158,7 @@ void yes() {
     cout << nff << ssans(ulang[i]);
     cout << nff << sserif(ulang[i]);
   }
-  cout << "\n\\fi\\fi\\fi\\fi\\fi\\fi\\fi\n";
+  cout << "\n\\fi\\fi\\fi\\fi\\fi\\fi\\fi\n\\fi\\fi\n";
 }
 };
 int main() {
