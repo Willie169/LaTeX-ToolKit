@@ -1,3 +1,4 @@
+<!-- This is "LaTeX Best Practice.md" of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later. -->
 ## LaTeX Best Practices
 
 - `XeTeX` and `LuaTeX` better support fonts, scripting, Unicode, and other compatibilities than `pdfTeX`.

@@ -1,4 +1,4 @@
-// This is paragraph2itemize.cpp of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later or CC BY-SA 4.0-or-later.
+// This is paragraph2itemize.cpp of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
 #include <iostream>
 #include <string>
 #include <vector>
