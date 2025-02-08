@@ -1,6 +1,6 @@
 % This is template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
 \ifnum\value{CJK}=1
-\if\xluatexversion\undefined
+\ifx\luatexversion\undefined
 \usepackage{fontspec}
 \usepackage[CJKspace]{xeCJK}
 \else
@@ -82,7 +82,7 @@
 \setmainfont{TeX Gyre Termes}[Ligatures=TeX]
 \fi\fi\fi\fi\fi\fi\fi\fi
 \ifnum\value{CJK}=1
-\if\xluatexversion\undefined
+\ifx\luatexversion\undefined
 \ifnum\value{CJKFonts}=0\else
 \ifnum\value{CJKLanguage}=0
 \ifnum\value{CJKFonts}=1
@@ -620,7 +620,7 @@ breakatwhitespace=false
 \let\Ra\Rightarrow
 \let\Rar\Rightarrow
 \let\amp\&
-\let\ap\xapprox
+\let\apx\approx
 \let\cd\cdot
 \let\cds\cdots
 \let\chm\chemfig
@@ -700,19 +700,19 @@ breakatwhitespace=false
 \let\ttt\texttt
 \let\tup\textup
 \let\tw\textwidth
-\let\t\xtext
+\let\tx\text
 \let\ua\uparrow
 \let\uar\uparrow
 \let\vds\vdots
 \let\vf\vfill
 \let\vs\vspace
 \ProvideDocumentCommand{\Arg}{}{\operatorname{Arg}}
-\ProvideDocumentCommand{\E}{m}{\rela\xifmmode 10^{#1}\else\(10^{#1}\)\fi}
+\ProvideDocumentCommand{\E}{m}{\relax\ifmmode 10^{#1}\else\(10^{#1}\)\fi}
 \ProvideDocumentCommand{\RNum}{m}{\uppercase\expandafter{\romannumeral #1\relax}}
 \ProvideDocumentCommand{\UV}{}{\operatorname{UV}}
 \ProvideDocumentCommand{\UnitVector}{}{\operatorname{UnitVector}}
-\ProvideDocumentCommand{\XE}{m}{\rela\xifmmode\times 10^{#1}\else\(\times 10^{#1}\)\fi}
-\ProvideDocumentCommand{\X}{}{\rela\xifmmode\times\else\(\times\)\fi}
+\ProvideDocumentCommand{\XE}{m}{\relax\ifmmode\times 10^{#1}\else\(\times 10^{#1}\)\fi}
+\ProvideDocumentCommand{\X}{}{\relax\ifmmode\times\else\(\times\)\fi}
 \ProvideDocumentCommand{\acosh}{}{\operatorname{acosh}}
 \ProvideDocumentCommand{\acos}{}{\operatorname{acos}}
 \ProvideDocumentCommand{\acsch}{}{\operatorname{acsch}}
@@ -764,7 +764,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bpNM}{}{\begin{pNiceMatrix}}
 \ProvideDocumentCommand{\bpmt}{}{\begin{pmatrix}}
 \ProvideDocumentCommand{\bs}{m}{\boldsymbol{#1}}
-\ProvideDocumentCommand{\bsh}{}{\rela\xifmmode\backslash\else\textbackslash\fi}
+\ProvideDocumentCommand{\bsh}{}{\relax\ifmmode\backslash\else\textbackslash\fi}
 \ProvideDocumentCommand{\btH}{}{\begin{table}[H]}
 \ProvideDocumentCommand{\btbr}{}{\begin{tabular}}
 \ProvideDocumentCommand{\btk}{}{\begin{tikzpicture}}
@@ -1063,7 +1063,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbA}{O{}}{\textbf{A}}
 \ProvideDocumentCommand{\BfA}{O{}}{\relax\ifmmode\mathbf{A}\else\text{\(\mathbf{A}\)}\fi}
 \ProvideDocumentCommand{\rmA}{O{}}{\relax\ifmmode\mathrm{A}\else\text{\(\mathrm{A}\)}\fi}
-\ProvideDocumentCommand{\BbA}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{A}\else\text{\(\mathbb{A}\)}}{\relax\ifmmode\mathbb{A}^{#1}\else\text{\(\mathbb{A}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbA}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{A}\else\text{\(\mathbb{A}\)}\fi}{\relax\ifmmode\mathbb{A}^{#1}\else\text{\(\mathbb{A}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txAA}{O{}}{\text{AA}}
 \ProvideDocumentCommand{\tbAA}{O{}}{\textbf{AA}}
 \ProvideDocumentCommand{\BfAA}{O{}}{\relax\ifmmode\mathbf{AA}\else\text{\(\mathbf{AA}\)}\fi}
@@ -1276,7 +1276,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbB}{O{}}{\textbf{B}}
 \ProvideDocumentCommand{\BfB}{O{}}{\relax\ifmmode\mathbf{B}\else\text{\(\mathbf{B}\)}\fi}
 \ProvideDocumentCommand{\rmB}{O{}}{\relax\ifmmode\mathrm{B}\else\text{\(\mathrm{B}\)}\fi}
-\ProvideDocumentCommand{\BbB}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{B}\else\text{\(\mathbb{B}\)}}{\relax\ifmmode\mathbb{B}^{#1}\else\text{\(\mathbb{B}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbB}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{B}\else\text{\(\mathbb{B}\)}\fi}{\relax\ifmmode\mathbb{B}^{#1}\else\text{\(\mathbb{B}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txBA}{O{}}{\text{BA}}
 \ProvideDocumentCommand{\tbBA}{O{}}{\textbf{BA}}
 \ProvideDocumentCommand{\BfBA}{O{}}{\relax\ifmmode\mathbf{BA}\else\text{\(\mathbf{BA}\)}\fi}
@@ -1489,7 +1489,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbC}{O{}}{\textbf{C}}
 \ProvideDocumentCommand{\BfC}{O{}}{\relax\ifmmode\mathbf{C}\else\text{\(\mathbf{C}\)}\fi}
 \ProvideDocumentCommand{\rmC}{O{}}{\relax\ifmmode\mathrm{C}\else\text{\(\mathrm{C}\)}\fi}
-\ProvideDocumentCommand{\BbC}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{C}\else\text{\(\mathbb{C}\)}}{\relax\ifmmode\mathbb{C}^{#1}\else\text{\(\mathbb{C}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbC}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{C}\else\text{\(\mathbb{C}\)}\fi}{\relax\ifmmode\mathbb{C}^{#1}\else\text{\(\mathbb{C}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txCA}{O{}}{\text{CA}}
 \ProvideDocumentCommand{\tbCA}{O{}}{\textbf{CA}}
 \ProvideDocumentCommand{\BfCA}{O{}}{\relax\ifmmode\mathbf{CA}\else\text{\(\mathbf{CA}\)}\fi}
@@ -1702,7 +1702,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbD}{O{}}{\textbf{D}}
 \ProvideDocumentCommand{\BfD}{O{}}{\relax\ifmmode\mathbf{D}\else\text{\(\mathbf{D}\)}\fi}
 \ProvideDocumentCommand{\rmD}{O{}}{\relax\ifmmode\mathrm{D}\else\text{\(\mathrm{D}\)}\fi}
-\ProvideDocumentCommand{\BbD}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{D}\else\text{\(\mathbb{D}\)}}{\relax\ifmmode\mathbb{D}^{#1}\else\text{\(\mathbb{D}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbD}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{D}\else\text{\(\mathbb{D}\)}\fi}{\relax\ifmmode\mathbb{D}^{#1}\else\text{\(\mathbb{D}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txDA}{O{}}{\text{DA}}
 \ProvideDocumentCommand{\tbDA}{O{}}{\textbf{DA}}
 \ProvideDocumentCommand{\BfDA}{O{}}{\relax\ifmmode\mathbf{DA}\else\text{\(\mathbf{DA}\)}\fi}
@@ -1915,7 +1915,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbE}{O{}}{\textbf{E}}
 \ProvideDocumentCommand{\BfE}{O{}}{\relax\ifmmode\mathbf{E}\else\text{\(\mathbf{E}\)}\fi}
 \ProvideDocumentCommand{\rmE}{O{}}{\relax\ifmmode\mathrm{E}\else\text{\(\mathrm{E}\)}\fi}
-\ProvideDocumentCommand{\BbE}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{E}\else\text{\(\mathbb{E}\)}}{\relax\ifmmode\mathbb{E}^{#1}\else\text{\(\mathbb{E}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbE}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{E}\else\text{\(\mathbb{E}\)}\fi}{\relax\ifmmode\mathbb{E}^{#1}\else\text{\(\mathbb{E}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txEA}{O{}}{\text{EA}}
 \ProvideDocumentCommand{\tbEA}{O{}}{\textbf{EA}}
 \ProvideDocumentCommand{\BfEA}{O{}}{\relax\ifmmode\mathbf{EA}\else\text{\(\mathbf{EA}\)}\fi}
@@ -2128,7 +2128,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbF}{O{}}{\textbf{F}}
 \ProvideDocumentCommand{\BfF}{O{}}{\relax\ifmmode\mathbf{F}\else\text{\(\mathbf{F}\)}\fi}
 \ProvideDocumentCommand{\rmF}{O{}}{\relax\ifmmode\mathrm{F}\else\text{\(\mathrm{F}\)}\fi}
-\ProvideDocumentCommand{\BbF}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{F}\else\text{\(\mathbb{F}\)}}{\relax\ifmmode\mathbb{F}^{#1}\else\text{\(\mathbb{F}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbF}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{F}\else\text{\(\mathbb{F}\)}\fi}{\relax\ifmmode\mathbb{F}^{#1}\else\text{\(\mathbb{F}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txFA}{O{}}{\text{FA}}
 \ProvideDocumentCommand{\tbFA}{O{}}{\textbf{FA}}
 \ProvideDocumentCommand{\BfFA}{O{}}{\relax\ifmmode\mathbf{FA}\else\text{\(\mathbf{FA}\)}\fi}
@@ -2341,7 +2341,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbG}{O{}}{\textbf{G}}
 \ProvideDocumentCommand{\BfG}{O{}}{\relax\ifmmode\mathbf{G}\else\text{\(\mathbf{G}\)}\fi}
 \ProvideDocumentCommand{\rmG}{O{}}{\relax\ifmmode\mathrm{G}\else\text{\(\mathrm{G}\)}\fi}
-\ProvideDocumentCommand{\BbG}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{G}\else\text{\(\mathbb{G}\)}}{\relax\ifmmode\mathbb{G}^{#1}\else\text{\(\mathbb{G}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbG}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{G}\else\text{\(\mathbb{G}\)}\fi}{\relax\ifmmode\mathbb{G}^{#1}\else\text{\(\mathbb{G}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txGA}{O{}}{\text{GA}}
 \ProvideDocumentCommand{\tbGA}{O{}}{\textbf{GA}}
 \ProvideDocumentCommand{\BfGA}{O{}}{\relax\ifmmode\mathbf{GA}\else\text{\(\mathbf{GA}\)}\fi}
@@ -2554,7 +2554,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbH}{O{}}{\textbf{H}}
 \ProvideDocumentCommand{\BfH}{O{}}{\relax\ifmmode\mathbf{H}\else\text{\(\mathbf{H}\)}\fi}
 \ProvideDocumentCommand{\rmH}{O{}}{\relax\ifmmode\mathrm{H}\else\text{\(\mathrm{H}\)}\fi}
-\ProvideDocumentCommand{\BbH}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{H}\else\text{\(\mathbb{H}\)}}{\relax\ifmmode\mathbb{H}^{#1}\else\text{\(\mathbb{H}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbH}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{H}\else\text{\(\mathbb{H}\)}\fi}{\relax\ifmmode\mathbb{H}^{#1}\else\text{\(\mathbb{H}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txHA}{O{}}{\text{HA}}
 \ProvideDocumentCommand{\tbHA}{O{}}{\textbf{HA}}
 \ProvideDocumentCommand{\BfHA}{O{}}{\relax\ifmmode\mathbf{HA}\else\text{\(\mathbf{HA}\)}\fi}
@@ -2767,7 +2767,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbI}{O{}}{\textbf{I}}
 \ProvideDocumentCommand{\BfI}{O{}}{\relax\ifmmode\mathbf{I}\else\text{\(\mathbf{I}\)}\fi}
 \ProvideDocumentCommand{\rmI}{O{}}{\relax\ifmmode\mathrm{I}\else\text{\(\mathrm{I}\)}\fi}
-\ProvideDocumentCommand{\BbI}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{I}\else\text{\(\mathbb{I}\)}}{\relax\ifmmode\mathbb{I}^{#1}\else\text{\(\mathbb{I}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbI}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{I}\else\text{\(\mathbb{I}\)}\fi}{\relax\ifmmode\mathbb{I}^{#1}\else\text{\(\mathbb{I}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txIA}{O{}}{\text{IA}}
 \ProvideDocumentCommand{\tbIA}{O{}}{\textbf{IA}}
 \ProvideDocumentCommand{\BfIA}{O{}}{\relax\ifmmode\mathbf{IA}\else\text{\(\mathbf{IA}\)}\fi}
@@ -2980,7 +2980,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbJ}{O{}}{\textbf{J}}
 \ProvideDocumentCommand{\BfJ}{O{}}{\relax\ifmmode\mathbf{J}\else\text{\(\mathbf{J}\)}\fi}
 \ProvideDocumentCommand{\rmJ}{O{}}{\relax\ifmmode\mathrm{J}\else\text{\(\mathrm{J}\)}\fi}
-\ProvideDocumentCommand{\BbJ}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{J}\else\text{\(\mathbb{J}\)}}{\relax\ifmmode\mathbb{J}^{#1}\else\text{\(\mathbb{J}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbJ}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{J}\else\text{\(\mathbb{J}\)}\fi}{\relax\ifmmode\mathbb{J}^{#1}\else\text{\(\mathbb{J}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txJA}{O{}}{\text{JA}}
 \ProvideDocumentCommand{\tbJA}{O{}}{\textbf{JA}}
 \ProvideDocumentCommand{\BfJA}{O{}}{\relax\ifmmode\mathbf{JA}\else\text{\(\mathbf{JA}\)}\fi}
@@ -3193,7 +3193,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbK}{O{}}{\textbf{K}}
 \ProvideDocumentCommand{\BfK}{O{}}{\relax\ifmmode\mathbf{K}\else\text{\(\mathbf{K}\)}\fi}
 \ProvideDocumentCommand{\rmK}{O{}}{\relax\ifmmode\mathrm{K}\else\text{\(\mathrm{K}\)}\fi}
-\ProvideDocumentCommand{\BbK}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{K}\else\text{\(\mathbb{K}\)}}{\relax\ifmmode\mathbb{K}^{#1}\else\text{\(\mathbb{K}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbK}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{K}\else\text{\(\mathbb{K}\)}\fi}{\relax\ifmmode\mathbb{K}^{#1}\else\text{\(\mathbb{K}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txKA}{O{}}{\text{KA}}
 \ProvideDocumentCommand{\tbKA}{O{}}{\textbf{KA}}
 \ProvideDocumentCommand{\BfKA}{O{}}{\relax\ifmmode\mathbf{KA}\else\text{\(\mathbf{KA}\)}\fi}
@@ -3406,7 +3406,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbL}{O{}}{\textbf{L}}
 \ProvideDocumentCommand{\BfL}{O{}}{\relax\ifmmode\mathbf{L}\else\text{\(\mathbf{L}\)}\fi}
 \ProvideDocumentCommand{\rmL}{O{}}{\relax\ifmmode\mathrm{L}\else\text{\(\mathrm{L}\)}\fi}
-\ProvideDocumentCommand{\BbL}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{L}\else\text{\(\mathbb{L}\)}}{\relax\ifmmode\mathbb{L}^{#1}\else\text{\(\mathbb{L}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbL}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{L}\else\text{\(\mathbb{L}\)}\fi}{\relax\ifmmode\mathbb{L}^{#1}\else\text{\(\mathbb{L}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txLA}{O{}}{\text{LA}}
 \ProvideDocumentCommand{\tbLA}{O{}}{\textbf{LA}}
 \ProvideDocumentCommand{\BfLA}{O{}}{\relax\ifmmode\mathbf{LA}\else\text{\(\mathbf{LA}\)}\fi}
@@ -3619,7 +3619,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbM}{O{}}{\textbf{M}}
 \ProvideDocumentCommand{\BfM}{O{}}{\relax\ifmmode\mathbf{M}\else\text{\(\mathbf{M}\)}\fi}
 \ProvideDocumentCommand{\rmM}{O{}}{\relax\ifmmode\mathrm{M}\else\text{\(\mathrm{M}\)}\fi}
-\ProvideDocumentCommand{\BbM}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{M}\else\text{\(\mathbb{M}\)}}{\relax\ifmmode\mathbb{M}^{#1}\else\text{\(\mathbb{M}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbM}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{M}\else\text{\(\mathbb{M}\)}\fi}{\relax\ifmmode\mathbb{M}^{#1}\else\text{\(\mathbb{M}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txMA}{O{}}{\text{MA}}
 \ProvideDocumentCommand{\tbMA}{O{}}{\textbf{MA}}
 \ProvideDocumentCommand{\BfMA}{O{}}{\relax\ifmmode\mathbf{MA}\else\text{\(\mathbf{MA}\)}\fi}
@@ -3832,7 +3832,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbN}{O{}}{\textbf{N}}
 \ProvideDocumentCommand{\BfN}{O{}}{\relax\ifmmode\mathbf{N}\else\text{\(\mathbf{N}\)}\fi}
 \ProvideDocumentCommand{\rmN}{O{}}{\relax\ifmmode\mathrm{N}\else\text{\(\mathrm{N}\)}\fi}
-\ProvideDocumentCommand{\BbN}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{N}\else\text{\(\mathbb{N}\)}}{\relax\ifmmode\mathbb{N}^{#1}\else\text{\(\mathbb{N}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbN}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{N}\else\text{\(\mathbb{N}\)}\fi}{\relax\ifmmode\mathbb{N}^{#1}\else\text{\(\mathbb{N}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txNA}{O{}}{\text{NA}}
 \ProvideDocumentCommand{\tbNA}{O{}}{\textbf{NA}}
 \ProvideDocumentCommand{\BfNA}{O{}}{\relax\ifmmode\mathbf{NA}\else\text{\(\mathbf{NA}\)}\fi}
@@ -4045,7 +4045,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbO}{O{}}{\textbf{O}}
 \ProvideDocumentCommand{\BfO}{O{}}{\relax\ifmmode\mathbf{O}\else\text{\(\mathbf{O}\)}\fi}
 \ProvideDocumentCommand{\rmO}{O{}}{\relax\ifmmode\mathrm{O}\else\text{\(\mathrm{O}\)}\fi}
-\ProvideDocumentCommand{\BbO}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{O}\else\text{\(\mathbb{O}\)}}{\relax\ifmmode\mathbb{O}^{#1}\else\text{\(\mathbb{O}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbO}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{O}\else\text{\(\mathbb{O}\)}\fi}{\relax\ifmmode\mathbb{O}^{#1}\else\text{\(\mathbb{O}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txOA}{O{}}{\text{OA}}
 \ProvideDocumentCommand{\tbOA}{O{}}{\textbf{OA}}
 \ProvideDocumentCommand{\BfOA}{O{}}{\relax\ifmmode\mathbf{OA}\else\text{\(\mathbf{OA}\)}\fi}
@@ -4258,7 +4258,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbP}{O{}}{\textbf{P}}
 \ProvideDocumentCommand{\BfP}{O{}}{\relax\ifmmode\mathbf{P}\else\text{\(\mathbf{P}\)}\fi}
 \ProvideDocumentCommand{\rmP}{O{}}{\relax\ifmmode\mathrm{P}\else\text{\(\mathrm{P}\)}\fi}
-\ProvideDocumentCommand{\BbP}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{P}\else\text{\(\mathbb{P}\)}}{\relax\ifmmode\mathbb{P}^{#1}\else\text{\(\mathbb{P}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbP}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{P}\else\text{\(\mathbb{P}\)}\fi}{\relax\ifmmode\mathbb{P}^{#1}\else\text{\(\mathbb{P}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txPA}{O{}}{\text{PA}}
 \ProvideDocumentCommand{\tbPA}{O{}}{\textbf{PA}}
 \ProvideDocumentCommand{\BfPA}{O{}}{\relax\ifmmode\mathbf{PA}\else\text{\(\mathbf{PA}\)}\fi}
@@ -4471,7 +4471,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbQ}{O{}}{\textbf{Q}}
 \ProvideDocumentCommand{\BfQ}{O{}}{\relax\ifmmode\mathbf{Q}\else\text{\(\mathbf{Q}\)}\fi}
 \ProvideDocumentCommand{\rmQ}{O{}}{\relax\ifmmode\mathrm{Q}\else\text{\(\mathrm{Q}\)}\fi}
-\ProvideDocumentCommand{\BbQ}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{Q}\else\text{\(\mathbb{Q}\)}}{\relax\ifmmode\mathbb{Q}^{#1}\else\text{\(\mathbb{Q}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbQ}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{Q}\else\text{\(\mathbb{Q}\)}\fi}{\relax\ifmmode\mathbb{Q}^{#1}\else\text{\(\mathbb{Q}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txQA}{O{}}{\text{QA}}
 \ProvideDocumentCommand{\tbQA}{O{}}{\textbf{QA}}
 \ProvideDocumentCommand{\BfQA}{O{}}{\relax\ifmmode\mathbf{QA}\else\text{\(\mathbf{QA}\)}\fi}
@@ -4684,7 +4684,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbR}{O{}}{\textbf{R}}
 \ProvideDocumentCommand{\BfR}{O{}}{\relax\ifmmode\mathbf{R}\else\text{\(\mathbf{R}\)}\fi}
 \ProvideDocumentCommand{\rmR}{O{}}{\relax\ifmmode\mathrm{R}\else\text{\(\mathrm{R}\)}\fi}
-\ProvideDocumentCommand{\BbR}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{R}\else\text{\(\mathbb{R}\)}}{\relax\ifmmode\mathbb{R}^{#1}\else\text{\(\mathbb{R}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbR}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{R}\else\text{\(\mathbb{R}\)}\fi}{\relax\ifmmode\mathbb{R}^{#1}\else\text{\(\mathbb{R}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txRA}{O{}}{\text{RA}}
 \ProvideDocumentCommand{\tbRA}{O{}}{\textbf{RA}}
 \ProvideDocumentCommand{\BfRA}{O{}}{\relax\ifmmode\mathbf{RA}\else\text{\(\mathbf{RA}\)}\fi}
@@ -4897,7 +4897,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbS}{O{}}{\textbf{S}}
 \ProvideDocumentCommand{\BfS}{O{}}{\relax\ifmmode\mathbf{S}\else\text{\(\mathbf{S}\)}\fi}
 \ProvideDocumentCommand{\rmS}{O{}}{\relax\ifmmode\mathrm{S}\else\text{\(\mathrm{S}\)}\fi}
-\ProvideDocumentCommand{\BbS}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{S}\else\text{\(\mathbb{S}\)}}{\relax\ifmmode\mathbb{S}^{#1}\else\text{\(\mathbb{S}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbS}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{S}\else\text{\(\mathbb{S}\)}\fi}{\relax\ifmmode\mathbb{S}^{#1}\else\text{\(\mathbb{S}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txSA}{O{}}{\text{SA}}
 \ProvideDocumentCommand{\tbSA}{O{}}{\textbf{SA}}
 \ProvideDocumentCommand{\BfSA}{O{}}{\relax\ifmmode\mathbf{SA}\else\text{\(\mathbf{SA}\)}\fi}
@@ -5110,7 +5110,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbT}{O{}}{\textbf{T}}
 \ProvideDocumentCommand{\BfT}{O{}}{\relax\ifmmode\mathbf{T}\else\text{\(\mathbf{T}\)}\fi}
 \ProvideDocumentCommand{\rmT}{O{}}{\relax\ifmmode\mathrm{T}\else\text{\(\mathrm{T}\)}\fi}
-\ProvideDocumentCommand{\BbT}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{T}\else\text{\(\mathbb{T}\)}}{\relax\ifmmode\mathbb{T}^{#1}\else\text{\(\mathbb{T}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbT}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{T}\else\text{\(\mathbb{T}\)}\fi}{\relax\ifmmode\mathbb{T}^{#1}\else\text{\(\mathbb{T}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txTA}{O{}}{\text{TA}}
 \ProvideDocumentCommand{\tbTA}{O{}}{\textbf{TA}}
 \ProvideDocumentCommand{\BfTA}{O{}}{\relax\ifmmode\mathbf{TA}\else\text{\(\mathbf{TA}\)}\fi}
@@ -5323,7 +5323,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbU}{O{}}{\textbf{U}}
 \ProvideDocumentCommand{\BfU}{O{}}{\relax\ifmmode\mathbf{U}\else\text{\(\mathbf{U}\)}\fi}
 \ProvideDocumentCommand{\rmU}{O{}}{\relax\ifmmode\mathrm{U}\else\text{\(\mathrm{U}\)}\fi}
-\ProvideDocumentCommand{\BbU}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{U}\else\text{\(\mathbb{U}\)}}{\relax\ifmmode\mathbb{U}^{#1}\else\text{\(\mathbb{U}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbU}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{U}\else\text{\(\mathbb{U}\)}\fi}{\relax\ifmmode\mathbb{U}^{#1}\else\text{\(\mathbb{U}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txUA}{O{}}{\text{UA}}
 \ProvideDocumentCommand{\tbUA}{O{}}{\textbf{UA}}
 \ProvideDocumentCommand{\BfUA}{O{}}{\relax\ifmmode\mathbf{UA}\else\text{\(\mathbf{UA}\)}\fi}
@@ -5536,7 +5536,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbV}{O{}}{\textbf{V}}
 \ProvideDocumentCommand{\BfV}{O{}}{\relax\ifmmode\mathbf{V}\else\text{\(\mathbf{V}\)}\fi}
 \ProvideDocumentCommand{\rmV}{O{}}{\relax\ifmmode\mathrm{V}\else\text{\(\mathrm{V}\)}\fi}
-\ProvideDocumentCommand{\BbV}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{V}\else\text{\(\mathbb{V}\)}}{\relax\ifmmode\mathbb{V}^{#1}\else\text{\(\mathbb{V}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbV}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{V}\else\text{\(\mathbb{V}\)}\fi}{\relax\ifmmode\mathbb{V}^{#1}\else\text{\(\mathbb{V}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txVA}{O{}}{\text{VA}}
 \ProvideDocumentCommand{\tbVA}{O{}}{\textbf{VA}}
 \ProvideDocumentCommand{\BfVA}{O{}}{\relax\ifmmode\mathbf{VA}\else\text{\(\mathbf{VA}\)}\fi}
@@ -5749,7 +5749,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbW}{O{}}{\textbf{W}}
 \ProvideDocumentCommand{\BfW}{O{}}{\relax\ifmmode\mathbf{W}\else\text{\(\mathbf{W}\)}\fi}
 \ProvideDocumentCommand{\rmW}{O{}}{\relax\ifmmode\mathrm{W}\else\text{\(\mathrm{W}\)}\fi}
-\ProvideDocumentCommand{\BbW}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{W}\else\text{\(\mathbb{W}\)}}{\relax\ifmmode\mathbb{W}^{#1}\else\text{\(\mathbb{W}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbW}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{W}\else\text{\(\mathbb{W}\)}\fi}{\relax\ifmmode\mathbb{W}^{#1}\else\text{\(\mathbb{W}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txWA}{O{}}{\text{WA}}
 \ProvideDocumentCommand{\tbWA}{O{}}{\textbf{WA}}
 \ProvideDocumentCommand{\BfWA}{O{}}{\relax\ifmmode\mathbf{WA}\else\text{\(\mathbf{WA}\)}\fi}
@@ -5962,7 +5962,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbX}{O{}}{\textbf{X}}
 \ProvideDocumentCommand{\BfX}{O{}}{\relax\ifmmode\mathbf{X}\else\text{\(\mathbf{X}\)}\fi}
 \ProvideDocumentCommand{\rmX}{O{}}{\relax\ifmmode\mathrm{X}\else\text{\(\mathrm{X}\)}\fi}
-\ProvideDocumentCommand{\BbX}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{X}\else\text{\(\mathbb{X}\)}}{\relax\ifmmode\mathbb{X}^{#1}\else\text{\(\mathbb{X}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbX}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{X}\else\text{\(\mathbb{X}\)}\fi}{\relax\ifmmode\mathbb{X}^{#1}\else\text{\(\mathbb{X}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txXA}{O{}}{\text{XA}}
 \ProvideDocumentCommand{\tbXA}{O{}}{\textbf{XA}}
 \ProvideDocumentCommand{\BfXA}{O{}}{\relax\ifmmode\mathbf{XA}\else\text{\(\mathbf{XA}\)}\fi}
@@ -6175,7 +6175,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbY}{O{}}{\textbf{Y}}
 \ProvideDocumentCommand{\BfY}{O{}}{\relax\ifmmode\mathbf{Y}\else\text{\(\mathbf{Y}\)}\fi}
 \ProvideDocumentCommand{\rmY}{O{}}{\relax\ifmmode\mathrm{Y}\else\text{\(\mathrm{Y}\)}\fi}
-\ProvideDocumentCommand{\BbY}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{Y}\else\text{\(\mathbb{Y}\)}}{\relax\ifmmode\mathbb{Y}^{#1}\else\text{\(\mathbb{Y}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbY}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{Y}\else\text{\(\mathbb{Y}\)}\fi}{\relax\ifmmode\mathbb{Y}^{#1}\else\text{\(\mathbb{Y}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txYA}{O{}}{\text{YA}}
 \ProvideDocumentCommand{\tbYA}{O{}}{\textbf{YA}}
 \ProvideDocumentCommand{\BfYA}{O{}}{\relax\ifmmode\mathbf{YA}\else\text{\(\mathbf{YA}\)}\fi}
@@ -6388,7 +6388,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbZ}{O{}}{\textbf{Z}}
 \ProvideDocumentCommand{\BfZ}{O{}}{\relax\ifmmode\mathbf{Z}\else\text{\(\mathbf{Z}\)}\fi}
 \ProvideDocumentCommand{\rmZ}{O{}}{\relax\ifmmode\mathrm{Z}\else\text{\(\mathrm{Z}\)}\fi}
-\ProvideDocumentCommand{\BbZ}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{Z}\else\text{\(\mathbb{Z}\)}}{\relax\ifmmode\mathbb{Z}^{#1}\else\text{\(\mathbb{Z}^{#1}\)}\fi}
+\ProvideDocumentCommand{\BbZ}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{Z}\else\text{\(\mathbb{Z}\)}\fi}{\relax\ifmmode\mathbb{Z}^{#1}\else\text{\(\mathbb{Z}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txZA}{O{}}{\text{ZA}}
 \ProvideDocumentCommand{\tbZA}{O{}}{\textbf{ZA}}
 \ProvideDocumentCommand{\BfZA}{O{}}{\relax\ifmmode\mathbf{ZA}\else\text{\(\mathbf{ZA}\)}\fi}
@@ -6601,7 +6601,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tba}{O{}}{\textbf{a}}
 \ProvideDocumentCommand{\Bfa}{O{}}{\relax\ifmmode\mathbf{a}\else\text{\(\mathbf{a}\)}\fi}
 \ProvideDocumentCommand{\rma}{O{}}{\relax\ifmmode\mathrm{a}\else\text{\(\mathrm{a}\)}\fi}
-\ProvideDocumentCommand{\Bba}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{a}\else\text{\(\mathbb{a}\)}}{\relax\ifmmode\mathbb{a}^{#1}\else\text{\(\mathbb{a}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bba}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{a}\else\text{\(\mathbb{a}\)}\fi}{\relax\ifmmode\mathbb{a}^{#1}\else\text{\(\mathbb{a}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txaA}{O{}}{\text{aA}}
 \ProvideDocumentCommand{\tbaA}{O{}}{\textbf{aA}}
 \ProvideDocumentCommand{\BfaA}{O{}}{\relax\ifmmode\mathbf{aA}\else\text{\(\mathbf{aA}\)}\fi}
@@ -6814,7 +6814,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbb}{O{}}{\textbf{b}}
 \ProvideDocumentCommand{\Bfb}{O{}}{\relax\ifmmode\mathbf{b}\else\text{\(\mathbf{b}\)}\fi}
 \ProvideDocumentCommand{\rmb}{O{}}{\relax\ifmmode\mathrm{b}\else\text{\(\mathrm{b}\)}\fi}
-\ProvideDocumentCommand{\Bbb}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{b}\else\text{\(\mathbb{b}\)}}{\relax\ifmmode\mathbb{b}^{#1}\else\text{\(\mathbb{b}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbb}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{b}\else\text{\(\mathbb{b}\)}\fi}{\relax\ifmmode\mathbb{b}^{#1}\else\text{\(\mathbb{b}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txbA}{O{}}{\text{bA}}
 \ProvideDocumentCommand{\tbbA}{O{}}{\textbf{bA}}
 \ProvideDocumentCommand{\BfbA}{O{}}{\relax\ifmmode\mathbf{bA}\else\text{\(\mathbf{bA}\)}\fi}
@@ -7027,7 +7027,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbc}{O{}}{\textbf{c}}
 \ProvideDocumentCommand{\Bfc}{O{}}{\relax\ifmmode\mathbf{c}\else\text{\(\mathbf{c}\)}\fi}
 \ProvideDocumentCommand{\rmc}{O{}}{\relax\ifmmode\mathrm{c}\else\text{\(\mathrm{c}\)}\fi}
-\ProvideDocumentCommand{\Bbc}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{c}\else\text{\(\mathbb{c}\)}}{\relax\ifmmode\mathbb{c}^{#1}\else\text{\(\mathbb{c}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbc}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{c}\else\text{\(\mathbb{c}\)}\fi}{\relax\ifmmode\mathbb{c}^{#1}\else\text{\(\mathbb{c}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txcA}{O{}}{\text{cA}}
 \ProvideDocumentCommand{\tbcA}{O{}}{\textbf{cA}}
 \ProvideDocumentCommand{\BfcA}{O{}}{\relax\ifmmode\mathbf{cA}\else\text{\(\mathbf{cA}\)}\fi}
@@ -7240,7 +7240,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbd}{O{}}{\textbf{d}}
 \ProvideDocumentCommand{\Bfd}{O{}}{\relax\ifmmode\mathbf{d}\else\text{\(\mathbf{d}\)}\fi}
 \ProvideDocumentCommand{\rmd}{O{}}{\relax\ifmmode\mathrm{d}\else\text{\(\mathrm{d}\)}\fi}
-\ProvideDocumentCommand{\Bbd}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{d}\else\text{\(\mathbb{d}\)}}{\relax\ifmmode\mathbb{d}^{#1}\else\text{\(\mathbb{d}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbd}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{d}\else\text{\(\mathbb{d}\)}\fi}{\relax\ifmmode\mathbb{d}^{#1}\else\text{\(\mathbb{d}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txdA}{O{}}{\text{dA}}
 \ProvideDocumentCommand{\tbdA}{O{}}{\textbf{dA}}
 \ProvideDocumentCommand{\BfdA}{O{}}{\relax\ifmmode\mathbf{dA}\else\text{\(\mathbf{dA}\)}\fi}
@@ -7453,7 +7453,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbe}{O{}}{\textbf{e}}
 \ProvideDocumentCommand{\Bfe}{O{}}{\relax\ifmmode\mathbf{e}\else\text{\(\mathbf{e}\)}\fi}
 \ProvideDocumentCommand{\rme}{O{}}{\relax\ifmmode\mathrm{e}\else\text{\(\mathrm{e}\)}\fi}
-\ProvideDocumentCommand{\Bbe}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{e}\else\text{\(\mathbb{e}\)}}{\relax\ifmmode\mathbb{e}^{#1}\else\text{\(\mathbb{e}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbe}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{e}\else\text{\(\mathbb{e}\)}\fi}{\relax\ifmmode\mathbb{e}^{#1}\else\text{\(\mathbb{e}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txeA}{O{}}{\text{eA}}
 \ProvideDocumentCommand{\tbeA}{O{}}{\textbf{eA}}
 \ProvideDocumentCommand{\BfeA}{O{}}{\relax\ifmmode\mathbf{eA}\else\text{\(\mathbf{eA}\)}\fi}
@@ -7666,7 +7666,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbf}{O{}}{\textbf{f}}
 \ProvideDocumentCommand{\Bff}{O{}}{\relax\ifmmode\mathbf{f}\else\text{\(\mathbf{f}\)}\fi}
 \ProvideDocumentCommand{\rmf}{O{}}{\relax\ifmmode\mathrm{f}\else\text{\(\mathrm{f}\)}\fi}
-\ProvideDocumentCommand{\Bbf}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{f}\else\text{\(\mathbb{f}\)}}{\relax\ifmmode\mathbb{f}^{#1}\else\text{\(\mathbb{f}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbf}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{f}\else\text{\(\mathbb{f}\)}\fi}{\relax\ifmmode\mathbb{f}^{#1}\else\text{\(\mathbb{f}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txfA}{O{}}{\text{fA}}
 \ProvideDocumentCommand{\tbfA}{O{}}{\textbf{fA}}
 \ProvideDocumentCommand{\BffA}{O{}}{\relax\ifmmode\mathbf{fA}\else\text{\(\mathbf{fA}\)}\fi}
@@ -7879,7 +7879,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbg}{O{}}{\textbf{g}}
 \ProvideDocumentCommand{\Bfg}{O{}}{\relax\ifmmode\mathbf{g}\else\text{\(\mathbf{g}\)}\fi}
 \ProvideDocumentCommand{\rmg}{O{}}{\relax\ifmmode\mathrm{g}\else\text{\(\mathrm{g}\)}\fi}
-\ProvideDocumentCommand{\Bbg}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{g}\else\text{\(\mathbb{g}\)}}{\relax\ifmmode\mathbb{g}^{#1}\else\text{\(\mathbb{g}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbg}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{g}\else\text{\(\mathbb{g}\)}\fi}{\relax\ifmmode\mathbb{g}^{#1}\else\text{\(\mathbb{g}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txgA}{O{}}{\text{gA}}
 \ProvideDocumentCommand{\tbgA}{O{}}{\textbf{gA}}
 \ProvideDocumentCommand{\BfgA}{O{}}{\relax\ifmmode\mathbf{gA}\else\text{\(\mathbf{gA}\)}\fi}
@@ -8092,7 +8092,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbh}{O{}}{\textbf{h}}
 \ProvideDocumentCommand{\Bfh}{O{}}{\relax\ifmmode\mathbf{h}\else\text{\(\mathbf{h}\)}\fi}
 \ProvideDocumentCommand{\rmh}{O{}}{\relax\ifmmode\mathrm{h}\else\text{\(\mathrm{h}\)}\fi}
-\ProvideDocumentCommand{\Bbh}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{h}\else\text{\(\mathbb{h}\)}}{\relax\ifmmode\mathbb{h}^{#1}\else\text{\(\mathbb{h}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbh}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{h}\else\text{\(\mathbb{h}\)}\fi}{\relax\ifmmode\mathbb{h}^{#1}\else\text{\(\mathbb{h}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txhA}{O{}}{\text{hA}}
 \ProvideDocumentCommand{\tbhA}{O{}}{\textbf{hA}}
 \ProvideDocumentCommand{\BfhA}{O{}}{\relax\ifmmode\mathbf{hA}\else\text{\(\mathbf{hA}\)}\fi}
@@ -8305,7 +8305,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbi}{O{}}{\textbf{i}}
 \ProvideDocumentCommand{\Bfi}{O{}}{\relax\ifmmode\mathbf{i}\else\text{\(\mathbf{i}\)}\fi}
 \ProvideDocumentCommand{\rmi}{O{}}{\relax\ifmmode\mathrm{i}\else\text{\(\mathrm{i}\)}\fi}
-\ProvideDocumentCommand{\Bbi}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{i}\else\text{\(\mathbb{i}\)}}{\relax\ifmmode\mathbb{i}^{#1}\else\text{\(\mathbb{i}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbi}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{i}\else\text{\(\mathbb{i}\)}\fi}{\relax\ifmmode\mathbb{i}^{#1}\else\text{\(\mathbb{i}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txiA}{O{}}{\text{iA}}
 \ProvideDocumentCommand{\tbiA}{O{}}{\textbf{iA}}
 \ProvideDocumentCommand{\BfiA}{O{}}{\relax\ifmmode\mathbf{iA}\else\text{\(\mathbf{iA}\)}\fi}
@@ -8518,7 +8518,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbj}{O{}}{\textbf{j}}
 \ProvideDocumentCommand{\Bfj}{O{}}{\relax\ifmmode\mathbf{j}\else\text{\(\mathbf{j}\)}\fi}
 \ProvideDocumentCommand{\rmj}{O{}}{\relax\ifmmode\mathrm{j}\else\text{\(\mathrm{j}\)}\fi}
-\ProvideDocumentCommand{\Bbj}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{j}\else\text{\(\mathbb{j}\)}}{\relax\ifmmode\mathbb{j}^{#1}\else\text{\(\mathbb{j}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbj}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{j}\else\text{\(\mathbb{j}\)}\fi}{\relax\ifmmode\mathbb{j}^{#1}\else\text{\(\mathbb{j}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txjA}{O{}}{\text{jA}}
 \ProvideDocumentCommand{\tbjA}{O{}}{\textbf{jA}}
 \ProvideDocumentCommand{\BfjA}{O{}}{\relax\ifmmode\mathbf{jA}\else\text{\(\mathbf{jA}\)}\fi}
@@ -8731,7 +8731,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbk}{O{}}{\textbf{k}}
 \ProvideDocumentCommand{\Bfk}{O{}}{\relax\ifmmode\mathbf{k}\else\text{\(\mathbf{k}\)}\fi}
 \ProvideDocumentCommand{\rmk}{O{}}{\relax\ifmmode\mathrm{k}\else\text{\(\mathrm{k}\)}\fi}
-\ProvideDocumentCommand{\Bbk}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{k}\else\text{\(\mathbb{k}\)}}{\relax\ifmmode\mathbb{k}^{#1}\else\text{\(\mathbb{k}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbk}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{k}\else\text{\(\mathbb{k}\)}\fi}{\relax\ifmmode\mathbb{k}^{#1}\else\text{\(\mathbb{k}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txkA}{O{}}{\text{kA}}
 \ProvideDocumentCommand{\tbkA}{O{}}{\textbf{kA}}
 \ProvideDocumentCommand{\BfkA}{O{}}{\relax\ifmmode\mathbf{kA}\else\text{\(\mathbf{kA}\)}\fi}
@@ -8944,7 +8944,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbl}{O{}}{\textbf{l}}
 \ProvideDocumentCommand{\Bfl}{O{}}{\relax\ifmmode\mathbf{l}\else\text{\(\mathbf{l}\)}\fi}
 \ProvideDocumentCommand{\rml}{O{}}{\relax\ifmmode\mathrm{l}\else\text{\(\mathrm{l}\)}\fi}
-\ProvideDocumentCommand{\Bbl}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{l}\else\text{\(\mathbb{l}\)}}{\relax\ifmmode\mathbb{l}^{#1}\else\text{\(\mathbb{l}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbl}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{l}\else\text{\(\mathbb{l}\)}\fi}{\relax\ifmmode\mathbb{l}^{#1}\else\text{\(\mathbb{l}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txlA}{O{}}{\text{lA}}
 \ProvideDocumentCommand{\tblA}{O{}}{\textbf{lA}}
 \ProvideDocumentCommand{\BflA}{O{}}{\relax\ifmmode\mathbf{lA}\else\text{\(\mathbf{lA}\)}\fi}
@@ -9157,7 +9157,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbm}{O{}}{\textbf{m}}
 \ProvideDocumentCommand{\Bfm}{O{}}{\relax\ifmmode\mathbf{m}\else\text{\(\mathbf{m}\)}\fi}
 \ProvideDocumentCommand{\rmm}{O{}}{\relax\ifmmode\mathrm{m}\else\text{\(\mathrm{m}\)}\fi}
-\ProvideDocumentCommand{\Bbm}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{m}\else\text{\(\mathbb{m}\)}}{\relax\ifmmode\mathbb{m}^{#1}\else\text{\(\mathbb{m}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbm}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{m}\else\text{\(\mathbb{m}\)}\fi}{\relax\ifmmode\mathbb{m}^{#1}\else\text{\(\mathbb{m}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txmA}{O{}}{\text{mA}}
 \ProvideDocumentCommand{\tbmA}{O{}}{\textbf{mA}}
 \ProvideDocumentCommand{\BfmA}{O{}}{\relax\ifmmode\mathbf{mA}\else\text{\(\mathbf{mA}\)}\fi}
@@ -9370,7 +9370,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbn}{O{}}{\textbf{n}}
 \ProvideDocumentCommand{\Bfn}{O{}}{\relax\ifmmode\mathbf{n}\else\text{\(\mathbf{n}\)}\fi}
 \ProvideDocumentCommand{\rmn}{O{}}{\relax\ifmmode\mathrm{n}\else\text{\(\mathrm{n}\)}\fi}
-\ProvideDocumentCommand{\Bbn}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{n}\else\text{\(\mathbb{n}\)}}{\relax\ifmmode\mathbb{n}^{#1}\else\text{\(\mathbb{n}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbn}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{n}\else\text{\(\mathbb{n}\)}\fi}{\relax\ifmmode\mathbb{n}^{#1}\else\text{\(\mathbb{n}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txnA}{O{}}{\text{nA}}
 \ProvideDocumentCommand{\tbnA}{O{}}{\textbf{nA}}
 \ProvideDocumentCommand{\BfnA}{O{}}{\relax\ifmmode\mathbf{nA}\else\text{\(\mathbf{nA}\)}\fi}
@@ -9583,7 +9583,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbo}{O{}}{\textbf{o}}
 \ProvideDocumentCommand{\Bfo}{O{}}{\relax\ifmmode\mathbf{o}\else\text{\(\mathbf{o}\)}\fi}
 \ProvideDocumentCommand{\rmo}{O{}}{\relax\ifmmode\mathrm{o}\else\text{\(\mathrm{o}\)}\fi}
-\ProvideDocumentCommand{\Bbo}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{o}\else\text{\(\mathbb{o}\)}}{\relax\ifmmode\mathbb{o}^{#1}\else\text{\(\mathbb{o}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbo}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{o}\else\text{\(\mathbb{o}\)}\fi}{\relax\ifmmode\mathbb{o}^{#1}\else\text{\(\mathbb{o}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txoA}{O{}}{\text{oA}}
 \ProvideDocumentCommand{\tboA}{O{}}{\textbf{oA}}
 \ProvideDocumentCommand{\BfoA}{O{}}{\relax\ifmmode\mathbf{oA}\else\text{\(\mathbf{oA}\)}\fi}
@@ -9796,7 +9796,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbp}{O{}}{\textbf{p}}
 \ProvideDocumentCommand{\Bfp}{O{}}{\relax\ifmmode\mathbf{p}\else\text{\(\mathbf{p}\)}\fi}
 \ProvideDocumentCommand{\rmp}{O{}}{\relax\ifmmode\mathrm{p}\else\text{\(\mathrm{p}\)}\fi}
-\ProvideDocumentCommand{\Bbp}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{p}\else\text{\(\mathbb{p}\)}}{\relax\ifmmode\mathbb{p}^{#1}\else\text{\(\mathbb{p}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbp}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{p}\else\text{\(\mathbb{p}\)}\fi}{\relax\ifmmode\mathbb{p}^{#1}\else\text{\(\mathbb{p}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txpA}{O{}}{\text{pA}}
 \ProvideDocumentCommand{\tbpA}{O{}}{\textbf{pA}}
 \ProvideDocumentCommand{\BfpA}{O{}}{\relax\ifmmode\mathbf{pA}\else\text{\(\mathbf{pA}\)}\fi}
@@ -10009,7 +10009,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbq}{O{}}{\textbf{q}}
 \ProvideDocumentCommand{\Bfq}{O{}}{\relax\ifmmode\mathbf{q}\else\text{\(\mathbf{q}\)}\fi}
 \ProvideDocumentCommand{\rmq}{O{}}{\relax\ifmmode\mathrm{q}\else\text{\(\mathrm{q}\)}\fi}
-\ProvideDocumentCommand{\Bbq}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{q}\else\text{\(\mathbb{q}\)}}{\relax\ifmmode\mathbb{q}^{#1}\else\text{\(\mathbb{q}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbq}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{q}\else\text{\(\mathbb{q}\)}\fi}{\relax\ifmmode\mathbb{q}^{#1}\else\text{\(\mathbb{q}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txqA}{O{}}{\text{qA}}
 \ProvideDocumentCommand{\tbqA}{O{}}{\textbf{qA}}
 \ProvideDocumentCommand{\BfqA}{O{}}{\relax\ifmmode\mathbf{qA}\else\text{\(\mathbf{qA}\)}\fi}
@@ -10222,7 +10222,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbr}{O{}}{\textbf{r}}
 \ProvideDocumentCommand{\Bfr}{O{}}{\relax\ifmmode\mathbf{r}\else\text{\(\mathbf{r}\)}\fi}
 \ProvideDocumentCommand{\rmr}{O{}}{\relax\ifmmode\mathrm{r}\else\text{\(\mathrm{r}\)}\fi}
-\ProvideDocumentCommand{\Bbr}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{r}\else\text{\(\mathbb{r}\)}}{\relax\ifmmode\mathbb{r}^{#1}\else\text{\(\mathbb{r}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbr}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{r}\else\text{\(\mathbb{r}\)}\fi}{\relax\ifmmode\mathbb{r}^{#1}\else\text{\(\mathbb{r}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txrA}{O{}}{\text{rA}}
 \ProvideDocumentCommand{\tbrA}{O{}}{\textbf{rA}}
 \ProvideDocumentCommand{\BfrA}{O{}}{\relax\ifmmode\mathbf{rA}\else\text{\(\mathbf{rA}\)}\fi}
@@ -10435,7 +10435,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbs}{O{}}{\textbf{s}}
 \ProvideDocumentCommand{\Bfs}{O{}}{\relax\ifmmode\mathbf{s}\else\text{\(\mathbf{s}\)}\fi}
 \ProvideDocumentCommand{\rms}{O{}}{\relax\ifmmode\mathrm{s}\else\text{\(\mathrm{s}\)}\fi}
-\ProvideDocumentCommand{\Bbs}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{s}\else\text{\(\mathbb{s}\)}}{\relax\ifmmode\mathbb{s}^{#1}\else\text{\(\mathbb{s}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbs}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{s}\else\text{\(\mathbb{s}\)}\fi}{\relax\ifmmode\mathbb{s}^{#1}\else\text{\(\mathbb{s}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txsA}{O{}}{\text{sA}}
 \ProvideDocumentCommand{\tbsA}{O{}}{\textbf{sA}}
 \ProvideDocumentCommand{\BfsA}{O{}}{\relax\ifmmode\mathbf{sA}\else\text{\(\mathbf{sA}\)}\fi}
@@ -10648,7 +10648,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbt}{O{}}{\textbf{t}}
 \ProvideDocumentCommand{\Bft}{O{}}{\relax\ifmmode\mathbf{t}\else\text{\(\mathbf{t}\)}\fi}
 \ProvideDocumentCommand{\rmt}{O{}}{\relax\ifmmode\mathrm{t}\else\text{\(\mathrm{t}\)}\fi}
-\ProvideDocumentCommand{\Bbt}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{t}\else\text{\(\mathbb{t}\)}}{\relax\ifmmode\mathbb{t}^{#1}\else\text{\(\mathbb{t}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbt}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{t}\else\text{\(\mathbb{t}\)}\fi}{\relax\ifmmode\mathbb{t}^{#1}\else\text{\(\mathbb{t}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txtA}{O{}}{\text{tA}}
 \ProvideDocumentCommand{\tbtA}{O{}}{\textbf{tA}}
 \ProvideDocumentCommand{\BftA}{O{}}{\relax\ifmmode\mathbf{tA}\else\text{\(\mathbf{tA}\)}\fi}
@@ -10861,7 +10861,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbu}{O{}}{\textbf{u}}
 \ProvideDocumentCommand{\Bfu}{O{}}{\relax\ifmmode\mathbf{u}\else\text{\(\mathbf{u}\)}\fi}
 \ProvideDocumentCommand{\rmu}{O{}}{\relax\ifmmode\mathrm{u}\else\text{\(\mathrm{u}\)}\fi}
-\ProvideDocumentCommand{\Bbu}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{u}\else\text{\(\mathbb{u}\)}}{\relax\ifmmode\mathbb{u}^{#1}\else\text{\(\mathbb{u}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbu}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{u}\else\text{\(\mathbb{u}\)}\fi}{\relax\ifmmode\mathbb{u}^{#1}\else\text{\(\mathbb{u}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txuA}{O{}}{\text{uA}}
 \ProvideDocumentCommand{\tbuA}{O{}}{\textbf{uA}}
 \ProvideDocumentCommand{\BfuA}{O{}}{\relax\ifmmode\mathbf{uA}\else\text{\(\mathbf{uA}\)}\fi}
@@ -11074,7 +11074,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbv}{O{}}{\textbf{v}}
 \ProvideDocumentCommand{\Bfv}{O{}}{\relax\ifmmode\mathbf{v}\else\text{\(\mathbf{v}\)}\fi}
 \ProvideDocumentCommand{\rmv}{O{}}{\relax\ifmmode\mathrm{v}\else\text{\(\mathrm{v}\)}\fi}
-\ProvideDocumentCommand{\Bbv}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{v}\else\text{\(\mathbb{v}\)}}{\relax\ifmmode\mathbb{v}^{#1}\else\text{\(\mathbb{v}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbv}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{v}\else\text{\(\mathbb{v}\)}\fi}{\relax\ifmmode\mathbb{v}^{#1}\else\text{\(\mathbb{v}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txvA}{O{}}{\text{vA}}
 \ProvideDocumentCommand{\tbvA}{O{}}{\textbf{vA}}
 \ProvideDocumentCommand{\BfvA}{O{}}{\relax\ifmmode\mathbf{vA}\else\text{\(\mathbf{vA}\)}\fi}
@@ -11287,7 +11287,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbw}{O{}}{\textbf{w}}
 \ProvideDocumentCommand{\Bfw}{O{}}{\relax\ifmmode\mathbf{w}\else\text{\(\mathbf{w}\)}\fi}
 \ProvideDocumentCommand{\rmw}{O{}}{\relax\ifmmode\mathrm{w}\else\text{\(\mathrm{w}\)}\fi}
-\ProvideDocumentCommand{\Bbw}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{w}\else\text{\(\mathbb{w}\)}}{\relax\ifmmode\mathbb{w}^{#1}\else\text{\(\mathbb{w}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbw}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{w}\else\text{\(\mathbb{w}\)}\fi}{\relax\ifmmode\mathbb{w}^{#1}\else\text{\(\mathbb{w}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txwA}{O{}}{\text{wA}}
 \ProvideDocumentCommand{\tbwA}{O{}}{\textbf{wA}}
 \ProvideDocumentCommand{\BfwA}{O{}}{\relax\ifmmode\mathbf{wA}\else\text{\(\mathbf{wA}\)}\fi}
@@ -11500,7 +11500,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbx}{O{}}{\textbf{x}}
 \ProvideDocumentCommand{\Bfx}{O{}}{\relax\ifmmode\mathbf{x}\else\text{\(\mathbf{x}\)}\fi}
 \ProvideDocumentCommand{\rmx}{O{}}{\relax\ifmmode\mathrm{x}\else\text{\(\mathrm{x}\)}\fi}
-\ProvideDocumentCommand{\Bbx}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{x}\else\text{\(\mathbb{x}\)}}{\relax\ifmmode\mathbb{x}^{#1}\else\text{\(\mathbb{x}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbx}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{x}\else\text{\(\mathbb{x}\)}\fi}{\relax\ifmmode\mathbb{x}^{#1}\else\text{\(\mathbb{x}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txxA}{O{}}{\text{xA}}
 \ProvideDocumentCommand{\tbxA}{O{}}{\textbf{xA}}
 \ProvideDocumentCommand{\BfxA}{O{}}{\relax\ifmmode\mathbf{xA}\else\text{\(\mathbf{xA}\)}\fi}
@@ -11713,7 +11713,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tby}{O{}}{\textbf{y}}
 \ProvideDocumentCommand{\Bfy}{O{}}{\relax\ifmmode\mathbf{y}\else\text{\(\mathbf{y}\)}\fi}
 \ProvideDocumentCommand{\rmy}{O{}}{\relax\ifmmode\mathrm{y}\else\text{\(\mathrm{y}\)}\fi}
-\ProvideDocumentCommand{\Bby}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{y}\else\text{\(\mathbb{y}\)}}{\relax\ifmmode\mathbb{y}^{#1}\else\text{\(\mathbb{y}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bby}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{y}\else\text{\(\mathbb{y}\)}\fi}{\relax\ifmmode\mathbb{y}^{#1}\else\text{\(\mathbb{y}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txyA}{O{}}{\text{yA}}
 \ProvideDocumentCommand{\tbyA}{O{}}{\textbf{yA}}
 \ProvideDocumentCommand{\BfyA}{O{}}{\relax\ifmmode\mathbf{yA}\else\text{\(\mathbf{yA}\)}\fi}
@@ -11926,7 +11926,7 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\tbz}{O{}}{\textbf{z}}
 \ProvideDocumentCommand{\Bfz}{O{}}{\relax\ifmmode\mathbf{z}\else\text{\(\mathbf{z}\)}\fi}
 \ProvideDocumentCommand{\rmz}{O{}}{\relax\ifmmode\mathrm{z}\else\text{\(\mathrm{z}\)}\fi}
-\ProvideDocumentCommand{\Bbz}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{z}\else\text{\(\mathbb{z}\)}}{\relax\ifmmode\mathbb{z}^{#1}\else\text{\(\mathbb{z}^{#1}\)}\fi}
+\ProvideDocumentCommand{\Bbz}{O{}}{\IfBlankTF{\relax\ifmmode\mathbb{z}\else\text{\(\mathbb{z}\)}\fi}{\relax\ifmmode\mathbb{z}^{#1}\else\text{\(\mathbb{z}^{#1}\)}\fi}}
 \ProvideDocumentCommand{\txzA}{O{}}{\text{zA}}
 \ProvideDocumentCommand{\tbzA}{O{}}{\textbf{zA}}
 \ProvideDocumentCommand{\BfzA}{O{}}{\relax\ifmmode\mathbf{zA}\else\text{\(\mathbf{zA}\)}\fi}
