@@ -46,9 +46,54 @@
 \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
 \usepackage{etoolbox,xparse,xpatch,ifthen,titlesec,titling,setspace,needspace,titletoc}
 \usepackage[defaultlines=8]{nowidow}
-\usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
+\usepackage{amsmath,amssymb,amsthm,bbold,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,tipa,upgreek,wasysym,yfonts}
 \usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,nicematrix,placeins,ragged2e,subcaption}
-\usepackage{braket,chemfig,csvsimple,listings,listingsutf8,pdfpages,physics,tikz,xcolor}
+\usepackage{braket,chemfig,csvsimple,listings,listingsutf8,pdfpages,physics,xcolor}
+\DeclareDocumentCommand\derivative{ s o m g d() }
+{ % Total derivative
+	% s: star for \flatfrac flat derivative
+	% o: optional n for nth derivative
+	% m: mandatory (x in df/dx)
+	% g: optional (f in df/dx)
+	% d: long-form d/dx(...)
+	\IfBooleanTF{#1}
+	{\let\fractype\flatfrac}
+	{\let\fractype\frac}
+	\IfNoValueTF{#4}
+	{
+		\IfNoValueTF{#5}
+		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose)}
+	}
+	{\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#2}}}}
+	\IfNoValueTF{#5}{}{\argopen(#5\argclose)}
+}
+\DeclareDocumentCommand\partialderivative{ s o m g g d() }
+{ % Partial derivative
+	% s: star for \flatfrac flat derivative
+	% o: optional n for nth derivative
+	% m: mandatory (x in df/dx)
+	% g: optional (f in df/dx)
+	% g: optional (y in d^2f/dxdy)
+	% d: long-form d/dx(...)
+	\IfBooleanTF{#1}
+	{\let\fractype\flatfrac}
+	{\let\fractype\frac}
+	\IfNoValueTF{#4}
+	{
+		\IfNoValueTF{#6}
+		{\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#6\argclose)}
+	}
+	{
+		\IfNoValueTF{#5}
+		{\fractype{\partial \IfNoValueTF{#2}{}{^{#2}} #3}{\partial #4\IfNoValueTF{#2}{}{^{#2}}}}
+		{\fractype{\partial^2 #3}{\partial #4 \partial #5}}
+		\IfNoValueTF{#6}{}{\argopen(#6\argclose)}
+	}
+}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
 \usepackage[version=4]{mhchem}
 \usepackage[hidelinks,bookmarksnumbered=true,pdfstartview=FitH]{hyperref}
 \usepackage{tcolorbox}
