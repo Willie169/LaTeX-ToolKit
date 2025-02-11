@@ -49,6 +49,82 @@
 \usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
 \usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,nicematrix,placeins,ragged2e,subcaption}
 \usepackage{braket,chemfig,csvsimple,listings,listingsutf8,pdfpages,physics,xcolor}
+\usepackage{siunitx}
+\sisetup{detect-all}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}
+\usepackage[version=4]{mhchem}
+\usepackage[hidelinks,bookmarksnumbered=true,pdfstartview=FitH]{hyperref}
+\usepackage{tcolorbox}
+\tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems}
+% \usepackage{physics-patch}
+% begin physics-patch
+\IfPackageLoadedTF{siunitx}
+{
+  \DeclareDocumentCommand\siqty{o m m}{
+    \IfValueTF{#1}{\SI[#1]{#2}{#3}}{\SI{#2}{#3}}
+  }
+}{
+  \let\siqty\relax
+}
+\DeclareDocumentCommand\@patchedquantity{ t\big t\Big t\bigg t\Bigg d\{\} o d() d|| g g}
+{
+  \IfValueTF{#10}
+  {
+    \IfValueTF{#5}
+    {\siqty[#5]{#9}{#10}}
+    {\siqty{#9}{#10}}
+  }
+  {
+    \IfBooleanTF{#1}{\let\ltag\bigl \let\rtag\bigr}{
+      \IfBooleanTF{#2}{\let\ltag\Bigl \let\rtag\Bigr}{
+        \IfBooleanTF{#3}{\let\ltag\biggl \let\rtag\biggr}{
+          \IfBooleanTF{#4}{\let\ltag\Biggl \let\rtag\Biggr}{\let\ltag\left \let\rtag\right}
+        }
+      }
+    }
+    \IfNoValueTF{#5}{
+      \IfNoValueTF{#6}{
+        \IfNoValueTF{#7}{
+          \IfNoValueTF{#8}{
+            \IfNoValueTF{#9}{
+              \IfBooleanTF{#1}{\big}{
+                \IfBooleanTF{#2}{\Big}{
+                  \IfBooleanTF{#3}{\bigg}{
+                    \IfBooleanTF{#4}{\Bigg}{}
+                  }
+                }
+              }
+            }
+            {\ltag\lbrace#9\rtag\rbrace}
+          }{
+            \ltag\lvert{#8}\rtag\rvert
+            \IfNoValueTF{#9}{}{#9}
+          }
+        }{
+          \ltag(#7\rtag)
+          \IfNoValueTF{#8}{}{|#8|}
+          \IfNoValueTF{#9}{}{#9}
+        }
+      }{
+        \ltag[#6\rtag]
+        \IfNoValueTF{#7}{}{(#7)}
+        \IfNoValueTF{#8}{}{|#8|}
+        \IfNoValueTF{#9}{}{#9}
+      }
+    }{
+      \ltag\lbrace#5\rtag\rbrace
+      \IfNoValueTF{#6}{}{[#6]}
+      \IfNoValueTF{#7}{}{(#7)}
+      \IfNoValueTF{#8}{}{|#8|}
+      \IfNoValueTF{#9}{}{#9}
+    }
+  }
+}
+\DeclareDocumentCommand\patchedquantity{}{\@patchedquantity}
+\DeclareDocumentCommand\patchedqty{}{\patchedquantity}
+\DeclareDocumentCommand\ptqty{}{\patchedquantity}
+\DeclareDocumentCommand\qty{}{\patchedquantity}
 \DeclareDocumentCommand\derivative{ s o m g d() }
 { % Total derivative
 	% s: star for \flatfrac flat derivative
@@ -92,15 +168,9 @@
 		\IfNoValueTF{#6}{}{\argopen(#6\argclose)}
 	}
 }
-\usepackage{tikz}
-\usepackage[siunitx]{circuitikz}
-\usepackage[version=4]{mhchem}
-\usepackage[hidelinks,bookmarksnumbered=true,pdfstartview=FitH]{hyperref}
-\usepackage{tcolorbox}
-\tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems,xparse}
+% end physics-patch
 \usepackage{unicode-math}
-\setmathfont{XITS Math}
-\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}
+\SetMathFont
 \ifnum\value{Fonts}=1
 \setmainfont{TeX Gyre Heros}[Ligatures=TeX]
 \setsansfont{TeX Gyre Termes}[Ligatures=TeX]

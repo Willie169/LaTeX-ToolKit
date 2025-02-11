@@ -5,6 +5,8 @@
 \setcounter{secnumdepth}{6}
 \setcounter{tocdepth}{3}
 % Change above to what you want.
+\newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}
+% Change the command definition above to change math font.
 \newcounter{CJK}
 \setcounter{CJK}{1}
 % Set CJK counter to 1 to use CJK language; 0 to not.
@@ -30,6 +32,7 @@
 \setcounter{ZhRenew}{0}
 % Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define \temtoday to be \today. If CJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
 \input{/usr/share/latex-toolkit/template.tex}
+% You can set fonts and CJK fonts here if corresponding counters are set to 0.
 \begin{document}
 % --- Example --- %
 % \title{Title}

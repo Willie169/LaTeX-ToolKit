@@ -1,16 +1,28 @@
 <!-- This is README.md of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later. -->
+
 # LaTeX-ToolKit
 
-## Introduction
+This repository contains a comprehensive and customizable LaTeX [template](#template) and other [utilities](#utilities).
 
-This repository contains
-- [`template.tex`](template.tex) and [`document.tex`](document.tex): a comprehensive and customizable LaTeX template designed for LuaTeX and XeTeX with support of TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages, TeX Gyre, Noto CJK, and XITS Math fonts, a broad range of packages, and a lot of useful commands and shorthands.
-- [LaTeX Best Practices.md](LaTeX%20Best%20Practices.md): some best practices of LaTeX.
-- Other [utilities](#utilities).
+## Template
 
-## Fonts
+To use the template, please:
 
-Fonts can be installed with the Shell script below (`wget` required):
+1. Download [`template.tex`](template.tex).
+2. Copy [`document.tex`](document.tex) to your document and configure counters in it.
+3. Replace the `/usr/share/latex-toolkit/template.tex` in `\input{/usr/share/latex-toolkit/template.tex}` line with the actual path you downloaded the [`template.tex`](template.tex).
+4. Customize the template (advanced users only).
+
+Features of the template:
+
+* Designed for LuaTeX and XeTeX, former with `luaotfload` and `luatexja-fontspec` if CJK is set, latter with `xeCJK` if CJK is set.
+* Support for TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages.
+* Support for TeX Gyre, Noto CJK, and XITS Math fonts.
+* Utilizes a broad range of packages such as `etoolbox`, `xparse`, `titlesec`, `titling`, `setspace`, `needspace`, `titletoc`, `amsmath`, `float`, `chemfig`, `listings`, `physics`, `siunitx`, `tikz`, `circuitikz`, `mhchem`, `hyperref`, `tcolorbox`, `unicode-math`, and `markdown`.
+* Defines a lot of useful commands and shorthands.
+* Patches for [`physics`](https://ctan.org/pkg/physics) package.
+
+You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`. To use the default fonts settings in the template, you'll need TeX Gyre, Noto CJK, and XITS Math fonts, which can installed with the Shell script below (`wget` required):
 
 ```
 sudo mkdir /usr/share/fonts/opentype/xits
@@ -106,14 +118,9 @@ sudo wget https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Mono/No
 sudo fc-cache -fv
 ```
 
-## Template
-
-- Configure counters in [`document.tex`](document.tex).
-- Replace the `/usr/share/latex-toolkit/template.tex` in `\input{/usr/share/latex-toolkit/template.tex}` line in [`document.tex`](document.tex) with the actual path you downloaded the [`template.tex`](template.tex).
-- Customize [`template.tex`](template.tex), advanced users only.
-
 ## Utilities
 
+- [LaTeX Best Practices.md](LaTeX%20Best%20Practices.md): some best practices of LaTeX.
 - [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
 - [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
 - [`alphabet.c`](alphabet.c): generates the LaTeX code for `\text` and `\mathrm` alphabet letters shorthands.
