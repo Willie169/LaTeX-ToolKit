@@ -67,13 +67,14 @@
 }{
   \let\siqty\relax
 }
-\DeclareDocumentCommand\@patchedquantity{ t\big t\Big t\bigg t\Bigg d\{\} o d() d|| g g}
+\makeatletter
+\DeclareDocumentCommand{\@patchedquantity}{ t\big t\Big t\bigg t\Bigg o d() d|| g g }
 {
-  \IfValueTF{#10}
+  \IfValueTF{#9}
   {
     \IfValueTF{#5}
-    {\siqty[#5]{#9}{#10}}
-    {\siqty{#9}{#10}}
+    {\siqty[#5]{#8}{#9}}
+    {\siqty{#8}{#9}}
   }
   {
     \IfBooleanTF{#1}{\let\ltag\bigl \let\rtag\bigr}{
@@ -87,41 +88,34 @@
       \IfNoValueTF{#6}{
         \IfNoValueTF{#7}{
           \IfNoValueTF{#8}{
-            \IfNoValueTF{#9}{
-              \IfBooleanTF{#1}{\big}{
-                \IfBooleanTF{#2}{\Big}{
-                  \IfBooleanTF{#3}{\bigg}{
-                    \IfBooleanTF{#4}{\Bigg}{}
-                  }
+            \IfBooleanTF{#1}{\big}{
+              \IfBooleanTF{#2}{\Big}{
+                \IfBooleanTF{#3}{\bigg}{
+                  \IfBooleanTF{#4}{\Bigg}{}
                 }
               }
             }
-            {\ltag\lbrace#9\rtag\rbrace}
-          }{
-            \ltag\lvert{#8}\rtag\rvert
-            \IfNoValueTF{#9}{}{#9}
           }
+          {\ltag\lbrace#8\rtag\rbrace}
         }{
-          \ltag(#7\rtag)
-          \IfNoValueTF{#8}{}{|#8|}
-          \IfNoValueTF{#9}{}{#9}
+          \ltag\lvert{#7}\rtag\rvert
+          \IfNoValueTF{#8}{}{#8}
         }
       }{
-        \ltag[#6\rtag]
-        \IfNoValueTF{#7}{}{(#7)}
-        \IfNoValueTF{#8}{}{|#8|}
-        \IfNoValueTF{#9}{}{#9}
+          \ltag(#6\rtag)
+          \IfNoValueTF{#7}{}{|#7|}
+          \IfNoValueTF{#8}{}{#8}
       }
     }{
-      \ltag\lbrace#5\rtag\rbrace
-      \IfNoValueTF{#6}{}{[#6]}
-      \IfNoValueTF{#7}{}{(#7)}
-      \IfNoValueTF{#8}{}{|#8|}
-      \IfNoValueTF{#9}{}{#9}
+      \ltag[#5\rtag]
+      \IfNoValueTF{#6}{}{(#6)}
+      \IfNoValueTF{#7}{}{|#7|}
+      \IfNoValueTF{#8}{}{#8}
     }
   }
 }
 \DeclareDocumentCommand\patchedquantity{}{\@patchedquantity}
+\makeatother
 \DeclareDocumentCommand\patchedqty{}{\patchedquantity}
 \DeclareDocumentCommand\ptqty{}{\patchedquantity}
 \DeclareDocumentCommand\qty{}{\patchedquantity}
