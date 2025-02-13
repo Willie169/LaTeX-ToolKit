@@ -20,7 +20,7 @@ Features of the template:
 * Default fonts settings with TeX Gyre, Noto CJK, and XITS Math.
 * Utilizes a broad range of packages such as `etoolbox`, `xparse`, `titlesec`, `titling`, `setspace`, `needspace`, `titletoc`, `amsmath`, `float`, `chemfig`, `listings`, `physics`, `siunitx`, `tikz`, `circuitikz`, `mhchem`, `hyperref`, `tcolorbox`, `unicode-math`, and `markdown`.
 * Defines a lot of useful commands and shorthands.
-* Patches for [`physics`](https://ctan.org/pkg/physics) package. See my [physics-patch](https://github.com/Willie169/physics-patch) repository for more information.
+* Use code from my [physics-patch](https://github.com/Willie169/physics-patch) package for patches for [`physics`](https://ctan.org/pkg/physics) package.
 
 You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`. To use the default fonts settings in the template, you'll need TeX Gyre, Noto CJK, and XITS Math fonts, which can installed with the Shell script below (`wget` required):
 
