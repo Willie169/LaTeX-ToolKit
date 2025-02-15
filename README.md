@@ -1,8 +1,6 @@
-<!-- This is README.md of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later. -->
-
 # LaTeX-ToolKit
 
-This repository contains a comprehensive and customizable LaTeX [template](#template) and other [utilities](#utilities).
+This repository contains a comprehensive and customizable LaTeX [template](#template), [LaTeX Tips.md](LaTeX%Tips.md), and other [utilities](#utilities).
 
 ## Template
 
@@ -18,9 +16,9 @@ Features of the template:
 * Designed for LuaTeX and XeTeX, former with `luaotfload` and `luatexja-fontspec` if CJK is set, latter with `xeCJK` if CJK is set.
 * Support for TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages.
 * Default fonts settings with TeX Gyre, Noto CJK, and XITS Math.
-* Utilizes a broad range of packages such as `etoolbox`, `xparse`, `titlesec`, `titling`, `setspace`, `needspace`, `titletoc`, `amsmath`, `float`, `chemfig`, `listings`, `physics`, `siunitx`, `tikz`, `circuitikz`, `mhchem`, `hyperref`, `tcolorbox`, `unicode-math`, and `markdown`.
+* Utilizes a broad range of packages such as `etoolbox`, `xparse`, `titlesec`, `titling`, `setspace`, `needspace`, `titletoc`, `amsmath`, `float`, `chemfig`, `listings`, `siunitx`, `tikz`, `circuitikz`, `mhchem`, `hyperref`, `tcolorbox`, `unicode-math`, and `markdown`.
 * Defines a lot of useful commands and shorthands.
-* Use code from my [physics-patch](https://github.com/Willie169/physics-patch) package for patches for [`physics`](https://ctan.org/pkg/physics) package.
+* Use my [`physics-patch`](https://github.com/Willie169/physics-patch) package to replace the [`physics`](https://ctan.org/pkg/physics) package.
 
 You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`. To use the default fonts settings in the template, you'll need TeX Gyre, Noto CJK, and XITS Math fonts, which can installed with the Shell script below (`wget` required):
 
@@ -120,7 +118,6 @@ sudo fc-cache -fv
 
 ## Utilities
 
-- [LaTeX Best Practices.md](LaTeX%20Best%20Practices.md): some best practices of LaTeX.
 - [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
 - [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
 - [`alphabet.c`](alphabet.c): generates the LaTeX code for `\text` and `\mathrm` alphabet letters shorthands.

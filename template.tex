@@ -8,6 +8,18 @@
 \fi
 \usepackage{zhnumber}
 \fi
+\usepackage{etoolbox,ifthen,xparse,xpatch,xstring}
+\usepackage{needspace,parskip,setspace,titlesec,titling,titletoc}
+\usepackage[defaultlines=8]{nowidow}
+\usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
+\usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
+\usepackage{braket,chemfig,csvsimple,derivative,listings,listingsutf8,pdfpages,verbatim}
+\sisetup{detect-all}
+\usepackage{tikz}
+\usepackags{physics,physics-patch}
+\usepackage{siunitx}
+\usepackage[siunitx]{circuitikz}
+\usepackage[version=4]{mhchem}
 \ifnum\value{markdown}=1
 \usepackage{markdown}
 \markdownSetup{autoIdentifiers=true,blankBeforeBlockquote=true,blankBeforeCodeFence=true,blankBeforeDivFence=true,blankBeforeHeading=true,blankBeforeList=true, bracketedSpans=true,citations=true,definitionLists=true,fancyLists=true,fencedCodeAttributes=true,fencedDivs=true,gfmAutoIdentifiers=true,hashEnumerators=true,headerAttributes=true,inlineCodeAttributes=true,inlineNotes=true,jekyllData=true,linkAttributes=true,lineBlocks=true,mark=true,notes=true,pipeTables=true,preserveTabs=false,rawAttribute=true,smartEllipses=true,strikeThrough=true,stripIndent=true,subscripts=true,superscripts=true,tableAttributes=true,tableCaptions=true,taskLists=true,texMathDollars=true,texMathSingleBackslash=true}
@@ -44,162 +56,9 @@
 \else\ifnum\value{markdown}=12
 \usepackage{markdown}
 \fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi\fi
-\usepackage{etoolbox,xparse,xpatch,ifthen,titlesec,titling,setspace,needspace,titletoc}
-\usepackage[defaultlines=8]{nowidow}
-\usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
-\usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,nicematrix,placeins,ragged2e,subcaption}
-\usepackage{braket,chemfig,csvsimple,listings,listingsutf8,pdfpages,physics,xcolor}
-\usepackage{siunitx}
-\sisetup{detect-all}
-\usepackage{tikz}
-\usepackage[siunitx]{circuitikz}
-\usepackage[version=4]{mhchem}
 \usepackage[hidelinks,bookmarksnumbered=true,pdfstartview=FitH]{hyperref}
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems}
-% \usepackage{physics-patch}
-% begin physics-patch
-\DeclareDocumentCommand{\patchedphysicsquantity}{ t\big t\Big t\bigg t\Bigg o d() d|| g }
-{ % Flexible automatic bracketing of an expression in () or [] or {} or ||
-  % Handles manual override of sizing
-  \IfBooleanTF{#1}{\let\ltag\bigl \let\rtag\bigr}{
-    \IfBooleanTF{#2}{\let\ltag\Bigl \let\rtag\Bigr}{
-      \IfBooleanTF{#3}{\let\ltag\biggl \let\rtag\biggr}{
-        \IfBooleanTF{#4}{\let\ltag\Biggl \let\rtag\Biggr}{\let\ltag\left \let\rtag\right}
-      }
-    }
-  }
-  % Handles actual bracketing
-  \IfNoValueTF{#5}{
-    \IfNoValueTF{#6}{
-      \IfNoValueTF{#7}{
-        \IfNoValueTF{#8}{
-          \IfBooleanTF{#1}{\big}{
-            \IfBooleanTF{#2}{\Big}{
-              \IfBooleanTF{#3}{\bigg}{
-                \IfBooleanTF{#4}{\Bigg}{}
-              }
-            }
-          }
-        }
-        {\ltag\lbrace#8\rtag\rbrace}
-      }{
-        \ltag\lvert{#7}\rtag\rvert
-        \IfNoValueTF{#8}{}{#8}
-      }
-    }{
-        \ltag(#6\rtag)
-        \IfNoValueTF{#7}{}{|#7|}
-        \IfNoValueTF{#8}{}{#8}
-    }
-  }{
-    \ltag[#5\rtag]
-    \IfNoValueTF{#6}{}{(#6)}
-    \IfNoValueTF{#7}{}{|#7|}
-    \IfNoValueTF{#8}{}{#8}
-  }
-}
-\let\ppqty\patchedphysicsquantity
-\DeclareDocumentCommand\siqty{o m m}{
-  \IfValueTF{#1}{\SI[#1]{#2}{#3}}{\SI{#2}{#3}}
-}
-\DeclareDocumentCommand{\integratedquantity}{ t\big t\Big t\bigg t\Bigg o d() d|| g g }
-{ % integrate \qty from physics and \qty from siunitx
-  \IfValueTF{#9}
-  { % \qty from siunitx
-    \IfValueTF{#5}
-    {\siqty[#5]{#8}{#9}}
-    {\siqty{#8}{#9}}
-  }{ % \qty from physics
-    % Handles manual override of sizing
-    \IfBooleanTF{#1}{\let\ltag\bigl \let\rtag\bigr}{
-      \IfBooleanTF{#2}{\let\ltag\Bigl \let\rtag\Bigr}{
-        \IfBooleanTF{#3}{\let\ltag\biggl \let\rtag\biggr}{
-          \IfBooleanTF{#4}{\let\ltag\Biggl \let\rtag\Biggr}{\let\ltag\left \let\rtag\right}
-        }
-      }
-    }
-    % Handles actual bracketing
-    \IfNoValueTF{#5}{
-      \IfNoValueTF{#6}{
-        \IfNoValueTF{#7}{
-          \IfNoValueTF{#8}{
-            \IfBooleanTF{#1}{\big}{
-              \IfBooleanTF{#2}{\Big}{
-                \IfBooleanTF{#3}{\bigg}{
-                  \IfBooleanTF{#4}{\Bigg}{}
-                }
-              }
-            }
-          }
-          {\ltag\lbrace#8\rtag\rbrace}
-        }{
-          \ltag\lvert{#7}\rtag\rvert
-          \IfNoValueTF{#8}{}{#8}
-        }
-      }{
-          \ltag(#6\rtag)
-          \IfNoValueTF{#7}{}{|#7|}
-          \IfNoValueTF{#8}{}{#8}
-      }
-    }{
-      \ltag[#5\rtag]
-      \IfNoValueTF{#6}{}{(#6)}
-      \IfNoValueTF{#7}{}{|#7|}
-      \IfNoValueTF{#8}{}{#8}
-    }
-  }
-}
-\let\patchedquantity\integratedquantity
-\let\iqty\integratedquantity
-\let\ptqty\patchedquantity
-\ifoverride\let\qty\patchedquantity\fi
-\DeclareDocumentCommand\derivative{ s o m g d() }
-{ % Total derivative
-  % s: star for \flatfrac flat derivative
-  % o: optional n for nth derivative
-  % m: mandatory (x in df/dx)
-  % g: optional (f in df/dx)
-  % d: long-form d/dx(...)
-  \IfBooleanTF{#1}
-  {\let\fractype\flatfrac}
-  {\let\fractype\frac}
-  \IfNoValueTF{#4}
-  {
-    \IfNoValueTF{#5}
-    {\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}}}
-    {\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}}}{\diffd #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#5\argclose)}
-  }
-  {\fractype{\diffd \IfNoValueTF{#2}{}{^{#2}} #3}{\diffd #4\IfNoValueTF{#2}{}{^{#2}}}}
-  \IfNoValueTF{#5}{}{\argopen(#5\argclose)}
-}
-\let\dv\derivative
-\DeclareDocumentCommand\partialderivative{ s o m g g d() }
-{ % Partial derivative
-  % s: star for \flatfrac flat derivative
-  % o: optional n for nth derivative
-  % m: mandatory (x in df/dx)
-  % g: optional (f in df/dx)
-  % g: optional (y in d^2f/dxdy)
-  % d: long-form d/dx(...)
-  \IfBooleanTF{#1}
-  {\let\fractype\flatfrac}
-  {\let\fractype\frac}
-  \IfNoValueTF{#4}
-  {
-    \IfNoValueTF{#6}
-    {\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}}}
-    {\fractype{\partial \IfNoValueTF{#2}{}{^{#2}}}{\partial #3\IfNoValueTF{#2}{}{^{#2}}} \argopen(#6\argclose)}
-  }
-  {
-    \IfNoValueTF{#5}
-    {\fractype{\partial \IfNoValueTF{#2}{}{^{#2}} #3}{\partial #4\IfNoValueTF{#2}{}{^{#2}}}}
-    {\fractype{\partial^2 #3}{\partial #4 \partial #5}}
-    \IfNoValueTF{#6}{}{\argopen(#6\argclose)}
-  }
-}
-\let\pdv\partialderivative
-% end physics-patch
 \usepackage{unicode-math}
 \SetMathFont
 \ifnum\value{Fonts}=1
@@ -780,6 +639,7 @@ breakatwhitespace=false
 \let\f\frac
 \let\fr\frac
 \let\hf\hfill
+\let\hl\hline
 \let\hs\hspace
 \let\icg\includegraphics
 \let\icp\includepdf
