@@ -597,6 +597,8 @@ breakatwhitespace=false
 \newtheorem{lemma}{Lemma}
 \newcolumntype{M}{>{$\displaystyle}c<{$}}
 \newcolumntype{L}{>{$\displaystyle}l<{$}}
+\newcommand\Vtextvisiblespace[1][.3em]
+{\mbox{\kern.06em\vrule height.3ex}\vbox{\hrule width#1}\hbox{\vrule height.3ex}}
 \makeatletter
 \newcommand{\overleftrightarrowsmall}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
 \newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
