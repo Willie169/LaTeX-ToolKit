@@ -26,9 +26,9 @@
 \usepackage{braket,chemfig,csvsimple,derivative,listings,listingsutf8,pdfpages,verbatim}
 \usepackage{tikz}
 \ifcsname c@physics-patch-short\endcsname
-\ifnum\value{physics-patch-short}=0\usepackags{physics-patch}
-\else\usepackags[shortgreek]{physics-patch}\fi
-\else\usepackags[shortgreek]{physics-patch}\fi
+\ifnum\value{physics-patch-short}=0\usepackage{physics-patch}
+\else\usepackage[shortgreek]{physics-patch}\fi
+\else\usepackage[shortgreek]{physics-patch}\fi
 \usepackage{siunitx}
 \usepackage[siunitx]{circuitikz}
 \usepackage[version=4]{mhchem}
