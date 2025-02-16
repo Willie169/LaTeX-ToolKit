@@ -597,8 +597,6 @@ breakatwhitespace=false
 \newtheorem{lemma}{Lemma}
 \newcolumntype{M}{>{$\displaystyle}c<{$}}
 \newcolumntype{L}{>{$\displaystyle}l<{$}}
-\newcommand\Vtextvisiblespace[1][.3em]
-{\mbox{\kern.06em\vrule height.3ex}\vbox{\hrule width#1}\hbox{\vrule height.3ex}}
 \makeatletter
 \newcommand{\overleftrightarrowsmall}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
 \newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
@@ -699,7 +697,7 @@ breakatwhitespace=false
 \let\sq\sqrt
 \let\tb\textbf
 \let\tc\TextCircled
-\let\tcb\tcolorbox
+\let\tcbox\tcolorbox
 \let\tfr\tfrac
 \let\th\textheight
 \let\ti\textit
@@ -717,11 +715,9 @@ breakatwhitespace=false
 \let\vf\vfill
 \let\vs\vspace
 \ProvideDocumentCommand{\Arg}{}{\operatorname{Arg}}
-\ProvideDocumentCommand{\E}{m}{\relax\ifmmode 10^{#1}\else\(10^{#1}\)\fi}
 \ProvideDocumentCommand{\RNum}{m}{\uppercase\expandafter{\romannumeral #1\relax}}
 \ProvideDocumentCommand{\UV}{}{\operatorname{UV}}
 \ProvideDocumentCommand{\UnitVector}{}{\operatorname{UnitVector}}
-\ProvideDocumentCommand{\XE}{m}{\relax\ifmmode\times 10^{#1}\else\(\times 10^{#1}\)\fi}
 \ProvideDocumentCommand{\X}{}{\relax\ifmmode\times\else\(\times\)\fi}
 \ProvideDocumentCommand{\acosh}{}{\operatorname{acosh}}
 \ProvideDocumentCommand{\acos}{}{\operatorname{acos}}
