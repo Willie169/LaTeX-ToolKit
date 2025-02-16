@@ -120,7 +120,6 @@ sudo fc-cache -fv
 
 - [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
 - [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
-- [`alphabet.c`](alphabet.c): generates the LaTeX code for `\text` and `\mathrm` alphabet letters shorthands.
 - [`test.tex`](test.tex): test.
 - [`lua_test.pdf`](test.pdf): PDF compiled with `lualatex test.tex`.
 - [`xe_test.pdf`](test.pdf): PDF compiled with `xelatex test.tex`.

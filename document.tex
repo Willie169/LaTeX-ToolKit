@@ -1,8 +1,9 @@
 % This is document.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
+% It is ok to delete lines after \documentclass[a4paper,12pt]{report} and before \input{/usr/share/latex-toolkit/template.tex}. The default behaviors shown in this file will be used if so.
 \documentclass[a4paper,12pt]{report}
 % Change it to the documentclass you want, this template is now mainly designed for the report and article documentclass.
 \usepackage[margin=1.27cm,foot=0.77cm]{geometry}
-\setcounter{secnumdepth}{6}
+\setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 % Change above to what you want.
 \newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}
@@ -31,6 +32,13 @@
 \newcounter{ZhRenew}
 \setcounter{ZhRenew}{0}
 % Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define \temtoday to be \today. If CJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
+\newcounter{physics-patch-short}
+\setcounter{physics-patch-short}{0}
+% Set physics-patch-short to 0 to use both shortgreek and shortalphabet option for physics-patch language; 1 to use only shortgreek; 2 to use only shortalphabet; 3 to use neither.
+\newcommand{\PreambleMiddle}{}
+% If defined, this command will be ran before hyperref, tcolorbox, and unicode-math are loaded and after other packages are loaded.
+\newcommand{\PreambleEnd}{}
+% If defined, this command will be ran at the end of template.tex.
 \input{/usr/share/latex-toolkit/template.tex}
 % You can set fonts and CJK fonts here if corresponding counters are set to 0.
 \begin{document}
