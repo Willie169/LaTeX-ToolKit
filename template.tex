@@ -27,12 +27,9 @@
 \sisetup{detect-all}
 \usepackage{tikz}
 \ifcsname c@physics-patch-short\endcsname
-\ifnum\value{physics-patch-short}=1\usepackags[shortgreek]{physics-patch}\else
-\ifnum\value{physics-patch-short}=2\usepackags[shortalphabet]{physics-patch}\else
-\ifnum\value{physics-patch-short}=3\usepackags{physics-patch}\else
-\usepackags[shortgreek,shortalphabet]{physics-patch}
-\fi\fi\fi
-\else\usepackags[shortgreek,shortalphabet]{physics-patch}\fi
+\ifnum\value{physics-patch-short}=0\usepackags{physics-patch}
+\else\usepackags[shortgreek]{physics-patch}\fi
+\else\usepackags[shortgreek]{physics-patch}\fi
 \usepackage{siunitx}
 \usepackage[siunitx]{circuitikz}
 \usepackage[version=4]{mhchem}
