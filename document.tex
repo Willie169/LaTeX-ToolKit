@@ -32,9 +32,8 @@
 \newcounter{ZhRenew}
 \setcounter{ZhRenew}{0}
 % Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define \temtoday to be \today. If CJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
-\newcounter{physics-patch-short}
-\setcounter{physics-patch-short}{1}
-% Set physics-patch-short to 1 to use shortgreek option for physics-patch package; 0 to not.
+\newcommand{\usephysicspatch}{\usepackage[shortgreek,shortmathrm,shorttext]{physics-patch}}
+% Set options you want for physics-patch here.
 \newcommand{\PreambleMiddle}{}
 % If defined, this command will be ran before hyperref, tcolorbox, and unicode-math are loaded and after other packages are loaded.
 \newcommand{\PreambleEnd}{}
