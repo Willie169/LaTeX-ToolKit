@@ -22,7 +22,7 @@
 \usepackage{needspace,parskip,setspace,titlesec,titling,titletoc}
 \usepackage[defaultlines=8]{nowidow}
 \usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
-\usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
+\usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,mdframed,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
 \usepackage{braket,chemfig,csvsimple,derivative,listings,listingsutf8,pdfpages,verbatim}
 \usepackage{tikz}
 \ifcsname @usephysicspatch\endcsname
@@ -611,6 +611,7 @@ breakatwhitespace=false
 \newtheorem{lemma}{Lemma}
 \newcolumntype{M}{>{$\displaystyle}c<{$}}
 \newcolumntype{L}{>{$\displaystyle}l<{$}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
 \makeatletter
@@ -626,13 +627,6 @@ breakatwhitespace=false
 \let\ola\overleftarrowsmall
 \let\ol\overlinesmall
 \let\ul\underlinesmall
-\let\olras\overleftrightarrowsmall
-\let\oras\overrightarrowsmall
-\let\olas\overleftarrowsmall
-\let\ols\overlinesmall
-\let\uls\underlinesmall
-\ProvideDocumentCommand{\parallelsum}{}{\mathbin{\!/\mkern-5mu/\!}}
-\ProvideDocumentCommand{\TextCircled}{m}{\text{\raisebox{.6pt}{\textcircled{\raisebox{-.9pt}{#1}}}}}
 \makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
 \let\FB\FloatBarrier
 \let\La\Leftarrow
@@ -714,7 +708,6 @@ breakatwhitespace=false
 \let\rtb\rotatebox
 \let\sq\sqrt
 \let\tb\textbf
-\let\tc\TextCircled
 \let\tcbox\tcolorbox
 \let\tfr\tfrac
 \let\th\textheight
@@ -795,6 +788,8 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\bt}{}{\begin{table}}
 \ProvideDocumentCommand{\bvNM}{}{\begin{vNiceMatrix}}
 \ProvideDocumentCommand{\bvmt}{}{\begin{vmatrix}}
+\ProvideDocumentCommand{\bqn}{}{\begin{quotation}}
+\ProvideDocumentCommand{\bqt}{}{\begin{quote}}
 \ProvideDocumentCommand{\closure}{}{\operatorname{closure}}
 \ProvideDocumentCommand{\col}{}{\operatorname{col}}
 \ProvideDocumentCommand{\ctgn}{o m o}{\begin{center}\begin{figure}[h]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\end{center}}
@@ -828,6 +823,8 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\epNM}{}{\end{pNiceMatrix}}
 \ProvideDocumentCommand{\epmt}{}{\end{pmatrix}}
 \ProvideDocumentCommand{\eq}{}{=}
+\ProvideDocumentCommand{\eqn}{}{\end{quotation}}
+\ProvideDocumentCommand{\eqt}{}{\end{quote}}
 \ProvideDocumentCommand{\etB}{}{\end{table}\FloatBarrier}
 \ProvideDocumentCommand{\etbr}{}{\end{tabular}}
 \ProvideDocumentCommand{\etbrctn}{}{\end{tabular}\end{figure}\end{center}}
@@ -853,9 +850,11 @@ breakatwhitespace=false
 \ProvideDocumentCommand{\pl}{}{+}
 \ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
 \ProvideDocumentCommand{\rank}{}{\operatorname{rank}}
+\ProvideDocumentCommand{\SD}{}{\text{SD}}
 \ProvideDocumentCommand{\sh}{}{/}
 \ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
 \ProvideDocumentCommand{\ttimes}{}{\(\times\)}
+\ProvideDocumentCommand{\Var}{}{\text{Var}}
 \ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
