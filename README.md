@@ -7,9 +7,10 @@ This repository contains a comprehensive and customizable LaTeX [template](#temp
 To use the template, please:
 
 1. Download [`template.tex`](template.tex).
-2. Copy [`document.tex`](document.tex) to your document and configure counters in it.
-3. Replace the `/usr/share/latex-toolkit/template.tex` in `\input{/usr/share/latex-toolkit/template.tex}` line with the actual path you downloaded the [`template.tex`](template.tex).
-4. Customize the template (advanced users only).
+2. Download `physics-patch.sty` from [physics-patch](https://github.com/Willie169/physics-patch) repository and put it in place recognizable by your LaTeX engine.
+3. Copy [`document.tex`](document.tex) to your document and configure counters in it.
+4. Replace the `/usr/share/latex-toolkit/template.tex` in `\input{/usr/share/latex-toolkit/template.tex}` line with the actual path.
+5. Customize the template (advanced users only).
 
 Features of the template:
 
