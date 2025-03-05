@@ -25,11 +25,6 @@
 \usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,mdframed,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
 \usepackage{braket,chemfig,csvsimple,derivative,listings,listingsutf8,pdfpages,verbatim}
 \usepackage{tikz}
-\ifcsname @usephysicspatch\endcsname
-\usephysicspatch
-\else
-\usepackage[shortgreek,shortmathrm,shorttext]{physics-patch}
-\fi
 \usepackage{siunitx}
 \usepackage[siunitx]{circuitikz}
 \usepackage[version=4]{mhchem}
@@ -622,9 +617,16 @@ breakatwhitespace=false
 \makeatother
 \newcommand{\overlinesmall}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
 \newcommand{\underlinesmall}[1]{\mskip.5\thinmuskip\underline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\let\overleftrightarrow\overleftrightarrowsmall
+\let\overrightarrow\overrightarrowsmall
+\let\overleftarrow\overleftarrowsmall
 \let\olra\overleftrightarrowsmall
 \let\ora\overrightarrowsmall
 \let\ola\overleftarrowsmall
+\let\overlinelarge\overline
+\let\underlinelarge\underline
+\let\overline\overlinesmall
+\let\underline\underlinesmall
 \let\ol\overlinesmall
 \let\ul\underlinesmall
 \makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
@@ -725,137 +727,108 @@ breakatwhitespace=false
 \let\vds\vdots
 \let\vf\vfill
 \let\vs\vspace
-\ProvideDocumentCommand{\Arg}{}{\operatorname{Arg}}
-\ProvideDocumentCommand{\RNum}{m}{\uppercase\expandafter{\romannumeral #1\relax}}
-\ProvideDocumentCommand{\UV}{}{\operatorname{UV}}
-\ProvideDocumentCommand{\UnitVector}{}{\operatorname{UnitVector}}
-\ProvideDocumentCommand{\X}{}{\relax\ifmmode\times\else\(\times\)\fi}
-\ProvideDocumentCommand{\acosh}{}{\operatorname{acosh}}
-\ProvideDocumentCommand{\acos}{}{\operatorname{acos}}
-\ProvideDocumentCommand{\acsch}{}{\operatorname{acsch}}
-\ProvideDocumentCommand{\acsc}{}{\operatorname{acsc}}
-\ProvideDocumentCommand{\arccosh}{}{\operatorname{arccosh}}
-\ProvideDocumentCommand{\arccsch}{}{\operatorname{arccsch}}
-\ProvideDocumentCommand{\arccsc}{}{\operatorname{arccsc}}
-\ProvideDocumentCommand{\arcsech}{}{\operatorname{arcsech}}
-\ProvideDocumentCommand{\arcsec}{}{\operatorname{arcsec}}
-\ProvideDocumentCommand{\arcsinh}{}{\operatorname{arcsinh}}
-\ProvideDocumentCommand{\arctanh}{}{\operatorname{arctanh}}
-\ProvideDocumentCommand{\arctantwo}{}{\operatorname{arctan2}}
-\ProvideDocumentCommand{\asech}{}{\operatorname{asech}}
-\ProvideDocumentCommand{\asec}{}{\operatorname{asec}}
-\ProvideDocumentCommand{\asinh}{}{\operatorname{asinh}}
-\ProvideDocumentCommand{\asin}{}{\operatorname{asin}}
-\ProvideDocumentCommand{\atanh}{}{\operatorname{atanh}}
-\ProvideDocumentCommand{\atantwo}{}{\operatorname{atan2}}
-\ProvideDocumentCommand{\atan}{}{\operatorname{atan}}
-\ProvideDocumentCommand{\bBNM}{}{\begin{BNiceMatrix}}
-\ProvideDocumentCommand{\bBmt}{}{\begin{Bmatrix}}
-\ProvideDocumentCommand{\bNM}{}{\begin{NiceMatrix}}
-\ProvideDocumentCommand{\bVNM}{}{\begin{VNiceMatrix}}
-\ProvideDocumentCommand{\bVmt}{}{\begin{Vmatrix}}
-\ProvideDocumentCommand{\ba}{}{\begin{aligned}}
-\ProvideDocumentCommand{\bbNM}{}{\begin{bNiceMatrix}}
-\ProvideDocumentCommand{\bbmt}{}{\begin{bmatrix}}
-\ProvideDocumentCommand{\bcs}{}{\begin{cases}}
-\ProvideDocumentCommand{\bcttbrn}{}{\begin{center}\begin{figure}[h]\centering\begin{tabular}}
-\ProvideDocumentCommand{\bcttbr}{}{\begin{center}\begin{figure}[H]\centering\begin{tabular}}
-\ProvideDocumentCommand{\bctfn}{}{\begin{center}\begin{figure}[h]\centering}
-\ProvideDocumentCommand{\bctf}{}{\begin{center}\begin{figure}[H]\centering}
-\ProvideDocumentCommand{\bcttn}{}{\begin{center}\begin{table}[h]\centering}
-\ProvideDocumentCommand{\bctt}{}{\begin{center}\begin{table}[H]\centering}
-\ProvideDocumentCommand{\bct}{}{\begin{center}}
-\ProvideDocumentCommand{\bell}{}{\boldsymbol{\ell}}
-\ProvideDocumentCommand{\ben}{}{\begin{enumerate}}
-\ProvideDocumentCommand{\beq}{}{\begin{equation}}
-\ProvideDocumentCommand{\bfH}{}{\begin{figure}[H]}
-\ProvideDocumentCommand{\bf}{}{\begin{figure}}
-\ProvideDocumentCommand{\bg}{m}{\begin{#1}}
-\ProvideDocumentCommand{\bit}{}{\begin{itemize}}
-\ProvideDocumentCommand{\blt}{}{\begin{longtable}}
-\ProvideDocumentCommand{\bmac}{}{\[\begin{aligned}\begin{cases}}
-\ProvideDocumentCommand{\bma}{}{\[\begin{aligned}}
-\ProvideDocumentCommand{\bmc}{}{\[\begin{cases}}
-\ProvideDocumentCommand{\bmt}{}{\begin{matrix}}
-\ProvideDocumentCommand{\bm}{}{\[}
-\ProvideDocumentCommand{\bpNM}{}{\begin{pNiceMatrix}}
-\ProvideDocumentCommand{\bpmt}{}{\begin{pmatrix}}
-\ProvideDocumentCommand{\bs}{m}{\boldsymbol{#1}}
-\ProvideDocumentCommand{\bsh}{}{\relax\ifmmode\backslash\else\textbackslash\fi}
-\ProvideDocumentCommand{\btH}{}{\begin{table}[H]}
-\ProvideDocumentCommand{\btbr}{}{\begin{tabular}}
-\ProvideDocumentCommand{\btk}{}{\begin{tikzpicture}}
-\ProvideDocumentCommand{\bt}{}{\begin{table}}
-\ProvideDocumentCommand{\bvNM}{}{\begin{vNiceMatrix}}
-\ProvideDocumentCommand{\bvmt}{}{\begin{vmatrix}}
-\ProvideDocumentCommand{\bqn}{}{\begin{quotation}}
-\ProvideDocumentCommand{\bqt}{}{\begin{quote}}
-\ProvideDocumentCommand{\closure}{}{\operatorname{closure}}
-\ProvideDocumentCommand{\col}{}{\operatorname{col}}
-\ProvideDocumentCommand{\ctgn}{o m o}{\begin{center}\begin{figure}[h]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\end{center}}
-\ProvideDocumentCommand{\ctg}{o m o}{\begin{center}\begin{figure}[H]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\FloatBarrier\end{center}}
-\ProvideDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
-\ProvideDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
-\ProvideDocumentCommand{\eBNM}{}{\end{BNiceMatrix}}
-\ProvideDocumentCommand{\eBmt}{}{\end{Bmatrix}}
-\ProvideDocumentCommand{\eNM}{}{\end{NiceMatrix}}
-\ProvideDocumentCommand{\eVNM}{}{\end{VNiceMatrix}}
-\ProvideDocumentCommand{\eVmt}{}{\end{Vmatrix}}
-\ProvideDocumentCommand{\eam}{}{\end{aligned}\]}
-\ProvideDocumentCommand{\ea}{}{\end{aligned}}
-\ProvideDocumentCommand{\ebNM}{}{\end{bNiceMatrix}}
-\ProvideDocumentCommand{\ebmt}{}{\end{bmatrix}}
-\ProvideDocumentCommand{\ecam}{}{\end{cases}\end{aligned}\]}
-\ProvideDocumentCommand{\ecm}{}{\end{cases}\]}
-\ProvideDocumentCommand{\ecs}{}{\end{cases}}
-\ProvideDocumentCommand{\ect}{}{\end{center}}
-\ProvideDocumentCommand{\ed}{m}{\end{#1}}
-\ProvideDocumentCommand{\eit}{}{\end{itemize}}
-\ProvideDocumentCommand{\een}{}{\end{enumerate}}
-\ProvideDocumentCommand{\eeq}{}{\end{equation}}
-\ProvideDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
-\ProvideDocumentCommand{\efctn}{}{\end{figure}\end{center}}
-\ProvideDocumentCommand{\efct}{}{\end{figure}\FloatBarrier\end{center}}
-\ProvideDocumentCommand{\ef}{}{\end{figure}}
-\ProvideDocumentCommand{\elt}{}{\end{longtable}}
-\ProvideDocumentCommand{\emt}{}{\end{matirx}}
-\ProvideDocumentCommand{\em}{}{\]}
-\ProvideDocumentCommand{\epNM}{}{\end{pNiceMatrix}}
-\ProvideDocumentCommand{\epmt}{}{\end{pmatrix}}
-\ProvideDocumentCommand{\eq}{}{=}
-\ProvideDocumentCommand{\eqn}{}{\end{quotation}}
-\ProvideDocumentCommand{\eqt}{}{\end{quote}}
-\ProvideDocumentCommand{\etB}{}{\end{table}\FloatBarrier}
-\ProvideDocumentCommand{\etbr}{}{\end{tabular}}
-\ProvideDocumentCommand{\etbrctn}{}{\end{tabular}\end{figure}\end{center}}
-\ProvideDocumentCommand{\etbrct}{}{\end{tabular}\end{figure}\FloatBarrier\end{center}}
-\ProvideDocumentCommand{\etctn}{}{\end{table}\end{center}}
-\ProvideDocumentCommand{\etct}{}{\end{table}\FloatBarrier\end{center}}
-\ProvideDocumentCommand{\etk}{}{\end{tikzpicture}}
-\ProvideDocumentCommand{\et}{}{\end{table}}
-\ProvideDocumentCommand{\evNM}{}{\end{vNiceMatrix}}
-\ProvideDocumentCommand{\evmt}{}{\end{vmatrix}}
-\ProvideDocumentCommand{\gt}{}{>}
-\ProvideDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
-\ProvideDocumentCommand{\lt}{}{<}
-\ProvideDocumentCommand{\mdp}{O{}}{\[#1\]}
-\ProvideDocumentCommand{\mil}{O{}}{\(#1\)}
-\ProvideDocumentCommand{\mn}{}{-}
-\ProvideDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
-\ProvideDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
-\ProvideDocumentCommand{\null}{}{\operatorname{null}}
-\ProvideDocumentCommand{\n}{}{\\}
-\ProvideDocumentCommand{\pf}{m m o}{\IfNoValueTF{#3}{\frac{\partial #1}{\partial #2}}{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
-\ProvideDocumentCommand{\pht}{m}{\phantom{#1}}
-\ProvideDocumentCommand{\pl}{}{+}
-\ProvideDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
-\ProvideDocumentCommand{\rank}{}{\operatorname{rank}}
-\ProvideDocumentCommand{\SD}{}{\text{SD}}
-\ProvideDocumentCommand{\sh}{}{/}
-\ProvideDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
-\ProvideDocumentCommand{\ttimes}{}{\(\times\)}
-\ProvideDocumentCommand{\Var}{}{\text{Var}}
-\ProvideDocumentCommand{\vsf}{}{\vspace*{\fill}}
+\DeclareDocumentCommand{\X}{}{\ensuremath{\times}}
+\DeclareDocumentCommand{\bBNM}{}{\begin{BNiceMatrix}}
+\DeclareDocumentCommand{\bBmt}{}{\begin{Bmatrix}}
+\DeclareDocumentCommand{\bNM}{}{\begin{NiceMatrix}}
+\DeclareDocumentCommand{\bVNM}{}{\begin{VNiceMatrix}}
+\DeclareDocumentCommand{\bVmt}{}{\begin{Vmatrix}}
+\DeclareDocumentCommand{\ba}{}{\begin{aligned}}
+\DeclareDocumentCommand{\bbNM}{}{\begin{bNiceMatrix}}
+\DeclareDocumentCommand{\bbmt}{}{\begin{bmatrix}}
+\DeclareDocumentCommand{\bcs}{}{\begin{cases}}
+\DeclareDocumentCommand{\bcttbrn}{}{\begin{center}\begin{figure}[h]\centering\begin{tabular}}
+\DeclareDocumentCommand{\bcttbr}{}{\begin{center}\begin{figure}[H]\centering\begin{tabular}}
+\DeclareDocumentCommand{\bctfn}{}{\begin{center}\begin{figure}[h]\centering}
+\DeclareDocumentCommand{\bctf}{}{\begin{center}\begin{figure}[H]\centering}
+\DeclareDocumentCommand{\bcttn}{}{\begin{center}\begin{table}[h]\centering}
+\DeclareDocumentCommand{\bctt}{}{\begin{center}\begin{table}[H]\centering}
+\DeclareDocumentCommand{\bct}{}{\begin{center}}
+\DeclareDocumentCommand{\bell}{}{\boldsymbol{\ell}}
+\DeclareDocumentCommand{\ben}{}{\begin{enumerate}}
+\DeclareDocumentCommand{\beq}{}{\begin{equation}}
+\DeclareDocumentCommand{\bfH}{}{\begin{figure}[H]}
+\DeclareDocumentCommand{\bf}{}{\begin{figure}}
+\DeclareDocumentCommand{\bg}{m}{\begin{#1}}
+\DeclareDocumentCommand{\bit}{}{\begin{itemize}}
+\DeclareDocumentCommand{\blt}{}{\begin{longtable}}
+\DeclareDocumentCommand{\bmac}{}{\[\begin{aligned}\begin{cases}}
+\DeclareDocumentCommand{\bma}{}{\[\begin{aligned}}
+\DeclareDocumentCommand{\bmc}{}{\[\begin{cases}}
+\DeclareDocumentCommand{\bmt}{}{\begin{matrix}}
+\DeclareDocumentCommand{\bm}{}{\[}
+\DeclareDocumentCommand{\bpNM}{}{\begin{pNiceMatrix}}
+\DeclareDocumentCommand{\bpmt}{}{\begin{pmatrix}}
+\DeclareDocumentCommand{\bs}{m}{\boldsymbol{#1}}
+\DeclareDocumentCommand{\bsh}{}{\relax\ifmmode\backslash\else\textbackslash\fi}
+\DeclareDocumentCommand{\btH}{}{\begin{table}[H]}
+\DeclareDocumentCommand{\btbr}{}{\begin{tabular}}
+\DeclareDocumentCommand{\btk}{}{\begin{tikzpicture}}
+\DeclareDocumentCommand{\bt}{}{\begin{table}}
+\DeclareDocumentCommand{\bvNM}{}{\begin{vNiceMatrix}}
+\DeclareDocumentCommand{\bvmt}{}{\begin{vmatrix}}
+\DeclareDocumentCommand{\bqn}{}{\begin{quotation}}
+\DeclareDocumentCommand{\bqt}{}{\begin{quote}}
+\DeclareDocumentCommand{\ctgn}{o m o}{\begin{center}\begin{figure}[h]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\end{center}}
+\DeclareDocumentCommand{\ctg}{o m o}{\begin{center}\begin{figure}[H]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\FloatBarrier\end{center}}
+\DeclareDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
+\DeclareDocumentCommand{\dpre}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}}{\mathrm{d}#2}\left(#1\right)}{\frac{\mathrm{d}^{#1}}{\mathrm{d}#3^{#1}}\left(#2\right)}}
+\DeclareDocumentCommand{\eBNM}{}{\end{BNiceMatrix}}
+\DeclareDocumentCommand{\eBmt}{}{\end{Bmatrix}}
+\DeclareDocumentCommand{\eNM}{}{\end{NiceMatrix}}
+\DeclareDocumentCommand{\eVNM}{}{\end{VNiceMatrix}}
+\DeclareDocumentCommand{\eVmt}{}{\end{Vmatrix}}
+\DeclareDocumentCommand{\eam}{}{\end{aligned}\]}
+\DeclareDocumentCommand{\ea}{}{\end{aligned}}
+\DeclareDocumentCommand{\ebNM}{}{\end{bNiceMatrix}}
+\DeclareDocumentCommand{\ebmt}{}{\end{bmatrix}}
+\DeclareDocumentCommand{\ecam}{}{\end{cases}\end{aligned}\]}
+\DeclareDocumentCommand{\ecm}{}{\end{cases}\]}
+\DeclareDocumentCommand{\ecs}{}{\end{cases}}
+\DeclareDocumentCommand{\ect}{}{\end{center}}
+\DeclareDocumentCommand{\ed}{m}{\end{#1}}
+\DeclareDocumentCommand{\eit}{}{\end{itemize}}
+\DeclareDocumentCommand{\een}{}{\end{enumerate}}
+\DeclareDocumentCommand{\eeq}{}{\end{equation}}
+\DeclareDocumentCommand{\efB}{}{\end{figure}\FloatBarrier}
+\DeclareDocumentCommand{\efctn}{}{\end{figure}\end{center}}
+\DeclareDocumentCommand{\efct}{}{\end{figure}\FloatBarrier\end{center}}
+\DeclareDocumentCommand{\ef}{}{\end{figure}}
+\DeclareDocumentCommand{\elt}{}{\end{longtable}}
+\DeclareDocumentCommand{\emt}{}{\end{matirx}}
+\DeclareDocumentCommand{\em}{}{\]}
+\DeclareDocumentCommand{\epNM}{}{\end{pNiceMatrix}}
+\DeclareDocumentCommand{\epmt}{}{\end{pmatrix}}
+\DeclareDocumentCommand{\eq}{}{=}
+\DeclareDocumentCommand{\eqn}{}{\end{quotation}}
+\DeclareDocumentCommand{\eqt}{}{\end{quote}}
+\DeclareDocumentCommand{\etB}{}{\end{table}\FloatBarrier}
+\DeclareDocumentCommand{\etbr}{}{\end{tabular}}
+\DeclareDocumentCommand{\etbrctn}{}{\end{tabular}\end{figure}\end{center}}
+\DeclareDocumentCommand{\etbrct}{}{\end{tabular}\end{figure}\FloatBarrier\end{center}}
+\DeclareDocumentCommand{\etctn}{}{\end{table}\end{center}}
+\DeclareDocumentCommand{\etct}{}{\end{table}\FloatBarrier\end{center}}
+\DeclareDocumentCommand{\etk}{}{\end{tikzpicture}}
+\DeclareDocumentCommand{\et}{}{\end{table}}
+\DeclareDocumentCommand{\evNM}{}{\end{vNiceMatrix}}
+\DeclareDocumentCommand{\evmt}{}{\end{vmatrix}}
+\DeclareDocumentCommand{\gt}{}{>}
+\DeclareDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
+\DeclareDocumentCommand{\lt}{}{<}
+\DeclareDocumentCommand{\mdp}{O{}}{\[#1\]}
+\DeclareDocumentCommand{\mil}{O{}}{\(#1\)}
+\DeclareDocumentCommand{\mn}{}{-}
+\DeclareDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
+\DeclareDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
+\DeclareDocumentCommand{\n}{}{\\}
+\DeclareDocumentCommand{\pf}{m m o}{\IfNoValueTF{#3}{\frac{\partial #1}{\partial #2}}{\frac{\partial^{#1} #2}{\partial #3^{#1}}}}
+\DeclareDocumentCommand{\pht}{m}{\phantom{#1}}
+\DeclareDocumentCommand{\pl}{}{+}
+\DeclareDocumentCommand{\ppre}{m m o}{\IfNoValueTF{#3}{\partial #2 \left( #1 \right)}{\frac{\partial^{#1}}{\partial #3^{#1}} \left( #2 \right)}}
+\DeclareDocumentCommand{\sh}{}{/}
+\DeclareDocumentCommand{\ts}{o}{\IfNoValueTF{#1}{\text{\protect\ }}{\text{\protect\foreach\i in{1,2,...,#1}{\protect\ }}}}
+\DeclareDocumentCommand{\ttimes}{}{\(\times\)}
+\DeclareDocumentCommand{\vsf}{}{\vspace*{\fill}}
 \titleclass{\subsubparagraph}{straight}[\subparagraph]
 \newcounter{subsubparagraph}[subparagraph]
 \titlespacing*{\subsubparagraph}{\parindent}{3.25ex plus 1ex minus .2ex}{1em}
@@ -865,12 +838,12 @@ breakatwhitespace=false
 \titleformat{\paragraph}{\normalsize\bfseries}{\theparagraph}{1em}{}
 \titleformat{\subparagraph}{\normalsize\bfseries}{\thesubparagraph}{1em}{}
 \titleformat{\subsubparagraph}{\normalsize\bfseries}{\thesubsubparagraph}{1em}{}
-\ProvideDocumentCommand{\sct}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\section*}{\section*{#2}}}{\IfNoValueTF{#2}{\section}{\section{#2}}}}
-\ProvideDocumentCommand{\ssc}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsection*}{\subsection*{#2}}}{\IfNoValueTF{#2}{\subsection}{\subsection{#2}}}}
-\ProvideDocumentCommand{\sssc}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsubsection*}{\subsubsection*{#2}}}{\IfNoValueTF{#2}{\subsubsection}{\subsubsection{#2}}}}
-\ProvideDocumentCommand{\pr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\paragraph*}{\paragraph*{#2}}}{\IfNoValueTF{#2}{\paragraph}{\paragraph{#2}}}}
-\ProvideDocumentCommand{\spr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subparagraph*}{\subparagraph*{#2}}}{\IfNoValueTF{#2}{\subparagraph}{\subparagraph{#2}}}}
-\ProvideDocumentCommand{\sspr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsubparagraph*}{\subsubparagraph*{#2}}}{\IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}}}
+\DeclareDocumentCommand{\sct}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\section*}{\section*{#2}}}{\IfNoValueTF{#2}{\section}{\section{#2}}}}
+\DeclareDocumentCommand{\ssc}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsection*}{\subsection*{#2}}}{\IfNoValueTF{#2}{\subsection}{\subsection{#2}}}}
+\DeclareDocumentCommand{\sssc}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsubsection*}{\subsubsection*{#2}}}{\IfNoValueTF{#2}{\subsubsection}{\subsubsection{#2}}}}
+\DeclareDocumentCommand{\pr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\paragraph*}{\paragraph*{#2}}}{\IfNoValueTF{#2}{\paragraph}{\paragraph{#2}}}}
+\DeclareDocumentCommand{\spr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subparagraph*}{\subparagraph*{#2}}}{\IfNoValueTF{#2}{\subparagraph}{\subparagraph{#2}}}}
+\DeclareDocumentCommand{\sspr}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\subsubparagraph*}{\subsubparagraph*{#2}}}{\IfNoValueTF{#2}{\subsubparagraph}{\subsubparagraph{#2}}}}
 \renewcommand\theparagraph{\arabic{paragraph}.}
 \renewcommand\thesubparagraph{(\arabic{subparagraph})}
 \renewcommand\thesubsubparagraph{\boxed{\arabic{subsubparagraph}}}
@@ -902,7 +875,7 @@ breakatwhitespace=false
 \makeatletter
 \@ifclassloaded{article}{}{
 \titleformat{\chapter}[block]{\LARGE\bfseries}{\thechapter}{1em}{}
-\ProvideDocumentCommand{\ch}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}}{\IfNoValueTF{#2}{\chapter}{\chapter{#2}}}}
+\DeclareDocumentCommand{\ch}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}}{\IfNoValueTF{#2}{\chapter}{\chapter{#2}}}}
 \titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
 \ifnum\value{CJK}=1\ifnum\value{SectionLanguage}=1\ifnum\value{CJKLanguage}=0
 \renewcommand\thechapter{第\zhnumber[style={Traditional,Normal}]{\arabic{chapter}}章}
