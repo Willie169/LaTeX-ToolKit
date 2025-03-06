@@ -9,6 +9,8 @@
 \ifcsname c@NotoCJKFamily\endcsname\else\newcounter{NotoCJKFamily}\setcounter{NotoCJKFamily}{0}\fi
 \ifcsname c@SectionLanguage\endcsname\else\newcounter{SectionLanguage}\setcounter{SectionLanguage}{0}\fi
 \ifcsname c@ZhRenew\endcsname\else\newcounter{ZhRenew}\setcounter{ZhRenew}{0}\fi
+\ifcsname physics-patch@options\endcsname\else\expandafter\def\csname physics-patch@options\endcsname{shortgreek,shortmathrm,shorttext}\fi
+\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\input{/usr/share/latex-toolkit/physics-patch.sty}}\fi
 \ifnum\value{CJK}=1
 \ifx\luatexversion\undefined
 \usepackage{fontspec}
@@ -904,4 +906,4 @@ breakatwhitespace=false
 \newcommand{\titletocdoc}{\onehalfspacing\temtitle\temtoc\temdoc}
 \newcommand{\titledoc}{\onehalfspacing\temtitle\temdoc}
 \newcommand{\tocdoc}{\onehalfspacing\temtoc\temdoc}
-\ifcsname PreambleEnd\endcsname\PreambleEnd\fi
+\makeatletter\PhysicsPatch\makeatother
