@@ -34,10 +34,8 @@
 % Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define \temtoday to be \today. If CJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
 \newcommand{\PreambleMiddle}{}
 % If defined, this command will be ran before hyperref, tcolorbox, and unicode-math are loaded and after other packages are loaded.
-\expandafter\def\csname physics-patch@options\endcsname{shortgreek,shortmathrm,shorttext}
+\newcommand{\PhysicsPatch}{\usepackage[shortgreek,shortmathrm,shorttext]{physics-patch}}
 % Set options you want for physics-patch here.
-\newcommand{\PhysicsPatch}{\input{/usr/share/latex-toolkit/physics-patch.sty}}
-% Set path to physics-patch.sty here.
 \input{/usr/share/latex-toolkit/template.tex}
 % Set path to template.tex here.
 % You can set fonts and CJK fonts here if corresponding counters are set to 0.

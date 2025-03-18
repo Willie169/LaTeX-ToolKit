@@ -10,7 +10,7 @@
 \ifcsname c@SectionLanguage\endcsname\else\newcounter{SectionLanguage}\setcounter{SectionLanguage}{0}\fi
 \ifcsname c@ZhRenew\endcsname\else\newcounter{ZhRenew}\setcounter{ZhRenew}{0}\fi
 \ifcsname physics-patch@options\endcsname\else\expandafter\def\csname physics-patch@options\endcsname{shortgreek,shortmathrm,shorttext}\fi
-\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\input{/usr/share/latex-toolkit/physics-patch.sty}}\fi
+\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[shortgreek,shortmathrm,shorttext]{physics-patch}}\fi
 \ifnum\value{CJK}=1
 \ifx\luatexversion\undefined
 \usepackage{fontspec}
@@ -26,7 +26,7 @@
 \usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
 \usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,mdframed,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
 \usepackage{braket,chemfig,csvsimple,derivative,listings,listingsutf8,pdfpages,verbatim}
-\usepackage{tikz}
+\usepackage{tikz,pgfplots}
 \usepackage{siunitx}
 \usepackage[siunitx]{circuitikz}
 \usepackage[version=4]{mhchem}
@@ -705,6 +705,7 @@ breakatwhitespace=false
 \let\rtb\rotatebox
 \let\sq\sqrt
 \let\tb\textbf
+\let\tc\textcircled
 \let\tcbox\tcolorbox
 \let\tfr\tfrac
 \let\th\textheight
@@ -739,7 +740,6 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\bcttn}{}{\begin{center}\begin{table}[h]\centering}
 \DeclareDocumentCommand{\bctt}{}{\begin{center}\begin{table}[H]\centering}
 \DeclareDocumentCommand{\bct}{}{\begin{center}}
-\DeclareDocumentCommand{\bell}{}{\boldsymbol{\ell}}
 \DeclareDocumentCommand{\ben}{}{\begin{enumerate}}
 \DeclareDocumentCommand{\beq}{}{\begin{equation}}
 \DeclareDocumentCommand{\bfH}{}{\begin{figure}[H]}
@@ -906,4 +906,4 @@ breakatwhitespace=false
 \newcommand{\titletocdoc}{\onehalfspacing\temtitle\temtoc\temdoc}
 \newcommand{\titledoc}{\onehalfspacing\temtitle\temdoc}
 \newcommand{\tocdoc}{\onehalfspacing\temtoc\temdoc}
-\makeatletter\PhysicsPatch\makeatother
+\PhysicsPatch

@@ -6,11 +6,17 @@ This repository contains a comprehensive and customizable LaTeX [template](#temp
 
 To use the template, please:
 
-1. Download [`template.tex`](template.tex) from here.
-2. Download `physics-patch.sty` from [physics-patch](https://github.com/Willie169/physics-patch) repository.
-3. Copy [`document.tex`](document.tex).
-4. Configure the counters, options, and paths.
-5. Customize the [`template.tex`](template.tex) (advanced users only).
+<ol>
+<li>Download <a href="template.tex"><code>template.tex</code></a> from here.</li>
+<li>Prepare <code>physics-patch</code> package. Since the <code>physics-patch</code> package is relatively new, your LaTeX distribution may not contain it. You can get it by (<code>wget</code> required):
+<pre><code>mkdir -p $(kpsewhich -var-value TEXMFHOME)/tex/latex/physics-patch
+cd $(kpsewhich -var-value TEXMFHOME)/tex/latex/physics-patch
+wget https://raw.githubusercontent.com/Willie169/physics-patch/main/physics-patch.sty
+</code></pre></li>
+<li>Copy <a href="document.tex"><code>document.tex</code></a>.</li>
+<li>Configure the counters, options, and paths.</li>
+<li>Customize the <a href="template.tex"><code>template.tex</code></a> (advanced users only).</li>
+</ol>
 
 Features of the template:
 
