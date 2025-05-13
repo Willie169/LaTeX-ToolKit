@@ -9,8 +9,7 @@
 \ifcsname c@NotoCJKFamily\endcsname\else\newcounter{NotoCJKFamily}\setcounter{NotoCJKFamily}{0}\fi
 \ifcsname c@SectionLanguage\endcsname\else\newcounter{SectionLanguage}\setcounter{SectionLanguage}{0}\fi
 \ifcsname c@ZhRenew\endcsname\else\newcounter{ZhRenew}\setcounter{ZhRenew}{0}\fi
-\ifcsname physics-patch@options\endcsname\else\expandafter\def\csname physics-patch@options\endcsname{shortgreek,shortmathrm,shorttext}\fi
-\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[shortgreek,shortmathrm,shorttext]{physics-patch}}\fi
+\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[override,pretend,nosiintegrate,originaldiv,trig,uprightdiff,bolddel,plaindot,shorttextgreek,shortvargreek,shortupgreek,shortupvargreek,shortboldgreek,shortmathrm,shorttext]{physics-patch}}\fi
 \ifnum\value{CJK}=1
 \ifx\luatexversion\undefined
 \usepackage{fontspec}
@@ -24,8 +23,8 @@
 \usepackage{needspace,parskip,setspace,titlesec,titling,titletoc}
 \usepackage[defaultlines=8]{nowidow}
 \usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
-\usepackage{array,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,mdframed,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
-\usepackage{braket,chemfig,csvsimple,derivative,listings,listingsutf8,pdfpages,verbatim}
+\usepackage{array,arydshln,booktabs,caption,cellspace,diagbox,enumitem,float,graphicx,hanging,longtable,ltxtable,mdframed,multirow,nicematrix,placeins,ragged2e,subcaption,xcolor}
+\usepackage{braket,chemfig,csvsimple,derivative,filecontents,listings,listingsutf8,pdfpages,verbatim}
 \usepackage{tikz,pgfplots}
 \usepackage{siunitx}
 \usepackage[siunitx]{circuitikz}
@@ -612,27 +611,31 @@ breakatwhitespace=false
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
 \makeatletter
+\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}
 \newcommand{\overleftrightarrowsmall}{\mathpalette{\overarrowsmall@\leftrightarrowfill@}}
 \newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
 \newcommand{\overleftarrowsmall}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
 \newcommand{\overarrowsmall@}[3]{\vbox{\ialign{##\crcr#1{\smaller@style{#2}}\crcr\noalign{\nointerlineskip}$\m@th\hfil#2#3\hfil$\crcr}}}\def\smaller@style#1{\ifx#1\displaystyle\scriptstyle\else\ifx#1\textstyle\scriptstyle\else\scriptscriptstyle\fi\fi}
 \makeatother
-\newcommand{\overlinesmall}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
-\newcommand{\underlinesmall}[1]{\mskip.5\thinmuskip\underline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
-\let\olra\overleftrightarrowsmall
-\let\ora\overrightarrowsmall
-\let\ola\overleftarrowsmall
-\let\ol\overlinesmall
-\let\ul\underlinesmall
-\makeatletter\tikzset{dot diameter/.store in=\dot@diameter,dot diameter=1pt,dot spacing/.store in=\dot@spacing,dot spacing=5.5pt,dots/.style={line width=\dot@diameter,line cap=round,dash pattern=on 0pt off \dot@spacing}}\makeatother
+\let\oldunderline\underline
+\let\oldoverline\overline
+\newcommand{\overlinesmall}[1]{\mskip.5\thinmuskip\oldoverline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\newcommand{\underlinesmall}[1]{\mskip.5\thinmuskip\oldunderline{\mskip-.5\thinmuskip{#1}\mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\DeclareDocumentCommand\olra{}{\overleftrightarrowsmall}
+\DeclareDocumentCommand\oldoverleftrightarrow{}{\overleftrightarrow}
+\DeclareDocumentCommand\overleftrightarrow{}{\overleftrightarrowsmall}
+\DeclareDocumentCommand\ora{}{\overrightarrowsmall}
+\DeclareDocumentCommand\oldoverrightarrow{}{\overrightarrow}
+\DeclareDocumentCommand\overrightarrow{}{\overrightarrowsmall}
+\DeclareDocumentCommand\ola{}{\overleftarrowsmall}
+\DeclareDocumentCommand\oldoverleftarrow{}{\overleftarrow}
+\DeclareDocumentCommand\overleftarrow{}{\overleftarrowsmall}
+\DeclareDocumentCommand\ol{}{\overlinesmall}
+\DeclareDocumentCommand\overline{}{\overlinesmall}
+\DeclareDocumentCommand\ul{}{\underlinesmall}
+\DeclareDocumentCommand\underline{}{\underlinesmall}
 \let\FB\FloatBarrier
-\let\La\Leftarrow
-\let\Lar\Leftarrow
-\let\Lra\Leftrightarrow
-\let\Lrar\Leftrightarrow
 \let\Ns\Needspace
-\let\Ra\Rightarrow
-\let\Rar\Rightarrow
 \let\amp\&
 \let\apx\approx
 \let\cd\cdot
@@ -641,8 +644,6 @@ breakatwhitespace=false
 \let\clp\clearpage
 \let\cpt\caption
 \let\ctr\centering
-\let\da\downarrow
-\let\dar\downarrow
 \let\dds\ddots
 \let\dgb\diagbox
 \let\f\frac
@@ -654,13 +655,8 @@ breakatwhitespace=false
 \let\icp\includepdf
 \let\ift\infty
 \let\ip\input
-\let\la\leftarrow
-\let\lar\leftarrow
 \let\lds\ldots
 \let\lh\lineheight
-\let\lra\leftrightarrow
-\let\lrar\leftrightarrow
-\let\lrh\leftrightharpoons
 \let\lw\linewidth
 \let\mb\mathbf
 \let\mbb\mathbb
@@ -697,10 +693,7 @@ breakatwhitespace=false
 \let\pgb\pagebreak
 \let\pk\textperthousand
 \let\prp\propto
-\let\ra\rightarrow
-\let\rar\rightarrow
 \let\rl\relax
-\let\rlh\rightleftharpoons
 \let\rsb\raisebox
 \let\rtb\rotatebox
 \let\sq\sqrt
@@ -718,11 +711,14 @@ breakatwhitespace=false
 \let\tup\textup
 \let\tw\textwidth
 \let\tx\text
-\let\ua\uparrow
-\let\uar\uparrow
 \let\vds\vdots
 \let\vf\vfill
 \let\vs\vspace
+\let\CE\ce
+\DeclareDocumentCommand\GS{}{(g)}
+\DeclareDocumentCommand\LQ{}{(l)}
+\DeclareDocumentCommand\SL{}{(s)}
+\DeclareDocumentCommand\AQ{}{(aq)}
 \DeclareDocumentCommand{\X}{}{\ensuremath{\times}}
 \DeclareDocumentCommand{\bBNM}{}{\begin{BNiceMatrix}}
 \DeclareDocumentCommand{\bBmt}{}{\begin{Bmatrix}}
@@ -754,6 +750,7 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\bm}{}{\[}
 \DeclareDocumentCommand{\bpNM}{}{\begin{pNiceMatrix}}
 \DeclareDocumentCommand{\bpmt}{}{\begin{pmatrix}}
+\DeclareDocumentCommand{\bpr}{}{\begin{proof}}
 \DeclareDocumentCommand{\bs}{m}{\boldsymbol{#1}}
 \DeclareDocumentCommand{\bsh}{}{\relax\ifmmode\backslash\else\textbackslash\fi}
 \DeclareDocumentCommand{\btH}{}{\begin{table}[H]}
@@ -794,6 +791,7 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\em}{}{\]}
 \DeclareDocumentCommand{\epNM}{}{\end{pNiceMatrix}}
 \DeclareDocumentCommand{\epmt}{}{\end{pmatrix}}
+\DeclareDocumentCommand{\epr}{}{\end{proof}}
 \DeclareDocumentCommand{\eq}{}{=}
 \DeclareDocumentCommand{\eqn}{}{\end{quotation}}
 \DeclareDocumentCommand{\eqt}{}{\end{quote}}
