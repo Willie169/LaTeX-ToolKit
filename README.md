@@ -8,13 +8,11 @@ To use the template, please:
 
 <ol>
 <li>Download <a href="template.tex"><code>template.tex</code></a> from here. You can clone this repository to <code>/usr/share</code> (default path in <a href="document.tex"><code>document.tex</code></a>)  with (<a href="https://git-scm.com/downloads"><code>git</code></a> required):
-<pre><code>
-cd /usr/share
+<pre><code>cd /usr/share
 sudo git clone https://github.com/Willie169/LaTeX-ToolKit
 </code></pre>
 so that you can update with:
-<pre><code>
-sudo git pull
+<pre><code>sudo git pull
 </code></pre></li>
 <li>Prepare <code>physics-patch</code> package. Since the <code>physics-patch</code> package is relatively new and is updated frequently, you may get it by (<a href="https://www.gnu.org/software/wget"><code>wget</code></a> required):
 <pre><code>mkdir -p $(kpsewhich -var-value TEXMFHOME)/tex/latex/physics-patch
