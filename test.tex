@@ -1,0 +1,21 @@
+% This is test.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
+\documentclass[a4paper,12pt]{report}
+\usepackage[margin=1.27cm,foot=0.77cm]{geometry}
+\newcounter{NotoCJKFamily}
+\setcounter{NotoCJKFamily}{1}
+\newcounter{SectionLanguage}
+\setcounter{SectionLanguage}{0}
+\newcounter{ZhRenew}
+\setcounter{ZhRenew}{0}
+\input{/usr/share/LaTeX-ToolKit/template.tex}
+\begin{document}
+\title{Test}
+\author{Willie169}
+\date{\zhdate{2025/5/13}}
+\titletocdoc
+\section{Section Title}
+\text{默認 default }\textnormal{正常 normal }\textup{直立 up }\textbf{粗體 bf }\textit{斜體 it }\texttt{等寬 tt }\textsf{襯線 sf }\\
+Math default, normal, up, bf, it, rm, tt, bb, cal, scr, frak, bfit, bbit, bfcal, bfscr, bffrak:
+\[Aa\mathnormal{Aa}\mathup{Aa}\mathbf{Aa}\mathit{Aa}\mathrm{Aa}\mathtt{Aa}\mathbb{Aa}\mathcal{Aa}\mathscr{Aa}\mathfrak{Aa}\mathbfit{Aa}\mathbbit{Aa}\mathbfcal{Aa}\mathbfscr{Aa}\mathbffrak{Aa}\]
+\[\overleftarrowsmall{a}\overrightarrowsmall{a}\overleftrightarrowsmall{a}\overlinesmall{a}\underlinesmall{a}\]
+\end{document}
