@@ -7,15 +7,23 @@ This repository contains a comprehensive and customizable LaTeX [template](#temp
 To use the template, please:
 
 <ol>
-<li>Download <a href="template.tex"><code>template.tex</code></a> from here.</li>
-<li>Prepare <code>physics-patch</code> package. Since the <code>physics-patch</code> package is relatively new, your LaTeX distribution may not contain it. You can get it by (<code>wget</code> required):
+<li>Download <a href="template.tex"><code>template.tex</code></a> from here. You can clone this repository to <code>/usr/share</code> (default path in <a href="document.tex"><code>document.tex</code></a>)  with (<a href="https://git-scm.com/downloads"><code>git</code></a> required):
+<pre><code>
+cd /usr/share
+sudo git clone https://github.com/Willie169/LaTeX-ToolKit
+</code></pre>
+so that you can update with:
+<pre><code>
+sudo git pull
+</code></pre></li>
+<li>Prepare <code>physics-patch</code> package. Since the <code>physics-patch</code> package is relatively new and is updated frequently, you may get it by (<a href="https://www.gnu.org/software/wget"><code>wget</code></a> required):
 <pre><code>mkdir -p $(kpsewhich -var-value TEXMFHOME)/tex/latex/physics-patch
 cd $(kpsewhich -var-value TEXMFHOME)/tex/latex/physics-patch
 wget https://raw.githubusercontent.com/Willie169/physics-patch/main/physics-patch.sty
 </code></pre></li>
-<li>Copy <a href="document.tex"><code>document.tex</code></a>.</li>
+<li>Copy <a href="document.tex"><code>document.tex</code></a> to your LaTeX file.</li>
 <li>Configure the counters, options, and paths.</li>
-<li>Customize the <a href="template.tex"><code>template.tex</code></a> (advanced users only).</li>
+<li>Customize the <a href="template.tex"><code>template.tex</code></a> (for advanced users).</li>
 </ol>
 
 Features of the template:
