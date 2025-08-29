@@ -24,9 +24,9 @@ cd tex
 mkdir -p latex
 cd latex
 git clone https://github.com/Willie169/physics-patch
-</code></pre>~/texmf/tex/latex/physics-patch
+</code></pre>
 so that you can update with:
-<pre><code>cd 
+<pre><code>cd ~/texmf/tex/latex/physics-patch
 sudo git pull
 </code></pre></li>
 <li>Copy <a href="document.tex"><code>document.tex</code></a> to your LaTeX file.</li>
