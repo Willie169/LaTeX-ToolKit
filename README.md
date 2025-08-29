@@ -27,7 +27,7 @@ git clone https://github.com/Willie169/physics-patch
 </code></pre>
 so that you can update with:
 <pre><code>cd ~/texmf/tex/latex/physics-patch
-sudo git pull
+git pull
 </code></pre></li>
 <li>Copy <a href="document.tex"><code>document.tex</code></a> to your LaTeX file.</li>
 <li>Configure the counters, options, and paths.</li>
