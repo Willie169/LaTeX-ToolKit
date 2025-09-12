@@ -701,8 +701,20 @@ breakatwhitespace=false
 \let\rl\relax
 \let\rsb\raisebox
 \let\rtb\rotatebox
+\let\smn\setminus
 \let\sq\sqrt
 \let\Tb\textbf
+\let\Textbf\textbf
+\let\Textheight\textheight
+\let\Textit\textit
+\let\Textnormal\textnormal
+\let\Textrm\textrm
+\let\Textsc\textsc
+\let\Textsf\textsf
+\let\Texttt\texttt
+\let\Textup\textup
+\let\Textwidth\textwidth
+\let\Text\text
 \let\Th\textheight
 \let\Ti\textit
 \let\Tnm\textnormal
@@ -818,6 +830,7 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\eq}{}{=}
 \DeclareDocumentCommand{\eqn}{}{\end{quotation}}
 \DeclareDocumentCommand{\eqt}{}{\end{quote}}
+\DeclareDocumentCommand{\esym}{m}{\begin{circuitikz}\draw (0,0) to [#1] (1,0);\end{circuitikz}}
 \DeclareDocumentCommand{\etB}{}{\end{table}\FloatBarrier}
 \DeclareDocumentCommand{\etbr}{}{\end{tabular}}
 \DeclareDocumentCommand{\etbrctn}{}{\end{tabular}\end{figure}\end{center}}
@@ -829,11 +842,13 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\evNM}{}{\end{vNiceMatrix}}
 \DeclareDocumentCommand{\evmt}{}{\end{vmatrix}}
 \DeclareDocumentCommand{\gt}{}{>}
+\DeclareDocumentCommand{\INF}{}{\infty}
 \DeclareDocumentCommand{\itg}{m m o o}{\IfNoValueTF{#4}{\IfNoValueTF{#3}{\int #1\,\mathrm{d}{#2}}{\int_0^{#1}#2\,\mathrm{d}{#3}}}{\int_{#1}^{#2} #3\,\mathrm{d}{#4}}}
 \DeclareDocumentCommand{\lt}{}{<}
 \DeclareDocumentCommand{\mdp}{O{}}{\[#1\]}
 \DeclareDocumentCommand{\mil}{O{}}{\(#1\)}
 \DeclareDocumentCommand{\mn}{}{-}
+\DeclareDocumentCommand{\NINF}{}{-\infty}
 \DeclareDocumentCommand{\nthm}{}{\Needspace{1\textheight-1em}}
 \DeclareDocumentCommand{\nth}{o}{\IfNoValueTF{#1}{\Needspace{1\textheight}}{\Needspace{#1\textheight}}}
 \DeclareDocumentCommand{\n}{}{\\}

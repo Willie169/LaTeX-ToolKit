@@ -191,6 +191,9 @@ By contributing to this project, you agree that your contributions will be licen
 - **Henri Menke**
   - URL: <https://tex.stackexchange.com/questions/470819/macros-dv-and-pdv-eat-the-subsequent-parenthesis-argument>
   - License: CC BY-SA 4.0
+- **Jake**
+  - URL: <https://tex.stackexchange.com/questions/9566/inlining-circuit-symbols>
+  - License: CC BY-SA 2.5
 - **leandriis**
   - URL: <https://tex.stackexchange.com/questions/645814/booktabs-and-arydshln-conflict>
   - License: CC BY-SA 4.0
@@ -210,6 +213,9 @@ By contributing to this project, you agree that your contributions will be licen
   - URL: <https://ctan.org/pkg/physics>
   - License: LPPL-1.3
 - **Stack Exchange Inc**
+  - URL: <https://tex.stackexchange.com/help/licensing>
+  - License: CC BY-SA 4.0
+- **TeX - LaTeX Stack Exchange**
   - URL: <https://tex.stackexchange.com/help/licensing>
   - License: CC BY-SA 4.0
 - **TeX Live**
