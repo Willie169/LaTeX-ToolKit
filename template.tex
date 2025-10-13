@@ -1,6 +1,6 @@
 % This is template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
 \IfPackageLoadedTF{geometry}{}{\usepackage[margin=1.27cm,foot=0.77cm]{geometry}}
-\ifcsname SetMathFont\endcsname\else\newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}\fi
+%\ifcsname SetMathFont\endcsname\else\newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}\fi
 \ifcsname c@CJK\endcsname\else\newcounter{CJK}\setcounter{CJK}{1}\fi
 \ifcsname c@markdown\endcsname\else\newcounter{markdown}\setcounter{markdown}{0}\fi
 \ifcsname c@Fonts\endcsname\else\newcounter{Fonts}\setcounter{Fonts}{1}\fi
@@ -75,7 +75,7 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems}
 \usepackage{unicode-math}
-\SetMathFont
+\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}
 \ifnum\value{Fonts}=1
 \setmainfont{TeX Gyre Heros}[Ligatures=TeX]
 \setsansfont{TeX Gyre Termes}[Ligatures=TeX]
@@ -623,6 +623,11 @@ breakatwhitespace=false
 \newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
 \newcommand{\overleftarrowsmall}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
 \newcommand{\overarrowsmall@}[3]{\vbox{\ialign{##\crcr#1{\smaller@style{#2}}\crcr\noalign{\nointerlineskip}$\m@th\hfil#2#3\hfil$\crcr}}}\def\smaller@style#1{\ifx#1\displaystyle\scriptstyle\else\ifx#1\textstyle\scriptstyle\else\scriptscriptstyle\fi\fi}
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\DeclareDocumentCommand\arc@char{}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}
+\DeclareDocumentCommand\arc{m}{\mathpalette\arc@arc{#1}}
+\DeclareDocumentCommand\arc@arc{m m}{\sbox0{$\m@th#1#2$}\vbox{\hbox{\resizebox{\wd0}{\height}{\arc@char}}\nointerlineskip\box0}}
 \makeatother
 \let\oldunderline\underline
 \let\oldoverline\overline
