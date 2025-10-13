@@ -76,7 +76,6 @@
 \tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems}
 \usepackage{unicode-math}
 \SetMathFont
-\usepackage{tipa}
 \ifnum\value{Fonts}=1
 \setmainfont{TeX Gyre Heros}[Ligatures=TeX]
 \setsansfont{TeX Gyre Termes}[Ligatures=TeX]
@@ -624,11 +623,6 @@ breakatwhitespace=false
 \newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
 \newcommand{\overleftarrowsmall}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
 \newcommand{\overarrowsmall@}[3]{\vbox{\ialign{##\crcr#1{\smaller@style{#2}}\crcr\noalign{\nointerlineskip}$\m@th\hfil#2#3\hfil$\crcr}}}\def\smaller@style#1{\ifx#1\displaystyle\scriptstyle\else\ifx#1\textstyle\scriptstyle\else\scriptscriptstyle\fi\fi}
-\DeclareFontFamily{U}{tipa}{}
-\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
-\DeclareDocumentCommand\arc@char{}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}
-\DeclareDocumentCommand\arc{m}{\mathpalette\arc@arc{#1}}
-\DeclareDocumentCommand\arc@arc{m m}{\sbox0{$\m@th#1#2$}\vbox{\hbox{\resizebox{\wd0}{\height}{\arc@char}}\nointerlineskip\box0}}
 \makeatother
 \let\oldunderline\underline
 \let\oldoverline\overline
