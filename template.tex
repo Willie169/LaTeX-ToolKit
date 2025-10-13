@@ -22,10 +22,13 @@
 \usepackage{etoolbox,ifthen,xparse,xpatch,xstring}
 \usepackage{needspace,parskip,setspace,titlesec,titling,titletoc}
 \usepackage[defaultlines=8]{nowidow}
-\usepackage{amsmath,amssymb,amsthm,dsfont,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,upgreek,wasysym,yfonts}
+\usepackage{amsmath,amssymb,amsthm,dsfont,fourier,esint,mathrsfs,mathtools,metalogo,microtype,stmaryrd,textcomp,textgreek,tipa,upgreek,wasysym,yfonts}
 \usepackage{array,booktabs,caption,cellspace,colortbl,diagbox,enumitem,float,graphicx,hanging,longtable,ltxtable,makecell,mdframed,multirow,nicematrix,placeins,ragged2e,subcaption,tabu,xcolor}
 \usepackage{braket,chemfig,csvsimple,derivative,filecontents,listings,listingsutf8,pdfpages,verbatim}
-\usepackage{tikz,pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{circuits.ee.IEC,circuits.logic.US,circuits.logic.IEC}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18} 
 \usepackage{siunitx}
 \usepackage[siunitx]{circuitikz}
 \usepackage[version=4]{mhchem}
@@ -620,6 +623,11 @@ breakatwhitespace=false
 \newcommand{\overrightarrowsmall}{\mathpalette{\overarrowsmall@\rightarrowfill@}}
 \newcommand{\overleftarrowsmall}{\mathpalette{\overarrowsmall@\leftarrowfill@}}
 \newcommand{\overarrowsmall@}[3]{\vbox{\ialign{##\crcr#1{\smaller@style{#2}}\crcr\noalign{\nointerlineskip}$\m@th\hfil#2#3\hfil$\crcr}}}\def\smaller@style#1{\ifx#1\displaystyle\scriptstyle\else\ifx#1\textstyle\scriptstyle\else\scriptscriptstyle\fi\fi}
+\DeclareFontFamily{U}{tipa}{}
+\DeclareFontShape{U}{tipa}{m}{n}{<->tipa10}{}
+\DeclareDocumentCommand\arc@char{}{{\usefont{U}{tipa}{m}{n}\symbol{62}}}
+\DeclareDocumentCommand\arc{m}{\mathpalette\arc@arc{#1}}
+\DeclareDocumentCommand\arc@arc{m m}{\sbox0{$\m@th#1#2$}\vbox{\hbox{\resizebox{\wd0}{\height}{\arc@char}}\nointerlineskip\box0}}
 \makeatother
 \let\oldunderline\underline
 \let\oldoverline\overline
@@ -649,7 +657,6 @@ breakatwhitespace=false
 \let\dds\ddots
 \let\dgb\diagbox
 \let\FB\FloatBarrier
-\let\f\frac
 \let\fr\frac
 \let\hf\hfill
 \let\hl\hline
@@ -701,7 +708,11 @@ breakatwhitespace=false
 \let\rl\relax
 \let\rsb\raisebox
 \let\rtb\rotatebox
+\let\sbs\subset
+\let\sbse\subseteq
 \let\smn\setminus
+\let\sps\supset
+\let\spse\supseteq
 \let\sq\sqrt
 \let\Tb\textbf
 \let\Textbf\textbf
@@ -741,6 +752,7 @@ breakatwhitespace=false
 \let\tw\textwidth
 \let\tx\text
 \let\vds\vdots
+\let\emset\varnothing
 \let\vf\vfill
 \let\vpht\vphantom
 \let\vs\vspace
@@ -796,8 +808,9 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\bvmt}{}{\begin{vmatrix}}
 \DeclareDocumentCommand{\bqn}{}{\begin{quotation}}
 \DeclareDocumentCommand{\bqt}{}{\begin{quote}}
-\DeclareDocumentCommand{\cktnode}{o m}{\IfNoValueTF{#2}{\begin{circuitikz}\node[#1]{};\end{circuitikz}}{\begin{circuitikz}[#1]\node[#2]{};\end{circuitikz}}}
-\DeclareDocumentCommand{\cktsym}{o m}{\IfNoValueTF{#2}{\begin{circuitikz}\draw (0,0) to [#1] (1,0);\end{circuitikz}}{\begin{circuitikz}[#1]\draw (0,0) to [#2] (1,0);\end{circuitikz}}}
+\DeclareDocumentCommand{\cktee}{m o}{\hspace{1em}\IfNoValueTF{#2}{\tikz[circuit ee IEC] \draw (0,0) -- (.2,0) node [#1,anchor=west,name=s] {} (s.east) -- +(.2,0);}{\tikz[circuit ee IEC] \draw (0,0) -- (.2,0) node [#1,label=#2,anchor=west,name=s] {} (s.east) -- +(.2,0);}\hspace{1em}}
+\DeclareDocumentCommand{\cktiec}{m m o}{\hspace{1em}\IfNoValueTF{#3}{\tikz[circuit logic IEC] \draw (0,0) -- (.2,0) node [#1,inputs=#2,anchor=west,name=s] {} (s.east) -- +(.2,0);}{\tikz[circuit ee IEC] \draw (0,0) -- (.2,0) node [#1,inputs=#2,label=#3,anchor=west,name=s] {} (s.east) -- +(.2,0);}\hspace{1em}}
+\DeclareDocumentCommand{\cktus}{m m o}{\hspace{1em}\IfNoValueTF{#3}{\tikz[circuit logic US] \draw (0,0) -- (.2,0) node [#1,inputs=#2,anchor=west,name=s] {} (s.east) -- +(.2,0);}{\tikz[circuit ee US] \draw (0,0) -- (.2,0) node [#1,inputs=#2,label=#3,anchor=west,name=s] {} (s.east) -- +(.2,0);}\hspace{1em}}
 \DeclareDocumentCommand{\ctgn}{o m o}{\begin{center}\begin{figure}[h]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\end{center}}
 \DeclareDocumentCommand{\ctg}{o m o}{\begin{center}\begin{figure}[H]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\FloatBarrier\end{center}}
 \DeclareDocumentCommand{\df}{m m o}{\IfNoValueTF{#3}{\frac{\mathrm{d}#1}{\mathrm{d}#2}}{\frac{\mathrm{d}^{#1}#2}{\mathrm{d}#3^{#1}}}}
