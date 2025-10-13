@@ -1,6 +1,6 @@
 % This is template.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
 \IfPackageLoadedTF{geometry}{}{\usepackage[margin=1.27cm,foot=0.77cm]{geometry}}
-\ifcsname MathFont\endcsname\else\newcommand{\MathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}\fi
+\ifcsname SetMathFont\endcsname\else\newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}\fi
 \ifcsname c@CJK\endcsname\else\newcounter{CJK}\setcounter{CJK}{1}\fi
 \ifcsname c@markdown\endcsname\else\newcounter{markdown}\setcounter{markdown}{0}\fi
 \ifcsname c@Fonts\endcsname\else\newcounter{Fonts}\setcounter{Fonts}{1}\fi
@@ -75,7 +75,7 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{breakable,documentation,fitting,hooks,listings,listingsutf8,poster,raster,skins,theorems}
 \usepackage{unicode-math}
-\MathFont
+\SetMathFont
 \ifnum\value{Fonts}=1
 \setmainfont{TeX Gyre Heros}[Ligatures=TeX]
 \setsansfont{TeX Gyre Termes}[Ligatures=TeX]
