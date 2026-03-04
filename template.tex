@@ -9,7 +9,7 @@
 \ifcsname c@NotoCJKFamily\endcsname\else\newcounter{NotoCJKFamily}\setcounter{NotoCJKFamily}{0}\fi
 \ifcsname c@SectionLanguage\endcsname\else\newcounter{SectionLanguage}\setcounter{SectionLanguage}{0}\fi
 \ifcsname c@ZhRenew\endcsname\else\newcounter{ZhRenew}\setcounter{ZhRenew}{0}\fi
-\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[override,pretend,nosiintegrate,originaldiv,trig,uprightdiff,bolddel,plaindot,shorttextgreek,shortvargreek,shortupgreek,shortupvargreek,shortboldgreek,shortmathrm,shorttext]{physics-patch}}\fi
+\ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[forcedefaultall]{physics-patch}}\fi
 \ifnum\value{CJK}=1
 \ifx\luatexversion\undefined
 \usepackage{fontspec}
