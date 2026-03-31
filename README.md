@@ -43,7 +43,7 @@ Features of the template:
 * Defines a lot of useful commands and shorthands for mathematics, physics, chemistry, circuit design, programming, etc.
 * Use my [`physics-patch`](https://github.com/Willie169/physics-patch) package to replace the [`physics`](https://ctan.org/pkg/physics) package.
 
-You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`. To use the default fonts settings in the template, you'll need TeX Gyre, Noto CJK, and XITS Math fonts, which can installed with the Shell script below (`wget` required):
+You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`. To use the default fonts settings in the template, you'll need TeX Gyre, XITS Math fonts, and Noto CJK, where TeX Gyre can be obtained from [tex-gyre](https://ctan.org/pkg/tex-gyre) package from TexLive and XITS Math can be obtained from [xits](https://ctan.org/pkg/xits) package from TexLive or from <https://github.com/aliftype/xits/releases/download/v1.302/XITS-1.302.zip>, and Noto CJK can be obtained by running `sudo apt install fonts-noto-cjk fonts-noto-cjk-extra` on Debian derivatives or from <https://github.com/simonsmh/notocjk>. Run `sudo fc-cache -fv` after installing fonts. Using packages is recommended. Otherwise, use the script below to download XITS Math and Noto CJK to `/usr/share/fonts` (`wget` required):
 
 ```
 sudo mkdir /usr/share/fonts/opentype/xits
