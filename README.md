@@ -38,14 +38,22 @@ Features of the template:
 
 * Designed for LuaTeX and XeTeX, former with `luaotfload` and `luatexja-fontspec` if CJK is set, latter with `xeCJK` if CJK is set.
 * Support for TC (Traditional Chinese Taiwan), SC (Simplified Chinese), HK (Traditional Chinese Hong Kong), JP (Japanese), KR (Korean), and Latin-script languages.
-* Default fonts settings with TeX Gyre, Noto CJK, and XITS Math.
+* Default fonts settings with Noto Sans, Serif, and Sans Mono, Noto Sans, Serif, and Sans Mono CJK, and XITS Math fonts.
 * Utilizes a broad range of packages such as `etoolbox`, `xparse`, `titlesec`, `titling`, `setspace`, `needspace`, `titletoc`, `amsmath`, `float`, `chemfig`, `listings`, `siunitx`, `tikz`, `mhchem`, `hyperref`, `tcolorbox`, `unicode-math`, and `markdown`.
 * Defines a lot of useful commands and shorthands for mathematics, physics, chemistry, circuit design, programming, etc.
 * Use my [`physics-patch`](https://github.com/Willie169/physics-patch) package to replace the [`physics`](https://ctan.org/pkg/physics) package.
 
 You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`.
 
-To use the default fonts settings in the template, you'll need TeX Gyre, XITS Math fonts, and Noto CJK, where TeX Gyre can be obtained from [tex-gyre](https://ctan.org/pkg/tex-gyre) package from TexLive and XITS Math can be obtained from [xits](https://ctan.org/pkg/xits) package from TexLive or from <https://github.com/aliftype/xits/releases/download/v1.302/XITS-1.302.zip>, and Noto CJK can be obtained by running `sudo apt install fonts-noto-cjk fonts-noto-cjk-extra` on Debian derivatives or from <https://github.com/simonsmh/notocjk>.
+To use the default fonts settings in the template, you'll need Noto Sans, Serif, and Sans Mono, Noto Sans, Serif, and Sans Mono CJK, and XITS Math fonts, where Noto Sans, Serif, and Sans Mono fonts can be obtained by running
+```
+sudo apt install fonts-noto
+```
+on Debian derivatives or from <https://github.com/notofonts/notofonts.github.io>, Noto Sans, Serif, and Sans Mono CJK fonts can be obtained by running
+```
+sudo apt install fonts-noto-cjk fonts-noto-cjk-extra
+```
+on Debian derivatives or from <https://github.com/simonsmh/notocjk>, and XITS Math can be obtained from [xits](https://ctan.org/pkg/xits) package from TexLive or from <https://github.com/aliftype/xits>.
 
 Run
 ```
@@ -58,10 +66,9 @@ cat > ~/.config/fontconfig/conf.d/99-texlive.conf << 'EOF'
 EOF
 sudo fc-cache -fv
 ```
-to load TexLive fonts into fontconfig.
+to load TexLive fonts into fontconfig on Linux.
 
-Using packages as described above is recommended. Otherwise, use the script below to download XITS Math and Noto CJK to `/usr/share/fonts` (`wget` required):
-
+Using packages from package manager is generally recommended. Otherwise, you can use the script below to download XITS Math and Noto Sans, Serif, and Sans Mono CJK fonts to `/usr/share/fonts` on Linux (`wget` required):
 ```
 sudo mkdir /usr/share/fonts/opentype/xits
 cd /usr/share/fonts/opentype/xits
