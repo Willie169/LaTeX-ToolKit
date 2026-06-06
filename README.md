@@ -42,6 +42,7 @@ Features of the template:
 * Utilizes a broad range of packages such as `etoolbox`, `xparse`, `titlesec`, `titling`, `setspace`, `needspace`, `titletoc`, `amsmath`, `float`, `chemfig`, `listings`, `siunitx`, `tikz`, `mhchem`, `hyperref`, `tcolorbox`, `unicode-math`, and `markdown`.
 * Defines a lot of useful commands and shorthands for mathematics, physics, chemistry, circuit design, programming, etc.
 * Use my [`physics-patch`](https://github.com/Willie169/physics-patch) package to replace the [`physics`](https://ctan.org/pkg/physics) package.
+* This template is for now mainly designed for report, extreport, article, and extarticle documentclass.
 
 You can use your own fonts by setting `Fonts`, `CJKFonts`, and `NotoCJKFamily` to `0` and changing the definition of `\SetMathFont`.
 
