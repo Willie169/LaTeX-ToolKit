@@ -918,7 +918,7 @@ breakatwhitespace=false
 \renewcommand\thesubsubsection{\roman{subsubsection}}
 \fi
 \makeatletter
-\@ifclassloaded{article}{}{\@ifclassloaded{exarticle}{}{
+\@ifclassloaded{article}{}{\@ifclassloaded{extarticle}{}{
 \titleformat{\chapter}[block]{\LARGE\bfseries}{\thechapter}{1em}{}
 \DeclareDocumentCommand{\ch}{s o}{\IfBooleanTF{#1}{\IfNoValueTF{#2}{\chapter*}{\chapter*{#2}}}{\IfNoValueTF{#2}{\chapter}{\chapter{#2}}}}
 \titlecontents{chapter}[0em]{\addvspace{1em}}{\thecontentslabel\quad}{}{\titlerule*[1pc]{.}\contentspage}
