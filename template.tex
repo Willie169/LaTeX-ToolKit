@@ -605,9 +605,6 @@ captionpos=b,
 breaklines=true,
 breakatwhitespace=false
 }
-\makeatletter\csvset{autotabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{|*{\csv@columncount}{c|}}\csv@tablehead,table head=\hline\csvlinetotablerow\\\hline,late after line=\\,lable foot=\\\hline,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow},autobooktabularcenter/.style={file=#1,after head=\csv@pretable\begin{tabular}{*{\csv@columncount}{c}}\csv@tablehead,table head=\toprule\csvlinetotablerow\\\midrule,late after line=\\,table foot=\\\bottomrule,late after last line=\csv@tablefoot\end{tabular}\csv@posttable,command=\csvlinetotablerow}}\makeatother
-\newcommand{\csvautotabularcenter}[2][]{\csvloop{autotabularcenter={#2},#1}}
-\newcommand{\csvautobooktabularcenter}[2][]{\csvloop{autobooktabularcenter={#2},#1}}
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}{Lemma}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
