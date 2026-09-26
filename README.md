@@ -4,35 +4,58 @@ This repository contains a comprehensive and customizable LaTeX [template](#temp
 
 ## Template
 
-To use the template, please:
+To use the template,
 
-<ol>
-<li>Download <a href="template.tex"><code>template.tex</code></a> from here. You may clone this repository to <code>/usr/share</code> (default path in <a href="document.tex"><code>document.tex</code></a>) with (<a href="https://git-scm.com/downloads"><code>git</code></a> required):
-<pre><code>cd /usr/share
-sudo git clone https://github.com/Willie169/LaTeX-ToolKit
-</code></pre>
-so that you can update with:
-<pre><code>cd /usr/share/LaTeX-ToolKit
-sudo git pull
-</code></pre></li>
-<li>Prepare <code>physics-patch</code> package. Since the <code>physics-patch</code> package is relatively new and is updated frequently, you may clone this repository to <code>~/texmf/tex/latex</code> with (<a href="https://git-scm.com/downloads"><code>git</code></a> required):
-<pre><code>cd ~
-mkdir -p texmf
-cd texmf
-mkdir -p tex
-cd tex
-mkdir -p latex
-cd latex
-git clone https://github.com/Willie169/physics-patch
-</code></pre>
-so that you can update with:
-<pre><code>cd ~/texmf/tex/latex/physics-patch
-git pull
-</code></pre></li>
-<li>Copy <a href="document.tex"><code>document.tex</code></a> to your LaTeX file.</li>
-<li>Configure the counters, options, and paths.</li>
-<li>Customize the <a href="template.tex"><code>template.tex</code></a> (for advanced users).</li>
-</ol>
+1. Download: (Linux assumed. Adapt yourself for your platform.)
+    - Global use: Create `~/texmf/tex/latex` or corresponding directory for your platform and clone this repository to it. (`git` required)
+        ```
+        mkdir -p ~/texmf/tex/latex
+        cd ~/texmf/tex/latex
+        git clone https://github.com/Willie169/LaTeX-ToolKit.git
+        ```
+        It can be updated by pulling the repository.
+        ```
+        cd ~/texmf/tex/latex/LaTeX-ToolKit || exit
+        git reset --hard
+        git clean -d --force
+        git pull --rebase
+        ```
+    - Single use: Create `LaTeX-ToolKit` directory under the directory that the main LaTeX file is in and download [template.tex](https://raw.githubusercontent.com/Willie169/LaTeX-ToolKit/refs/heads/main/template.tex) into it. (`wget` required)
+        ```
+        mkdir LaTeX-ToolKit
+        cd LaTeX-ToolKit
+        wget https://raw.githubusercontent.com/Willie169/LaTeX-ToolKit/refs/heads/main/template.tex
+        ```
+2. Prepare `physics-patch` package:
+    - Global use: Create `~/texmf/tex/latex` or corresponding directory for your platform and clone the repository to it. (`git` required)
+        ```
+        mkdir -p ~/texmf/tex/latex
+        cd ~/texmf/tex/latex
+        git clone https://github.com/Willie169/physics-patch.git
+        ```
+        and optionally use the `dev` branch for latest features:
+        ```
+        cd physics-patch
+        git checkout dev
+        ```
+        It can be updated by pulling the repository.
+        ```
+        cd ~/texmf/tex/latex/physics-patch || exit
+        git reset --hard
+        git clean -d --force
+        git pull --rebase
+        ```
+    - Single use: Download the .sty file into the directory that the main LaTeX file is in. (`wget` required)
+        - `main` branch:
+            ```
+            wget https://github.com/Willie169/physics-patch/raw/refs/heads/main/physics-patch.sty
+            ```
+        - `dev` branch:
+            ```
+            wget https://github.com/Willie169/physics-patch/raw/refs/heads/dev/physics-patch.sty
+            ```
+3. Copy the content of [document.tex](document.tex) to your main LaTeX file.
+4. Configure the counters, options, etc.
 
 Features of the template:
 
@@ -54,20 +77,23 @@ on Debian derivatives or from <https://github.com/notofonts/notofonts.github.io>
 ```
 sudo apt install fonts-noto-cjk fonts-noto-cjk-extra
 ```
-on Debian derivatives or from <https://github.com/simonsmh/notocjk>, and XITS Math can be obtained from [xits](https://ctan.org/pkg/xits) package from TexLive or from <https://github.com/aliftype/xits>.
+on Debian derivatives or from <https://github.com/simonsmh/notocjk>, and XITS Math can be obtained from [xits](https://ctan.org/pkg/xits) package from Tex Live or from <https://github.com/aliftype/xits>.
 
-Run
+Add your path to `fontconfig` and run `fc-cache -fv` to let fonts from TeX Live be found. For TeX Live on Debian derivatives installed with:
+```
+sudo apt install texlive-full
+```
+you can use
 ```
 cat > ~/.config/fontconfig/conf.d/99-texlive.conf << 'EOF'
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
-  <dir>/usr/local/texlive/2026/texmf-dist/fonts</dir>
+  <dir>/usr/share/texlive/texmf-dist/fonts</dir>
 </fontconfig>
 EOF
-sudo fc-cache -fv
+fc-cache -fv
 ```
-to load TexLive fonts into fontconfig on Linux.
 
 Using packages from package manager is generally recommended. Otherwise, you can use the script below to download XITS Math and Noto Sans, Serif, and Sans Mono CJK fonts to `/usr/share/fonts` on Linux (`wget` required):
 ```
@@ -161,7 +187,7 @@ sudo wget https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Mono/No
 sudo wget https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Mono/NotoSansMonoCJKjp-Bold.otf
 sudo wget https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Mono/NotoSansMonoCJKkr-Regular.otf
 sudo wget https://raw.githubusercontent.com/notofonts/noto-cjk/main/Sans/Mono/NotoSansMonoCJKkr-Bold.otf
-sudo fc-cache -fv
+fc-cache -fv
 ```
 
 ## Utilities
