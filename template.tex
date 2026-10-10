@@ -12,13 +12,14 @@
 \ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[forcedefaultall]{physics-patch}}\fi
 \ifnum\value{CJK}=1
 \ifx\luatexversion\undefined
-\usepackage[T1]{fontspec}
+\usepackage{fontspec}
 \usepackage[CJKspace]{xeCJK}
 \else
 \usepackage{luaotfload,luatexja-fontspec}
 \fi
 \usepackage{zhnumber}
 \fi
+\usepackage[T1]{fontenc}
 \usepackage{etoolbox,ifthen,xparse,xpatch,xstring}
 \usepackage{needspace,parskip,setspace,titlesec,titling,titletoc}
 \usepackage[defaultlines=8]{nowidow}
