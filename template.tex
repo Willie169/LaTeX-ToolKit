@@ -814,7 +814,7 @@ breakatwhitespace=false
 \DeclareDocumentCommand{\cktiec}{m m o}{\hspace{1em}\IfNoValueTF{#3}{\tikz[circuit logic IEC] \draw node [#1,inputs=#2,anchor=west,name=s] {};}{\tikz[circuit logic IEC] \draw node [#1,inputs=#2,label=#3,anchor=west,name=s] {};}\hspace{1em}}
 \DeclareDocumentCommand{\cktus}{m m o}{\hspace{1em}\IfNoValueTF{#3}{\tikz[circuit logic US] \draw node [#1,inputs=#2,anchor=west,name=s] {};}{\tikz[circuit logic US] \draw node [#1,inputs=#2,label=#3,anchor=west,name=s] {};}\hspace{1em}}
 \DeclareDocumentCommand{\cticgn}{o m o}{\begin{center}\begin{figure}[h]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\end{center}}
-\DeclareDocumentCommand{\cticg}{o m o}{\begin{center}\begin{figure}[H]\centering\IfNoValueTF{#3}{\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}}{\includegraphics[#1]{#2}\caption{#3}}\end{figure}\FloatBarrier\end{center}}
+\DeclareDocumentCommand{\cticg}{o m o}{\begin{center}\begin{figure}[H]\centering\IfNoValueTF{#2}{\includegraphics{#1}}{\includegraphics[#1]{#2}}\IfNoValueTF{#3}{}{\caption{#3}}\end{figure}\FloatBarrier\end{center}}
 \DeclareDocumentCommand{\eBNM}{}{\end{BNiceMatrix}}
 \DeclareDocumentCommand{\eBmt}{}{\end{Bmatrix}}
 \DeclareDocumentCommand{\eNM}{}{\end{NiceMatrix}}
