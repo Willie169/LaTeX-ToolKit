@@ -275,9 +275,6 @@ By contributing to this project, you agree that your contributions will be licen
 - **TeX Live**
   - URL: <https://tug.org/texlive>
   - License: Please see <https://www.tug.org/texlive/copying.html>
-- **Ulrike Fischer**
-  - URL: <https://tex.stackexchange.com/questions/424185/having-problems-with-lstlistings-displaying-minus-symbol-in-code-listing-with-cu>
-  - License: CC BY-SA 4.0
 - **Vít Starý Novotný**/**Witiko**
   - URL: <https://github.com/Witiko/markdown>
   - License: LPPL-1.3c
