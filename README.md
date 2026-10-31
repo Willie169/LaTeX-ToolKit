@@ -194,9 +194,9 @@ fc-cache -fv
 
 - [`paragraph2itemize.cpp`](paragraph2itemize.cpp): transforms LaTeX code in `\paragraph{}`, `\subparagraph{}`, `\subsubparagraph{}` style to nested `itemize` with indentation.
 - [`xeCJK.cpp`](xeCJK.cpp) and [`luatexja.cpp`](luatexja.cpp): generates the LaTeX code for CJK fonts settings for xeCJK and luatexja-fontspec respectively. Their ouputs are used in [`template.tex`](template.tex).
-- [`test.tex`](test.tex): test.
-- [`lua_test.pdf`](test.pdf): PDF compiled with `lualatex test.tex`.
-- [`xe_test.pdf`](test.pdf): PDF compiled with `xelatex test.tex`.
+- [`test.tex`](test.tex): test LaTeX document.
+- [`lua_test.pdf`](test.pdf): [`test.tex`](test.tex) compiled with lualatex.
+- [`xe_test.pdf`](test.pdf): [`test.tex`](test.tex) compiled with xelatex.
 
 ## License
 
