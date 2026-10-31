@@ -2,9 +2,10 @@
 \documentclass[a4paper,12pt]{report}
 % This template supports report, extreport, article, and extarticle documentclass.
 % It is ok to delete the contents from here to the line before \input{LaTeX-ToolKit/template.tex}. The contents shown here are default behaviors set in the template.
-\usepackage[margin=1in,foot=1in]{geometry}
+\newcommand{\PreambleStart}{\usepackage[margin=2cm]{geometry}\setcounter{secnumdepth}{3}\setcounter{tocdepth}{3}}
+% If defined, this command will be ran at the start of the template.
 \newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}
-% math font.
+% Set math font.
 \newcounter{CJK}
 \setcounter{CJK}{1}
 % Set CJK counter to 1 to use CJK language; 0 to not.
@@ -29,8 +30,6 @@
 \newcounter{ZhRenew}
 \setcounter{ZhRenew}{0}
 % Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define \temtoday to be \today. If CJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
-\newcommand{\PreambleStart}{\setcounter{secnumdepth}{5}\setcounter{tocdepth}{3}}
-% If defined, this command will be ran at the start of the template.
 \newcommand{\PreambleMiddle}{}
 % If defined, this command will be ran before hyperref, xurl, tcolorbox, and unicode-math are loaded and after other packages are loaded.
 \newcommand{\PhysicsPatch}{\usepackage[forcedefaultall]{physics-patch}}
