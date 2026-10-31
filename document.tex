@@ -1,19 +1,16 @@
 % This is document.tex of https://github.com/Willie169/LaTeX-ToolKit, licensed under either GPL-3.0-or-later, CC BY-SA 4.0-or-later, or LPPL-1.3c-or-later.
 \documentclass[a4paper,12pt]{report}
-\setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{3}
-% Change above to what you want, this template is for now mainly designed for report, extreport, article, and extarticle documentclass.
-% It is ok to delete the lines 5 to 38. The default behaviors shown in this file will be used if so.
+% This template supports report, extreport, article, and extarticle documentclass.
+% It is ok to delete the contents from here to the line before \input{LaTeX-ToolKit/template.tex}. The contents shown here are default behaviors set in the template.
 \usepackage[margin=1in,foot=1in]{geometry}
-% Change above to what you want.
 \newcommand{\SetMathFont}{\setmathfont{XITS Math}\setmathfont[range={cal,bfcal},StylisticSet=1]{XITS Math}}
-% Change the command definition above to change math font.
+% math font.
 \newcounter{CJK}
 \setcounter{CJK}{1}
 % Set CJK counter to 1 to use CJK language; 0 to not.
 \newcounter{markdown}
 \setcounter{markdown}{0}
-% Set markdown counter to use markdown package with different options (experimental): 0 to not use; 1 for use markdown package with most pandoc and php markdown extensions; 2 for use markdown package with only simple extensions such as tex math; 3 for use markdown package without extensions; 4 to 6 for 1 to 3 but without blank before block quotes, code fences, div fences, headers, and lists; 7 to 12 for 1 to 6 but preserving tabs and ellipsis. Note that the markdown package using part of the template is designed for the 3.9.1 version, which hasn't been included in most LaTeX distributions.
+% Set markdown counter to use markdown package with different options (experimental): 0 to not use; 1 for use markdown package with most pandoc and php markdown extensions; 2 for use markdown package with only simple extensions such as tex math; 3 for use markdown package without extensions; 4 to 6 for 1 to 3 but without blank before block quotes, code fences, div fences, headers, and lists; 7 to 12 for 1 to 6 but preserving tabs and ellipsis. (experimental)
 \newcounter{Fonts}
 \setcounter{Fonts}{1}
 % Set Fonts counter to set fonts' style: 0 for default; 1 for TeX Gyre Heros as main font, TeX Gyre Termes as sans font, Tex Gyre Cursor as mono font; 2 for TeX Gyre Termes as main font, TeX Gyre Heros as sans font, Tex Gyre Cursor as mono font; 3 for TeX Gyre Heros as main font, sans font not set, Tex Gyre Cursor as mono font; 4 for TeX Gyre Termes as main font, sans font not set, Tex Gyre Cursor as mono font; 5 to 8 for 1 to 4 but without Tex Gyre Cursor as mono font.
@@ -32,12 +29,14 @@
 \newcounter{ZhRenew}
 \setcounter{ZhRenew}{0}
 % Set ZhRenew counter to 1 to renew \contentsname to 目錄 and define \temtoday to be \zhtoday; 2 to renew \contentsname to 目录 and define \temtoday to be \zhtoday; 0 to not renew \contentsname and define \temtoday to be \today. If CJK counter is not 1, this counter will be omitted and \temtoday will be defined to be \today.
+\newcommand{\PreambleStart}{\setcounter{secnumdepth}{5}\setcounter{tocdepth}{3}}
+% If defined, this command will be ran at the start of the template.
 \newcommand{\PreambleMiddle}{}
-% If defined, this command will be ran before hyperref, tcolorbox, and unicode-math are loaded and after other packages are loaded.
+% If defined, this command will be ran before hyperref, xurl, tcolorbox, and unicode-math are loaded and after other packages are loaded.
 \newcommand{\PhysicsPatch}{\usepackage[forcedefaultall]{physics-patch}}
 % Set options you want for physics-patch here.
 \input{LaTeX-ToolKit/template.tex}
-% Set path to template.tex here.
+% Set path to template.tex here if you use some custom path.
 % You can set fonts and CJK fonts here if corresponding counters are set to 0.
 \begin{document}
 % --- Example --- %

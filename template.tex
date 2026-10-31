@@ -9,7 +9,9 @@
 \ifcsname c@NotoCJKFamily\endcsname\else\newcounter{NotoCJKFamily}\setcounter{NotoCJKFamily}{0}\fi
 \ifcsname c@SectionLanguage\endcsname\else\newcounter{SectionLanguage}\setcounter{SectionLanguage}{0}\fi
 \ifcsname c@ZhRenew\endcsname\else\newcounter{ZhRenew}\setcounter{ZhRenew}{0}\fi
+\ifcsname PreambleStart\endcsname\else\newcommand{\PreambleStart}{\setcounter{secnumdepth}{5}\setcounter{tocdepth}{3}}\fi
 \ifcsname PhysicsPatch\endcsname\else\newcommand{\PhysicsPatch}{\usepackage[forcedefaultall]{physics-patch}}\fi
+\PreambleStart
 \ifnum\value{CJK}=1
 \ifx\luatexversion\undefined
 \usepackage{fontspec}
